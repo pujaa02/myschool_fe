@@ -1,0 +1,7 @@
+.wizard-icon-style {
+  @apply w-12 h-12 p-2.5 rounded-full flex items-center justify-center group-last:before:hidden before:-z-1 before:absolute before:content-[''] before:w-[calc(100%_+_6vw)] before:border-t-2 before:border-dashed before:border-black/20 before:left-6;
+}
+
+.dynamic-email-btn {
+  @apply w-12 h-12 cursor-pointer inline-flex justify-center items-center p-2 rounded-lg border border-solid;
+}
