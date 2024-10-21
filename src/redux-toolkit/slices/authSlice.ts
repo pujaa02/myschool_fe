@@ -7,16 +7,7 @@ import { RootStateType } from 'redux-toolkit/store';
 
 // ** Types **
 
-interface TrainerAttachment {
-  id: number;
-  trainer_id: number;
-  attachment_url: string;
-  created_by: number;
-  updated_by: number;
-  created_at: string;
-  updated_at: string;
-  deleted_at: string | null;
-}
+
 interface SubCategory {
   id: number;
   name: string;
@@ -30,27 +21,11 @@ interface SubCategory {
   deleted_at: string | null;
 }
 
-interface TrainerSubCategory {
-  id: number;
-  trainer_id: number;
-  sub_category_id: number;
-  parent_table_id: number | null;
-  language: string;
-  created_by: number;
-  updated_by: number;
-  created_at: string;
-  updated_at: string;
-  deleted_at: string | null;
-  sub_category: SubCategory;
-}
 export type UserTrainer = {
   location?: string;
   latitude?: string;
   longitude?: string;
   hourly_rate?: string;
-  travel_reimbursement_fee?: string;
-  trainerSubCategory: TrainerSubCategory[];
-  trainerAttachment?: TrainerAttachment[];
   username?: string;
 };
 export type AuthUserType = {

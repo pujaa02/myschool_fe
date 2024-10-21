@@ -2,9 +2,8 @@
 // ** Packages **
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { useState } from 'react';
-
-import { Axios } from 'base-axios';
-import { ApiResponseType } from 'base-axios/types';
+import { ApiResponseType } from '../base-axios/types';
+import { Axios } from '../base-axios';
 
 export const useAxiosGet = (): [
   (
