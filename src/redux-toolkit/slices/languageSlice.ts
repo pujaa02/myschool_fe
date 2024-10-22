@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootStateType } from 'redux-toolkit/store';
+import { RootStateType } from '../store';
 
 export type LanguageType = {
   language: string;

@@ -1,18 +1,19 @@
-import { REACT_APP_API_URL } from 'config';
+/* eslint-disable @typescript-eslint/no-shadow */
 import { useDispatch, useSelector } from 'react-redux';
+import { useAxiosGet } from './useAxios';
+import { REACT_APP_API_URL } from '../config';
 import {
-  setCities,
   setCountries,
   setState,
-} from 'redux-toolkit/slices/countryJsonSlice';
+  setCities,
+} from '../redux-toolkit/slices/countryJsonSlice';
 import {
+  useLanguage,
   AllLanguages,
-  setAllLanguage,
   setDefaultLanguage,
   setLanguage,
-  useLanguage,
-} from 'redux-toolkit/slices/languageSlice';
-import { useAxiosGet } from './useAxios';
+  setAllLanguage,
+} from '../redux-toolkit/slices/languageSlice';
 
 export const getCountriesJsonAPI = () => {
   const [callApi, { isLoading, isError, isSuccess }] = useAxiosGet();

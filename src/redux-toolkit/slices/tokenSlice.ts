@@ -1,6 +1,6 @@
 // ** Redux **
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootStateType } from 'redux-toolkit/store';
+import { RootStateType } from '../store';
 
 // ** Types **
 export type TokenSliceType = {
@@ -35,7 +35,8 @@ const slice = createSlice({
 
 export const { reducer } = slice;
 
-export const { setToken, clearToken, setExamToken, clearExamToken } = slice.actions;
+export const { setToken, clearToken, setExamToken, clearExamToken } =
+  slice.actions;
 
 export const getAuthToken = (state: RootStateType) => state.token;
 

@@ -1,25 +1,6 @@
 // ** Redux **
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootStateType } from 'redux-toolkit/store';
-
-// ** Helper **
-// import { logoutHelper } from "modules/Auth/helper";
-
-// ** Types **
-
-
-interface SubCategory {
-  id: number;
-  name: string;
-  slug: string;
-  language: string;
-  parent_table_id: number | null;
-  image: string | null;
-  category_id: number;
-  created_at: string;
-  updated_at: string;
-  deleted_at: string | null;
-}
+import { RootStateType } from '../store';
 
 export type UserTrainer = {
   location?: string;
@@ -54,7 +35,9 @@ export type AuthUserType = {
   manager?: {
     job_title: string;
     id: number;
-    company_manager?: { company?: { id: string; name: string; slug: string } }[];
+    company_manager?: {
+      company?: { id: string; name: string; slug: string };
+    }[];
   };
 };
 // & UserType;
@@ -75,7 +58,10 @@ const slice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    setAuthenticated(state: AuthSliceType, action: PayloadAction<AuthSliceType>) {
+    setAuthenticated(
+      state: AuthSliceType,
+      action: PayloadAction<AuthSliceType>
+    ) {
       state.isAuthenticated = action.payload.isAuthenticated;
     },
     setUserData(state: AuthSliceType, action: PayloadAction<AuthSliceType>) {

@@ -1,0 +1,80 @@
+/* site logo draw loader css start */
+.i__Site__Loader {
+  @apply top-0 left-0 fixed z-[10] w-screen h-screen flex items-center justify-center bg-bgWhiteSD;
+}
+
+.i__Site__Loader .new__logo {
+  @apply w-[150px];
+}
+
+.i__Site__Loader path.iLetter.iLetter4 {
+  stroke: #ff2c46;
+  stroke-width: 5px;
+  fill: transparent;
+  stroke-dasharray: 475;
+  stroke-dashoffset: 0;
+  animation-name: iLetter4;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes iLetter4 {
+  0% {
+    stroke-dashoffset: 0;
+    fill: transparent;
+  }
+
+  40% {
+    stroke-dashoffset: 475;
+    fill: transparent;
+  }
+
+  80% {
+    stroke-dashoffset: 950;
+    fill: transparent;
+  }
+
+  100% {
+    stroke-dashoffset: 950;
+    fill: #ff2c46;
+  }
+}
+
+.i__Site__Loader path.iLetter.iLetter5 {
+  stroke: #7467b7;
+  stroke-width: 5px;
+  fill: transparent;
+  stroke-dasharray: 475;
+  stroke-dashoffset: 0;
+  animation-name: iLetter5;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes iLetter5 {
+  0% {
+    stroke-dashoffset: 0;
+    fill: transparent;
+  }
+
+  40% {
+    stroke-dashoffset: 475;
+    fill: transparent;
+  }
+
+  80% {
+    stroke-dashoffset: 950;
+    fill: transparent;
+  }
+
+  100% {
+    stroke-dashoffset: 950;
+    fill: #7467b7;
+  }
+}
+
+/* site logo draw loader css end */

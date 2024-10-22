@@ -1,5 +1,5 @@
-import { IconTypes } from 'components/Icon/types';
 import { FormikValues } from 'formik';
+import { IconTypes } from '../components/Icon/types';
 
 export interface QueryOptions {
   page?: number;
@@ -49,7 +49,7 @@ export type FilterStatus = {
 
 export type SetFieldValue = <
   K extends keyof FormikValues,
-  V extends FormikValues[K]
+  V extends FormikValues[K],
 >(
   field: string,
   value: V,

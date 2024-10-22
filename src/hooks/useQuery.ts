@@ -1,11 +1,18 @@
-import { useQuery } from '@tanstack/react-query';
-import { AxiosHeaderValue } from 'axios';
-import { REACT_APP_API_URL } from 'config';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useLanguage } from 'redux-toolkit/slices/languageSlice';
-import { QueryOptions } from 'types/common';
+import { AxiosHeaderValue } from 'axios';
+// export type AxiosHeaderValue =
+//   | AxiosHeaders
+//   | string
+//   | string[]
+//   | number
+//   | boolean
+// | null;
 import { useAxiosGet } from './useAxios';
+import { REACT_APP_API_URL } from '../config';
+import { useLanguage } from '../redux-toolkit/slices/languageSlice';
+import { useQuery } from '@tanstack/react-query';
+import { QueryOptions } from '../types/common';
 
 export const useQueryGetFunction = (
   url: string,
@@ -17,7 +24,9 @@ export const useQueryGetFunction = (
   const [getRequest, { isLoading, isError, isSuccess }] = useAxiosGet();
   const storeLang = useSelector(useLanguage);
   const config = header ? { headers: { ...header } } : {};
-  const queryKey = [url, page, limit, search, sort, role, option].filter(Boolean);
+  const queryKey = [url, page, limit, search, sort, role, option].filter(
+    Boolean
+  );
   const obj = {
     ...(page !== undefined && page !== null && { page }),
     ...(limit !== undefined && limit !== null && { limit }),

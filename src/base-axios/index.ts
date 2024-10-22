@@ -3,17 +3,17 @@ import { Store } from '@reduxjs/toolkit';
 import axios, { AxiosRequestConfig } from 'axios';
 
 // ** Redux **
-import { setToast } from 'redux-toolkit/slices/toastSlice';
+import { setToast } from '../redux-toolkit/slices/toastSlice';
 
 // ** Types**
-import { ApiResponseType } from 'base-axios/types';
+import { ApiResponseType } from './types';
 
 // ** Others **
-import { REACT_APP_API_URL } from 'config';
-import { apiCallConstant } from 'constants/common.constant';
-import { setLogoutData } from 'redux-toolkit/slices/authSlice';
-import { clearActiveSidebar } from 'redux-toolkit/slices/sidebarSlice';
-import { setToken } from 'redux-toolkit/slices/tokenSlice';
+import { REACT_APP_API_URL } from '../config';
+import { apiCallConstant } from '../constants/common.constant';
+import { setLogoutData } from '../redux-toolkit/slices/authSlice';
+import { clearActiveSidebar } from '../redux-toolkit/slices/sidebarSlice';
+import { setToken } from '../redux-toolkit/slices/tokenSlice';
 
 export const Axios = axios.create({ baseURL: `${REACT_APP_API_URL}` });
 

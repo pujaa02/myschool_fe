@@ -9,7 +9,7 @@ import persistStore from 'redux-persist/es/persistStore';
 import rootReducer from './rootReducer';
 
 const persistConfig = {
-  key: 'PROLEVEN',
+  key: 'MYSCHOOL',
   storage,
   blacklist: ['notificationIsRead'],
   whitelist: ['language', 'token', 'sidebar', 'boardData', 'company'],

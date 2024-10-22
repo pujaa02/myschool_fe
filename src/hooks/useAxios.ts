@@ -1,9 +1,8 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 // ** Packages **
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { useState } from 'react';
-import { ApiResponseType } from '../base-axios/types';
 import { Axios } from '../base-axios';
+import { ApiResponseType } from '../base-axios/types';
 
 export const useAxiosGet = (): [
   (
@@ -11,7 +10,7 @@ export const useAxiosGet = (): [
     config?: AxiosRequestConfig<object>,
     baseUrl?: boolean
   ) => Promise<{ data?: any; error?: any }>,
-  { isLoading: boolean; isError: boolean; isSuccess: boolean }
+  { isLoading: boolean; isError: boolean; isSuccess: boolean },
 ] => {
   // ** State **
   const [isLoading, setIsLoading] = useState(false);
@@ -55,7 +54,7 @@ export const useAxiosPost = (): [
     data: object,
     config?: AxiosRequestConfig<object>
   ) => Promise<{ data?: any; error?: any }>,
-  { isLoading: boolean; isError: boolean; isSuccess: boolean }
+  { isLoading: boolean; isError: boolean; isSuccess: boolean },
 ] => {
   // ** State **
   const [isLoading, setIsLoading] = useState(false);
@@ -95,7 +94,7 @@ export const useAxiosPut = (): [
     data: object,
     config?: AxiosRequestConfig<object>
   ) => Promise<{ data?: any; error?: any }>,
-  { isLoading: boolean; isError: boolean; isSuccess: boolean }
+  { isLoading: boolean; isError: boolean; isSuccess: boolean },
 ] => {
   // ** State **
   const [isLoading, setIsLoading] = useState(false);
@@ -135,7 +134,7 @@ export const useAxiosPatch = (): [
     data: object,
     config?: AxiosRequestConfig<object>
   ) => Promise<{ data?: any; error?: any }>,
-  { isLoading: boolean; isError: boolean; isSuccess: boolean }
+  { isLoading: boolean; isError: boolean; isSuccess: boolean },
 ] => {
   // ** State **
   const [isLoading, setIsLoading] = useState(false);
@@ -177,7 +176,7 @@ export const useAxiosDelete = (): [
     data?: object,
     config?: AxiosRequestConfig<object>
   ) => Promise<{ data?: any; error?: any }>,
-  { isLoading: boolean; isError: boolean; isSuccess: boolean }
+  { isLoading: boolean; isError: boolean; isSuccess: boolean },
 ] => {
   // ** State **
   const [isLoading, setIsLoading] = useState(false);

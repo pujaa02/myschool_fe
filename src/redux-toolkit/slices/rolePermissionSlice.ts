@@ -1,6 +1,6 @@
 // =================== import packages ==================
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootStateType } from 'redux-toolkit/store';
+import { RootStateType } from '../store';
 
 export type RoleType = {
   id: number;
@@ -43,7 +43,10 @@ const rolePermissionSlice = createSlice({
     setRoles(state: RoleSliceType, action: PayloadAction<RoleType[]>) {
       state.roles = action.payload;
     },
-    setPermission(state: RoleSliceType, action: PayloadAction<permissionType[]>) {
+    setPermission(
+      state: RoleSliceType,
+      action: PayloadAction<permissionType[]>
+    ) {
       state.permission = action.payload;
     },
     setRolePermission(

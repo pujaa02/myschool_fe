@@ -1,6 +1,6 @@
 // ** Redux **
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootStateType } from 'redux-toolkit/store';
+import { RootStateType } from '../store';
 
 // ** Types **
 export type CountryJsonSliceType = {
