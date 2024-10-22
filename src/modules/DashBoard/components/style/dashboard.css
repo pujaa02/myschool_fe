@@ -1,0 +1,19 @@
+.popular-courses-container {
+  @apply bg-white p-7 rounded-3xl;
+}
+
+.dashboard-container {
+  @apply pt-6 px-4 sm:px-6 md:px-8  overflow-y-auto max-h-[calc(100dvh-83px)]  md:max-h-[calc(100dvh-91px)] h-full;
+}
+.reports-tab-container {
+  @apply text-xs rounded-full p-2 px-3 cursor-pointer;
+}
+/*Tile style*/
+
+.tiles-container {
+  @apply grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-7 mb-7;
+}
+
+.tiles-top-common {
+  @apply bg-white p-7 flex flex-col gap-4 rounded-3xl;
+}
