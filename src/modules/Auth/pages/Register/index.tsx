@@ -25,20 +25,20 @@ const Register = () => {
 
   const [registerFormInitialValue, setRegisterFormInitialValue] =
     useState<RegisterInitialValueType>(registerInitialValues);
-  const [active, setActive] = useState<ActiveStateType>({
-    current: 1,
-    registerInfoForm: {
-      complete: false,
-    },
-  });
+  // const [active, setActive] = useState<ActiveStateType>({
+  //   current: 1,
+  //   registerInfoForm: {
+  //     complete: false,
+  //   },
+  // });
 
   const renderForm = () => {
     return (
       <RegisterInfo
         setRegisterInitialValue={setRegisterFormInitialValue}
         registerInitialValue={registerFormInitialValue}
-        currentStep={active.current}
-        setActive={setActive}
+        // currentStep={active.current}
+        // setActive={setActive}
       />
     );
   };
