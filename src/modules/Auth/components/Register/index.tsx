@@ -21,13 +21,13 @@ import { RegisterComponentProps } from './types';
 import { useAxiosPost } from '../../../../hooks/useAxios';
 
 // ** validation **
-import { RegisterAdditionalValidationSchema } from '../../../../modules/Auth/validationSchema';
+import { RegisterAdditionalValidationSchema } from '../../validationSchema';
 
 // ** utils **
 import { convertLocationIdToName } from '../../../../utils';
 
 // ** redux **
-import { RegisterInitialValueType } from '../../../../modules/Auth/pages/Register/types';
+import { RegisterInitialValueType } from '../../pages/Register/types';
 import {
   getCitiesJson,
   getCountriesJson,

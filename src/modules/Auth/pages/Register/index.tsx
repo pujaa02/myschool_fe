@@ -3,11 +3,11 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 // ** components **
-import Image from '../../../../components/Image';
+import Image from 'components/Image';
 
 // ** constants **
-import { PUBLIC_NAVIGATION } from '../../../../constants/navigation.constant';
-import { registerInitialValues } from '../../../../modules/Auth/components/Register/constants';
+import { PUBLIC_NAVIGATION } from 'constants/navigation.constant';
+import { registerInitialValues } from 'modules/Auth/components/Register/constants';
 
 // ** types **
 import { ActiveStateType, RegisterInitialValueType } from './types';
@@ -16,12 +16,8 @@ import { ActiveStateType, RegisterInitialValueType } from './types';
 import './style/index.css';
 
 // ** lazy **
-const RegisterManagerInfo = React.lazy(
-  () =>
-    import('../../../../modules/Auth/components/Register/RegsiterManagerInfo')
-);
-const AdditionalInfo = React.lazy(
-  () => import('../../../../modules/Auth/components/Register/AdditionalInfo')
+const RegisterInfo = React.lazy(
+  () => import('modules/Auth/components/Register/index')
 );
 
 const Register = () => {
@@ -31,49 +27,20 @@ const Register = () => {
     useState<RegisterInitialValueType>(registerInitialValues);
   const [active, setActive] = useState<ActiveStateType>({
     current: 1,
-    companyInfoForm: {
-      complete: false,
-    },
-    managerInfoForm: {
-      complete: false,
-    },
-    additionalInfoForm: {
+    registerInfoForm: {
       complete: false,
     },
   });
 
   const renderForm = () => {
-    switch (active.current) {
-      // case 1:
-      //   return (
-      //     <RegisterCompanyInfo
-      //       setRegisterInitialValue={setRegisterFormInitialValue}
-      //       registerInitialValue={registerFormInitialValue}
-      //       currentStep={active.current}
-      //       setActive={setActive}
-      //     />
-      //   );
-      case 2:
-        return (
-          <RegisterManagerInfo
-            setRegisterInitialValue={setRegisterFormInitialValue}
-            registerInitialValue={registerFormInitialValue}
-            currentStep={active.current}
-            setActive={setActive}
-          />
-        );
-      case 3:
-        return (
-          <AdditionalInfo
-            setRegisterInitialValue={setRegisterFormInitialValue}
-            registerInitialValue={registerFormInitialValue}
-            currentStep={active.current}
-            setActive={setActive}
-          />
-        );
-      default:
-        break;
-    }
+    return (
+      <RegisterInfo
+        setRegisterInitialValue={setRegisterFormInitialValue}
+        registerInitialValue={registerFormInitialValue}
+        currentStep={active.current}
+        setActive={setActive}
+      />
+    );
   };
 
   return (
@@ -91,7 +58,7 @@ const Register = () => {
                     ? 'text-primary ring-1 ring-primary bg-white'
                     : ' bg-offWhite2 text-grayText'
                 } ${
-                  active?.companyInfoForm?.complete &&
+                  active?.registerInfoForm?.complete &&
                   'bg-primary text-white before:!border-primary'
                 }`}
               >
@@ -103,7 +70,7 @@ const Register = () => {
                     ? 'text-primary font-semibold'
                     : ' text-grayText'
                 } ${
-                  active?.companyInfoForm?.complete &&
+                  active?.registerInfoForm?.complete &&
                   'text-primary font-semibold'
                 }`}
               >
@@ -117,7 +84,7 @@ const Register = () => {
                     ? 'text-primary ring-1 ring-primary bg-white'
                     : ' bg-offWhite2 text-grayText'
                 } ${
-                  active?.managerInfoForm?.complete &&
+                  active?.registerInfoForm?.complete &&
                   'bg-primary text-white before:!border-primary'
                 }`}
               >
@@ -129,7 +96,7 @@ const Register = () => {
                     ? 'text-primary font-semibold'
                     : ' text-grayText'
                 } ${
-                  active?.managerInfoForm?.complete &&
+                  active?.registerInfoForm?.complete &&
                   'text-primary font-semibold'
                 }`}
               >
@@ -144,7 +111,7 @@ const Register = () => {
                 ? 'text-primary ring-1 ring-primary bg-white'
                 : ' bg-offWhite2 text-grayText'
             } ${
-              active?.additionalInfoForm?.complete &&
+              active?.registerInfoForm?.complete &&
               'bg-primary text-white before:!border-primary'
             }`}
               >
@@ -156,7 +123,7 @@ const Register = () => {
                     ? 'text-primary font-semibold'
                     : ' text-grayText'
                 } ${
-                  active?.additionalInfoForm?.complete &&
+                  active?.registerInfoForm?.complete &&
                   'text-primary font-semibold'
                 }`}
               >
@@ -176,15 +143,6 @@ const Register = () => {
               className="text-secondary transition-all "
             >
               {t('Auth.Login.loginButtonText')}
-            </Link>
-          </div>
-
-          <div className="pt-5 mt-5 border-t border-solid border-borderColor text-center">
-            <Link
-              to={PUBLIC_NAVIGATION.privateMember}
-              className="text-ic_1 text-base inline-block underline underline-offset-4"
-            >
-              {t('Auth.RegisterCommon.signUpPrivateMember')}
             </Link>
           </div>
         </div>

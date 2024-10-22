@@ -13,7 +13,7 @@ import SomethingWentWrong from './pages/SomethingWentWrong';
 
 // ** Not Authenticate Pages **
 const Login = React.lazy(() => import('../../modules/Auth/pages/Login'));
-const Register = React.lazy(() => import('../../modules/Auth/pages/Register'));
+const Register = React.lazy(() => import('./pages/Register'));
 const NotAuthorized = React.lazy(
   () => import('../../modules/Auth/pages/NotAuthorized')
 );
