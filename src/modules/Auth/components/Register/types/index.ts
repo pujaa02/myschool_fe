@@ -1,7 +1,7 @@
 import {
   ActiveStateType,
   RegisterInitialValueType,
-} from 'modules/Auth/pages/Register/types';
+} from '../../../../../modules/Auth/pages/Register/types';
 
 export type RegisterComponentProps = {
   currentStep: number;

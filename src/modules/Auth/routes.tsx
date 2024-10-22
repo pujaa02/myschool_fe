@@ -2,28 +2,26 @@
 import React, { Suspense } from 'react';
 
 // ** component  **
-import PageLoader from 'components/Loaders/PageLoader';
+import PageLoader from '../../components/Loaders/PageLoader';
 
 // ** Constant **
-import { PUBLIC_NAVIGATION } from 'constants/navigation.constant';
+import { PUBLIC_NAVIGATION } from '../../constants/navigation.constant';
 
 // ** routes **
-import { RouteObjType } from 'routes';
+import { RouteObjType } from '../../routes';
 import SomethingWentWrong from './pages/SomethingWentWrong';
 
 // ** Not Authenticate Pages **
-const Login = React.lazy(() => import('modules/Auth/pages/Login'));
-const Register = React.lazy(() => import('modules/Auth/pages/Register'));
-const NotAuthorized = React.lazy(() => import('modules/Auth/pages/NotAuthorized'));
-const ForgotPassword = React.lazy(() => import('modules/Auth/pages/ForgotPassword'));
-const ResetPassword = React.lazy(
-  () => import('modules/Auth/pages/ResetPasswordPage')
+const Login = React.lazy(() => import('../../modules/Auth/pages/Login'));
+const Register = React.lazy(() => import('../../modules/Auth/pages/Register'));
+const NotAuthorized = React.lazy(
+  () => import('../../modules/Auth/pages/NotAuthorized')
 );
-const OtpPage = React.lazy(() => import('modules/Auth/pages/OtpPage'));
-const VerifyCode = React.lazy(() => import('modules/Auth/pages/VerifyCode'));
-const QrCode = React.lazy(() => import('modules/Auth/pages/QrCode'));
-const PrivateRegister = React.lazy(
-  () => import('modules/Auth/pages/PrivateRegister')
+const ForgotPassword = React.lazy(
+  () => import('../../modules/Auth/pages/ForgotPassword')
+);
+const ResetPassword = React.lazy(
+  () => import('../../modules/Auth/pages/ResetPasswordPage')
 );
 
 const applySuspense = (routes: RouteObjType[]): RouteObjType[] => {
@@ -57,24 +55,8 @@ const AuthenticationRoutes = applySuspense([
     element: <ResetPassword />,
   },
   {
-    path: PUBLIC_NAVIGATION.otp,
-    element: <OtpPage />,
-  },
-  {
     path: PUBLIC_NAVIGATION.notAuthorized,
     element: <NotAuthorized />,
-  },
-  {
-    path: PUBLIC_NAVIGATION.qr,
-    element: <QrCode />,
-  },
-  {
-    path: PUBLIC_NAVIGATION.verifyCode,
-    element: <VerifyCode />,
-  },
-  {
-    path: PUBLIC_NAVIGATION.privateMember,
-    element: <PrivateRegister />,
   },
   {
     path: PUBLIC_NAVIGATION.somethingWentWrong,

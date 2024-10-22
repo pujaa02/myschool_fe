@@ -87,17 +87,13 @@ const Routes = () => {
     }
   };
   // ** Not Logged In **
+
   if (
-    !window.location.pathname.includes('/exam/') &&
-    !window.location.pathname.includes('/survey/')
+    !isAuthenticated &&
+    token == null &&
+    ![...Object.values(PUBLIC_NAVIGATION)].includes(window.location.pathname)
   ) {
-    if (
-      !isAuthenticated &&
-      token == null &&
-      ![...Object.values(PUBLIC_NAVIGATION)].includes(window.location.pathname)
-    ) {
-      window.location.pathname = PUBLIC_NAVIGATION.login;
-    }
+    window.location.pathname = PUBLIC_NAVIGATION.login;
   }
   // ** Un-Auth
   const routesForNotAuthenticatedOnly: RouteObjType[] = applySuspense([
@@ -141,6 +137,7 @@ const Routes = () => {
     ...routesForPublic,
     ...notFound,
     ...routesForAuthenticatedOnly,
+    ...routesForNotAuthenticatedOnly,
   ];
   finalRoutes = finalRoutes.filter((route) => {
     if (route?.feature && route?.permission)

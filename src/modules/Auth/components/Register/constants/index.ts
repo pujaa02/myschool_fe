@@ -1,4 +1,4 @@
-import { RegisterInitialValueType } from 'modules/Auth/pages/Register/types';
+import { RegisterInitialValueType } from '../../../../../modules/Auth/pages/Register/types';
 
 export const registerInitialValues: RegisterInitialValueType = {
   company_name: '',

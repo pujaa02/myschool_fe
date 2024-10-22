@@ -24,7 +24,10 @@
 //   return newDate.toISOString();
 // };
 
-// export const dateToMilliseconds = (props: { startDate?: Date; endDate: Date }) => {
+// export const dateToMilliseconds = (props: {
+//   startDate?: Date;
+//   endDate: Date;
+// }) => {
 //   const { startDate = new Date(), endDate } = props;
 //   return differenceInMilliseconds(endDate, startDate);
 // };

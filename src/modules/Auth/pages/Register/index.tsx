@@ -3,11 +3,11 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 // ** components **
-import Image from 'components/Image';
+import Image from '../../../../components/Image';
 
 // ** constants **
-import { PUBLIC_NAVIGATION } from 'constants/navigation.constant';
-import { registerInitialValues } from 'modules/Auth/components/Register/constants';
+import { PUBLIC_NAVIGATION } from '../../../../constants/navigation.constant';
+import { registerInitialValues } from '../../../../modules/Auth/components/Register/constants';
 
 // ** types **
 import { ActiveStateType, RegisterInitialValueType } from './types';
@@ -16,14 +16,12 @@ import { ActiveStateType, RegisterInitialValueType } from './types';
 import './style/index.css';
 
 // ** lazy **
-const RegisterCompanyInfo = React.lazy(
-  () => import('modules/Auth/components/Register/RegisterCompanyInfo')
-);
 const RegisterManagerInfo = React.lazy(
-  () => import('modules/Auth/components/Register/RegsiterManagerInfo')
+  () =>
+    import('../../../../modules/Auth/components/Register/RegsiterManagerInfo')
 );
 const AdditionalInfo = React.lazy(
-  () => import('modules/Auth/components/Register/AdditionalInfo')
+  () => import('../../../../modules/Auth/components/Register/AdditionalInfo')
 );
 
 const Register = () => {
@@ -46,15 +44,15 @@ const Register = () => {
 
   const renderForm = () => {
     switch (active.current) {
-      case 1:
-        return (
-          <RegisterCompanyInfo
-            setRegisterInitialValue={setRegisterFormInitialValue}
-            registerInitialValue={registerFormInitialValue}
-            currentStep={active.current}
-            setActive={setActive}
-          />
-        );
+      // case 1:
+      //   return (
+      //     <RegisterCompanyInfo
+      //       setRegisterInitialValue={setRegisterFormInitialValue}
+      //       registerInitialValue={registerFormInitialValue}
+      //       currentStep={active.current}
+      //       setActive={setActive}
+      //     />
+      //   );
       case 2:
         return (
           <RegisterManagerInfo
@@ -105,7 +103,8 @@ const Register = () => {
                     ? 'text-primary font-semibold'
                     : ' text-grayText'
                 } ${
-                  active?.companyInfoForm?.complete && 'text-primary font-semibold'
+                  active?.companyInfoForm?.complete &&
+                  'text-primary font-semibold'
                 }`}
               >
                 {t('Auth.RegisterCommon.companyInfoText')}
@@ -130,7 +129,8 @@ const Register = () => {
                     ? 'text-primary font-semibold'
                     : ' text-grayText'
                 } ${
-                  active?.managerInfoForm?.complete && 'text-primary font-semibold'
+                  active?.managerInfoForm?.complete &&
+                  'text-primary font-semibold'
                 }`}
               >
                 {t('Auth.RegisterCommon.managerInfoText')}
@@ -144,9 +144,9 @@ const Register = () => {
                 ? 'text-primary ring-1 ring-primary bg-white'
                 : ' bg-offWhite2 text-grayText'
             } ${
-                  active?.additionalInfoForm?.complete &&
-                  'bg-primary text-white before:!border-primary'
-                }`}
+              active?.additionalInfoForm?.complete &&
+              'bg-primary text-white before:!border-primary'
+            }`}
               >
                 <Image iconName="infoIcon" />
               </span>

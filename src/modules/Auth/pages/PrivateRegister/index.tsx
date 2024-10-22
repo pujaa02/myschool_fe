@@ -102,7 +102,9 @@ const Register = () => {
                     type="text"
                     isCompulsory
                     value={values.codice_fiscale}
-                    label={t('PrivateMembers.clientForm.fieldInfos.codiceFiscale')}
+                    label={t(
+                      'PrivateMembers.clientForm.fieldInfos.codiceFiscale'
+                    )}
                     name="codice_fiscale"
                   />
                   <PhoneNumberInput
@@ -140,7 +142,9 @@ const Register = () => {
                       type="submit"
                       value={t('Button.saveButton')}
                       className={`w-full bg-primary font-medium p-3 text-center text-white rounded-lg hover:bg-secondary transition-all ${
-                        isLoading ? 'disabled:opacity-50 pointer-events-none' : ''
+                        isLoading
+                          ? 'disabled:opacity-50 pointer-events-none'
+                          : ''
                       }`}
                     />
                   </div>

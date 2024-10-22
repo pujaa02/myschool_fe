@@ -1,42 +1,38 @@
 import { Form, Formik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 // ** enum **
-import { EnumFileType } from 'components/FormElement/enum';
+import { EnumFileType } from '../../../../components/FormElement/enum';
 
 //  ** components **
-import Button from 'components/Button/Button';
-import DropZone from 'components/FormElement/DropZoneField';
-import TextArea from 'components/FormElement/TextArea';
+import Button from '../../../../components/Button/Button';
+import DropZone from '../../../../components/FormElement/DropZoneField';
+import TextArea from '../../../../components/FormElement/TextArea';
 
 // ** constant **
-import {
-  PRIVACY_POLICY,
-  PUBLIC_NAVIGATION,
-  TERMS_AND_CONDITION,
-} from 'constants/navigation.constant';
+import { PUBLIC_NAVIGATION } from '../../../../constants/navigation.constant';
 
 // ** types **
 import { RegisterComponentProps } from './types';
 
 // ** hooks **
-import { useAxiosPost } from 'hooks/useAxios';
+import { useAxiosPost } from '../../../../hooks/useAxios';
 
 // ** validation **
-import { RegisterAdditionalValidationSchema } from 'modules/Auth/validationSchema';
+import { RegisterAdditionalValidationSchema } from '../../../../modules/Auth/validationSchema';
 
 // ** utils **
-import { convertLocationIdToName } from 'utils';
+import { convertLocationIdToName } from '../../../../utils';
 
 // ** redux **
-import { RegisterInitialValueType } from 'modules/Auth/pages/Register/types';
+import { RegisterInitialValueType } from '../../../../modules/Auth/pages/Register/types';
 import {
   getCitiesJson,
   getCountriesJson,
   getStateJson,
-} from 'redux-toolkit/slices/countryJsonSlice';
+} from '../../../../redux-toolkit/slices/countryJsonSlice';
 
 const AdditionalInfo = ({
   setActive,
@@ -52,14 +48,14 @@ const AdditionalInfo = ({
   const [registerDetail, { isLoading }] = useAxiosPost();
 
   const OnPrevious = (data: RegisterInitialValueType) => {
-    setActive((prev) => {
+    setActive((prev: any) => {
       return {
         ...prev,
         current: currentStep - 1,
         managerInfoForm: { complete: false },
       };
     });
-    setRegisterInitialValue((prev) => {
+    setRegisterInitialValue((prev: any) => {
       return {
         ...prev,
         ...data,
@@ -103,18 +99,21 @@ const AdditionalInfo = ({
         }
       });
 
-      const { data, error } = await registerDetail('/auth/register', registerData);
+      const { data, error } = await registerDetail(
+        '/auth/register',
+        registerData
+      );
 
       if (data && !error) {
         navigate(PUBLIC_NAVIGATION.login);
-        setActive((prev) => {
+        setActive((prev: any) => {
           return {
             ...prev,
             current: currentStep + 1,
             additionalInfoForm: { complete: true },
           };
         });
-        setRegisterInitialValue((prev) => {
+        setRegisterInitialValue((prev: any) => {
           return {
             ...prev,
             ...data,
@@ -150,7 +149,7 @@ const AdditionalInfo = ({
                 name="company_description"
               />
 
-              <div>
+              {/* <div>
                 <p>
                   {t('Auth.RegisterCommon.termsAndPolicyText')} &nbsp;
                   <Link
@@ -170,7 +169,7 @@ const AdditionalInfo = ({
                     {t('Auth.RegisterCommon.privacyPolicy')}
                   </Link>
                 </p>
-              </div>
+              </div> */}
 
               <div className="flex justify-center my-4 w-full gap-2">
                 <Button

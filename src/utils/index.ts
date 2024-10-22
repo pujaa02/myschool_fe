@@ -124,44 +124,44 @@
 //   return actualDate;
 // };
 
-// export const customRandomNumberGenerator = (max?: number | null) => {
-//   if (max) {
-//     return Math.floor(Math.random() * max) + 1;
-//   }
-//   return Math.floor(Math.random() * 10000000) + 1;
-// };
+export const customRandomNumberGenerator = (max?: number | null) => {
+  if (max) {
+    return Math.floor(Math.random() * max) + 1;
+  }
+  return Math.floor(Math.random() * 10000000) + 1;
+};
 
 // export const safeHTML = (string: string, options: sanitizeHtml.IOptions = {}) => {
 //   const data = sanitizeHtml(string, options);
 //   return data;
 // };
 
-// export const dasherize = (str: string) => {
-//   return str
-//     ?.trim()
-//     .split(' ')
-//     .map((value) => value.toLowerCase())
-//     .join('-');
-// };
+export const dasherize = (str: string) => {
+  return str
+    ?.trim()
+    .split(' ')
+    .map((value) => value.toLowerCase())
+    .join('-');
+};
 
-// export const convertLocationIdToName = (
-//   type: string,
-//   value: string,
-//   countries: { countries: { id: string; name: string }[] },
-//   states: { states: { id: string; name: string; country_id: string }[] },
-//   cities: { cities: { id: string; name: string; state_id: string }[] }
-// ) => {
-//   switch (type) {
-//     case 'country':
-//       return countries.countries.find((obj) => obj.id === value)?.name ?? value;
-//     case 'state':
-//       return states.states.find((obj) => obj.id === value)?.name ?? value;
-//     case 'city':
-//       return cities.cities.find((obj) => obj.id === value)?.name ?? value;
-//     default:
-//       return '';
-//   }
-// };
+export const convertLocationIdToName = (
+  type: string,
+  value: string,
+  countries: { countries: { id: string; name: string }[] },
+  states: { states: { id: string; name: string; country_id: string }[] },
+  cities: { cities: { id: string; name: string; state_id: string }[] }
+) => {
+  switch (type) {
+    case 'country':
+      return countries.countries.find((obj) => obj.id === value)?.name ?? value;
+    case 'state':
+      return states.states.find((obj) => obj.id === value)?.name ?? value;
+    case 'city':
+      return cities.cities.find((obj) => obj.id === value)?.name ?? value;
+    default:
+      return '';
+  }
+};
 
 // export function formatCount(count: number) {
 //   if (count >= 1000000) {

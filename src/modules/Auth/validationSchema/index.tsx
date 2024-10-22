@@ -132,30 +132,30 @@ export const RegisterManagerValidationSchema = () => {
   });
 };
 
-// export const RegisterAdditionalValidationSchema = () => {
-//   const { t } = useTranslation();
-//   return Yup.object().shape({
-//     company_logo: Yup.lazy((value) => {
-//       return typeof value === 'string'
-//         ? Yup.string()
-//         : Yup.mixed()
-//             .nullable()
-//             .test(
-//               'size',
-//               t('RegAdditionSchema.imageSize'),
-//               () => !value || (value && value.size <= 1024 * 1024 * 5)
-//             )
-//             .test(
-//               'format',
-//               t('RegAdditionSchema.imageFormat'),
-//               () =>
-//                 !value ||
-//                 (value && IMAGE_SUPPORTED_FORMATS.includes(value.type))
-//             );
-//     }),
-//     company_description: Yup.string(),
-//   });
-// };
+export const RegisterAdditionalValidationSchema = () => {
+  const { t } = useTranslation();
+  return Yup.object().shape({
+    company_logo: Yup.lazy((value) => {
+      return typeof value === 'string'
+        ? Yup.string()
+        : Yup.mixed()
+            .nullable()
+            .test(
+              'size',
+              t('RegAdditionSchema.imageSize'),
+              () => !value || (value && value.size <= 1024 * 1024 * 5)
+            );
+      // .test(
+      //   'format',
+      //   t('RegAdditionSchema.imageFormat'),
+      //   () =>
+      //     !value ||
+      //     (value && IMAGE_SUPPORTED_FORMATS.includes(value.type))
+      // );
+    }),
+    company_description: Yup.string(),
+  });
+};
 
 export const ForgotPasswordValidationSchema = () => {
   const { t } = useTranslation();
