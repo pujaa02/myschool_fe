@@ -1,24 +1,11 @@
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-
-// ** components **
-import Button from 'components/Button/Button';
-import Image from 'components/Image';
-import NotificationList from 'modules/Notifications/components/NotificationList';
-
-// ** style **
 import 'components/Layout/components/style/topHeader.css';
-
-// ** constant **
-import { PRIVATE_NAVIGATION } from 'constants/navigation.constant';
-
-// ** hooks **
-import { useToggleDropdown } from 'hooks/useToggleDropdown';
-
-// ** redux **
-import { useGetNotifications } from 'modules/Notifications/hooks';
-import { useIsRead } from 'redux-toolkit/slices/notificationReadSlice';
+import { PRIVATE_NAVIGATION } from '../../../../../constants/navigation.constant';
+import { useToggleDropdown } from '../../../../../hooks/useToggleDropdown';
+import { useIsRead } from '../../../../../redux-toolkit/slices/notificationReadSlice';
+import Button from '../../../../Button/Button';
 
 export const NotificationDropdown = () => {
   const { t } = useTranslation();

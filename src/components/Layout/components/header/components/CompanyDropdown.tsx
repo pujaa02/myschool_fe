@@ -1,15 +1,9 @@
-import Button from 'components/Button/Button';
 import 'components/Layout/components/style/topHeader.css';
 import _ from 'lodash';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCurrentUser } from 'redux-toolkit/slices/authSlice';
-import {
-  CompanyType,
-  setCompany,
-  useCompany,
-} from 'redux-toolkit/slices/companySlice';
-import { customRandomNumberGenerator } from 'utils';
+import { getCurrentUser } from '../../../../../redux-toolkit/slices/authSlice';
+import Button from '../../../../Button/Button';
 
 export interface CompanyDropdownProps {
   id: string | undefined;
@@ -63,7 +57,9 @@ export const CompanyDropdown = () => {
   return (
     <div className="relative group">
       <div className="company-dropdown-title !w-auto px-3 z-10 relative">
-        {allCompanies.length > 0 ? activeCompany?.company?.name : 'No Company Found'}
+        {allCompanies.length > 0
+          ? activeCompany?.company?.name
+          : 'No Company Found'}
       </div>
       {allCompanies.length > 0 && (
         <div

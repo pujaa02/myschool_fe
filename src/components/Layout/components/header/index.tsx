@@ -1,21 +1,20 @@
 import 'components/Layout/components/style/topHeader.css';
-
-import Button from 'components/Button/Button';
-import Image from 'components/Image';
-import { LanguagesDropdown } from 'components/Layout/components/header/components/LanguagesDropdown';
-import { NotificationDropdown } from 'components/Layout/components/header/components/NotificationDropdown';
-import { ProfileDropdown } from 'components/Layout/components/header/components/ProfileDropdown';
-import { ROLES } from 'constants/roleAndPermission.constant';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCurrentUser } from 'redux-toolkit/slices/authSlice';
+
+import { CompanyDropdown } from './components/CompanyDropdown';
+import { useNavigate } from 'react-router-dom';
+import { ROLES } from '../../../../constants/roleAndPermission.constant';
+import { getCurrentUser } from '../../../../redux-toolkit/slices/authSlice';
 import {
   SidebarSelector,
   hideSidebar,
   showSidebar,
-} from 'redux-toolkit/slices/sidebarSlice';
-import { CompanyDropdown } from './components/CompanyDropdown';
-import { useNavigate } from 'react-router-dom';
+} from '../../../../redux-toolkit/slices/sidebarSlice';
+import Button from '../../../Button/Button';
+import { LanguagesDropdown } from './components/LanguagesDropdown';
+import { NotificationDropdown } from './components/NotificationDropdown';
+import { ProfileDropdown } from './components/ProfileDropdown';
 
 export const CommonHeader = () => {
   const { t } = useTranslation();

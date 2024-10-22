@@ -1,14 +1,13 @@
-import Button from 'components/Button/Button';
 import 'components/Layout/components/style/topHeader.css';
-import { languageConstant } from 'constants/common.constant';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { languageConstant } from '../../../../../constants/common.constant';
 import {
   LanguageType,
-  setLanguage,
   useLanguage,
-} from 'redux-toolkit/slices/languageSlice';
-import { customRandomNumberGenerator } from 'utils';
+  setLanguage,
+} from '../../../../../redux-toolkit/slices/languageSlice';
+import Button from '../../../../Button/Button';
 
 type langProps = {
   isCommon?: boolean;
@@ -16,7 +15,9 @@ type langProps = {
 export const LanguagesDropdown = ({ isCommon = false }: langProps) => {
   const dispatch = useDispatch();
   const activeLanguage: LanguageType = useSelector(useLanguage);
-  const [allLanguages, setAllLanguages] = useState<{ [key: string]: string }>({});
+  const [allLanguages, setAllLanguages] = useState<{ [key: string]: string }>(
+    {}
+  );
 
   useEffect(() => {
     if (activeLanguage?.allLanguages) {
