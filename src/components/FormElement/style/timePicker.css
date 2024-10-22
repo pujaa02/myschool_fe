@@ -1,0 +1,24 @@
+.rmdp-header {
+  @apply py-0;
+}
+.rmdp-container .rmdp-wrapper .rmdp-arrow-container {
+  @apply bg-primary/20;
+}
+.rmdp-header-values {
+  @apply text-dark font-semibold;
+}
+
+.rmdp-week-day {
+  @apply text-primary;
+}
+
+.rmdp-day.rmdp-today span {
+  @apply bg-primary/20 text-primary;
+}
+
+.rmdp-selected span:not(.highlight) {
+  @apply !bg-primary;
+}
+.rmdp-day:not(.rmdp-disabled, .rmdp-day-hidden) span {
+  @apply hover:bg-gray-300 hover:text-dark;
+}

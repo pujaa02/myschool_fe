@@ -3,7 +3,7 @@ import { isValidPhoneNumber } from 'react-phone-number-input';
 import * as Yup from 'yup';
 
 // ** constants **
-import { IMAGE_SUPPORTED_FORMATS } from 'constants/filesupport.constant';
+// import { IMAGE_SUPPORTED_FORMATS } from '../../../constants/filesupport.constant';
 
 export const LoginValidationSchema = () => {
   const { t } = useTranslation();
@@ -88,7 +88,10 @@ export const RegisterCompanyValidationSchema = () => {
     ),
     company_sdi_code: Yup.string()
       .required(t('RegisterCompanyValidationSchema.sdiValidation'))
-      .matches(SDI_REGEX, t('RegisterCompanyValidationSchema.sdi_format_validation'))
+      .matches(
+        SDI_REGEX,
+        t('RegisterCompanyValidationSchema.sdi_format_validation')
+      )
       .length(7, t('RegisterCompanyValidationSchema.sdi_length_validation')),
     vat_type: Yup.string().required(
       t('ClientManagement.clientForm.validation.vat_type_validation')
@@ -129,28 +132,30 @@ export const RegisterManagerValidationSchema = () => {
   });
 };
 
-export const RegisterAdditionalValidationSchema = () => {
-  const { t } = useTranslation();
-  return Yup.object().shape({
-    company_logo: Yup.lazy((value) => {
-      return typeof value === 'string'
-        ? Yup.string()
-        : Yup.mixed()
-            .nullable()
-            .test(
-              'size',
-              t('RegAdditionSchema.imageSize'),
-              () => !value || (value && value.size <= 1024 * 1024 * 5)
-            )
-            .test(
-              'format',
-              t('RegAdditionSchema.imageFormat'),
-              () => !value || (value && IMAGE_SUPPORTED_FORMATS.includes(value.type))
-            );
-    }),
-    company_description: Yup.string(),
-  });
-};
+// export const RegisterAdditionalValidationSchema = () => {
+//   const { t } = useTranslation();
+//   return Yup.object().shape({
+//     company_logo: Yup.lazy((value) => {
+//       return typeof value === 'string'
+//         ? Yup.string()
+//         : Yup.mixed()
+//             .nullable()
+//             .test(
+//               'size',
+//               t('RegAdditionSchema.imageSize'),
+//               () => !value || (value && value.size <= 1024 * 1024 * 5)
+//             )
+//             .test(
+//               'format',
+//               t('RegAdditionSchema.imageFormat'),
+//               () =>
+//                 !value ||
+//                 (value && IMAGE_SUPPORTED_FORMATS.includes(value.type))
+//             );
+//     }),
+//     company_description: Yup.string(),
+//   });
+// };
 
 export const ForgotPasswordValidationSchema = () => {
   const { t } = useTranslation();
@@ -195,7 +200,9 @@ export const RegisterTrainerValidationSchema = () => {
     last_name: Yup.string().required(
       t('UserManagement.validation.lastNameRequired')
     ),
-    location: Yup.string().required(t('Auth.RegisterTrainer.LocationValidation')),
+    location: Yup.string().required(
+      t('Auth.RegisterTrainer.LocationValidation')
+    ),
     sub_categories: Yup.array()
       .required(t('Auth.RegisterTrainer.CourseValidation'))
       .min(1, t('Auth.RegisterTrainer.CourseValidation')),

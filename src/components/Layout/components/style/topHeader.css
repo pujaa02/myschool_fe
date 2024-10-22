@@ -1,0 +1,77 @@
+.header-container {
+  @apply sticky top-0 inset-x-0 flex flex-wrap sm:justify-start sm:flex-nowrap z-[123] w-full bg-siteBG2 text-sm transition-all duration-300;
+}
+.header-search {
+  @apply w-[2.375rem] h-[2.375rem] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none me-3;
+}
+
+.language-dropdown-container {
+  @apply w-12 h-12 cursor-pointer bg-secondary/10 text-primary rounded-lg flex items-center justify-center font-semibold;
+}
+
+.language-list {
+  @apply absolute top-full flex flex-col gap-y-1 bg-white min-w-[150px] right-0 p-2 rounded-lg shadow-xl border border-solid border-gray-200 transition-all duration-500 after:absolute after:w-full after:h-4 after:bottom-full after:right-0;
+}
+
+.language-list-options {
+  @apply flex hover:bg-primary hover:text-white py-2 px-2 rounded-md text-sm font-semibold cursor-pointer transition-all duration-300 w-full;
+}
+
+.notification-dropdown-container {
+  @apply w-12 h-12 p-2.5 cursor-pointer bg-black/5 text-primary rounded-lg flex items-center justify-center font-semibold;
+}
+
+.notification-badge {
+  @apply inline-block w-1.5 h-1.5 border border-solid rounded-full absolute top-3 right-4 z-1 border-primary bg-secondary;
+}
+
+.notification-card {
+  @apply translate-y-4 opacity-0 pointer-events-none group-hover:-translate-y-px group-hover:opacity-100 group-hover:pointer-events-auto absolute top-full flex flex-col gap-y-1 bg-white max-w-[415px]  min-w-[415px] right-0 rounded-lg shadow-xl border border-solid border-gray-200 transition-all duration-500 after:absolute after:w-full after:h-4 after:bottom-full after:right-0;
+}
+
+.notification-mark-tab {
+  @apply flex items-center text-base font-normal text-grayText  select-none cursor-pointer;
+}
+
+.notification-count {
+  @apply ms-1.5 w-fit text-xs font-normal min-w-[20px] h-5 flex items-center justify-center bg-red-500 text-white rounded-full;
+}
+.notification-tab-content-item {
+  @apply p-5 cursor-pointer border-b border-solid border-gray-200 last:border-b-0 hover:opacity-70;
+}
+.notification-view-more {
+  @apply px-5 py-3.5 border-t border-solid border-gray-200 cursor-pointer flex items-center justify-center;
+}
+
+.profile-dropdown-container {
+  @apply max-w-[155px] h-12 px-3 border border-solid border-dark bg-dark text-white cursor-pointer rounded-lg flex items-center justify-center font-semibold;
+}
+.profile-card {
+  @apply absolute top-full flex flex-col gap-y-1 bg-white min-w-[250px] right-0 rounded-lg shadow-xl border border-solid border-gray-200 transition-all duration-500 after:absolute after:w-full after:h-4 after:bottom-full after:right-0;
+}
+.profile-wrapper {
+  @apply max-w-[250px] border-b border-solid border-gray-200 select-none py-3.5 ps-5 pe-2 rounded-t-md text-sm font-semibold transition-all duration-300 flex items-center;
+}
+.profile-item {
+  @apply active:scale-95 select-none hover:bg-primary hover:text-white py-2 px-2 rounded-md text-sm font-semibold cursor-pointer transition-all duration-300 flex items-center text-navText;
+}
+.profile-logout {
+  @apply active:scale-95 select-none hover:bg-red-500 text-red-500 hover:text-white py-2 px-2 rounded-md text-sm font-semibold cursor-pointer transition-all duration-300 flex items-center;
+}
+.prolevenWhiz-text {
+  @apply bg-prolevenWhiz bg-contain bg-no-repeat bg-center leading-5 inline-flex items-center text-xl font-medium px-18px py-2;
+}
+
+.company-dropdown-title {
+  @apply w-20 h-12 cursor-pointer bg-black/5 text-primary rounded-lg flex items-center justify-center font-semibold;
+}
+.company-dropdown-card.has-values {
+  @apply block translate-y-4 opacity-0 pointer-events-none group-hover:-translate-y-px group-hover:opacity-100 group-hover:pointer-events-auto;
+}
+.company-dropdown-card {
+  @apply hidden absolute top-full flex flex-col gap-y-1 bg-white min-w-[150px] right-0 p-2 rounded-lg shadow-xl border border-solid border-gray-200 transition-all duration-500 after:absolute after:w-full after:h-4 after:bottom-full after:right-0;
+}
+
+.company-card-button {
+  @apply flex hover:bg-primary hover:text-white py-2 px-2 rounded-md text-sm font-semibold cursor-pointer transition-all duration-300 w-full;
+}

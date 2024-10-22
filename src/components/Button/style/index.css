@@ -1,0 +1,63 @@
+.button {
+  @apply cursor-pointer flex items-center justify-center gap-y-2.5 text-sm tracking-wide font-medium text-dark/80 leading-[1.5] py-2.5 px-3.5 bg-white hover:bg-gray-200 border border-solid border-gray-200 rounded-lg transition-all duration-500 active:scale-[0.97] focus:ring-2 focus:ring-offset-2 focus:ring-gray-300/50 select-none;
+}
+
+.primary {
+  @apply !border-primary !bg-primary !text-white hover:!border-primary/20 hover:!bg-primary/80 focus:!ring-primary/50;
+}
+.primary2 {
+  @apply !border-primary2 !bg-primary2 !text-primary hover:!border-primary hover:!bg-primary hover:!text-white focus:!ring-primary/50;
+}
+.primary2Border {
+  @apply !border-primary2/80 hover:!bg-primary2 !text-dark focus:!ring-primary2/50;
+}
+
+.danger {
+  @apply !border-red-600 !bg-red-600 !text-white hover:!border-red-700/20 hover:!bg-red-700/80 focus:!ring-red-600/50;
+}
+.dangerBorder {
+  @apply !border-red-600 !bg-transparent !text-red-600 hover:!border-red-700/20 hover:!bg-red-600 hover:!text-white focus:!ring-red-600/50;
+}
+
+.red {
+  @apply !border-danger !bg-danger !text-white hover:!border-danger/20 hover:!bg-danger/80 focus:!ring-danger/50;
+}
+
+.orange {
+  @apply !border-orange2 !bg-orange2 !text-white hover:!border-orange2/20 hover:!bg-orange2/80 focus:!ring-orange2/50;
+}
+
+.gray {
+  @apply !border-grayText !bg-grayText !text-white hover:!border-grayText/20 hover:!bg-grayText/80 focus:!ring-grayText/50;
+}
+.grayLight {
+  @apply !border-borderColor !bg-offWhite2 !text-grayText hover:!border-borderColor/80 hover:!bg-offWhite focus:!ring-borderColor/80;
+}
+
+.secondary {
+  @apply !border-secondary !bg-secondary !text-white hover:!border-secondary/20 hover:!bg-secondary/80 focus:!ring-secondary/50;
+}
+
+.primaryBordered {
+  @apply !border-primary/80 hover:!bg-primary !text-primary hover:!text-white focus:!ring-primary/50;
+}
+
+.secondaryBordered {
+  @apply !border-secondary/80 hover:!bg-secondary !text-secondary hover:!text-white focus:!ring-secondary/50;
+}
+
+.purple {
+  @apply !border-lightPurple !bg-lightPurple !text-white hover:!border-lightPurple/20 hover:!bg-lightPurple/80 focus:!ring-lightPurple/50;
+}
+.green {
+  @apply !border-green2 !bg-green2 !text-white hover:!border-green2/20 hover:!bg-green2/80 focus:!ring-green2/50;
+}
+.selectedGreen {
+  @apply !border-selectedGreen !bg-selectedGreen !text-white hover:!border-selectedGreen hover:!bg-selectedGreen focus:!ring-green2/50;
+}
+.grayOutline {
+  @apply !border-grayOutline !bg-transparent !text-primary hover:!border-grayOutline hover:!bg-gray-100 focus:!ring-gray-200;
+}
+.greenLowOpacity {
+  @apply !border-[#00BD9D] !bg-[#00BD9D] !text-white hover:!border-[#00BD9D]/20 hover:!bg-[#00BD9D]/80 focus:!ring-[#00BD9D]/50;
+}

@@ -1,27 +1,104 @@
 import { AxiosRequestConfig } from 'axios';
-import { REACT_APP_API_URL } from 'config';
+// export interface AxiosRequestConfig<D = any> {
+//   url?: string;
+//   method?: Method | string;
+//   baseURL?: string;
+//   transformRequest?: AxiosRequestTransformer | AxiosRequestTransformer[];
+//   transformResponse?: AxiosResponseTransformer | AxiosResponseTransformer[];
+//   headers?: (RawAxiosRequestHeaders & MethodsHeaders) | AxiosHeaders;
+//   params?: any;
+//   paramsSerializer?: ParamsSerializerOptions | CustomParamsSerializer;
+//   data?: D;
+//   timeout?: Milliseconds;
+//   timeoutErrorMessage?: string;
+//   withCredentials?: boolean;
+//   adapter?: AxiosAdapterConfig | AxiosAdapterConfig[];
+//   auth?: AxiosBasicCredentials;
+//   responseType?: ResponseType;
+//   responseEncoding?: responseEncoding | string;
+//   xsrfCookieName?: string;
+//   xsrfHeaderName?: string;
+//   onUploadProgress?: (progressEvent: AxiosProgressEvent) => void;
+//   onDownloadProgress?: (progressEvent: AxiosProgressEvent) => void;
+//   maxContentLength?: number;
+//   validateStatus?: ((status: number) => boolean) | null;
+//   maxBodyLength?: number;
+//   maxRedirects?: number;
+//   maxRate?: number | [MaxUploadRate, MaxDownloadRate];
+//   beforeRedirect?: (
+//     options: Record<string, any>,
+//     responseDetails: {
+//       headers: Record<string, string>;
+//       statusCode: HttpStatusCode;
+//     }
+//   ) => void;
+//   socketPath?: string | null;
+//   transport?: any;
+//   httpAgent?: any;
+//   httpsAgent?: any;
+//   proxy?: AxiosProxyConfig | false;
+//   cancelToken?: CancelToken;
+//   decompress?: boolean;
+//   transitional?: TransitionalOptions;
+//   signal?: GenericAbortSignal;
+//   insecureHTTPParser?: boolean;
+//   env?: {
+//     FormData?: new (...args: any[]) => object;
+//   };
+//   formSerializer?: FormSerializerOptions;
+//   family?: AddressFamily;
+//   lookup?:
+//     | ((
+//         hostname: string,
+//         options: object,
+//         cb: (
+//           err: Error | null,
+//           address: LookupAddress | LookupAddress[],
+//           family?: AddressFamily
+//         ) => void
+//       ) => void)
+//     | ((
+//         hostname: string,
+//         options: object
+//       ) => Promise<
+//         | [
+//             address: LookupAddressEntry | LookupAddressEntry[],
+//             family?: AddressFamily,
+//           ]
+//         | LookupAddress
+//       >);
+//   withXSRFToken?:
+//     | boolean
+//     | ((config: InternalAxiosRequestConfig) => boolean | undefined);
+//   fetchOptions?: Record<string, any>;
+// }
+import { REACT_APP_API_URL } from '../../../config';
 import { useDispatch } from 'react-redux';
 
 // ** constants **
-import { FeaturesEnum } from 'constants/common.constant';
-import { PUBLIC_NAVIGATION } from 'constants/navigation.constant';
+import { FeaturesEnum } from '../../../constants/common.constant';
+import { PUBLIC_NAVIGATION } from '../../../constants/navigation.constant';
 
 // ** hooks **
-import { useAxiosGet, useAxiosPatch, useAxiosPost } from 'hooks/useAxios';
+import {
+  useAxiosGet,
+  useAxiosPatch,
+  useAxiosPost,
+} from '../../../hooks/useAxios';
 
 // ** redux **
 import {
   setActiveRole,
   setAuthenticated,
   setCredentials,
-} from 'redux-toolkit/slices/authSlice';
+} from '../../../redux-toolkit/slices/authSlice';
 import {
   setAccess,
   setPermission,
   setRolePermission,
   setRoles,
-} from 'redux-toolkit/slices/rolePermissionSlice';
-import { clearToken } from 'redux-toolkit/slices/tokenSlice';
+} from '../../../redux-toolkit/slices/rolePermissionSlice';
+import { clearToken } from '../../../redux-toolkit/slices/tokenSlice';
 
 /*
  User Login Api
@@ -226,7 +303,9 @@ export const useFuttureInCloudVerifyToken = () => {
 export const getAllRolePermissionApi = () => {
   const [callApi, { isSuccess, isError, isLoading }] = useAxiosGet();
 
-  const getAllRolePermission = async (config: AxiosRequestConfig<object> = {}) => {
+  const getAllRolePermission = async (
+    config: AxiosRequestConfig<object> = {}
+  ) => {
     const response = await callApi(
       `${REACT_APP_API_URL}/role-permission/get-all`,
       config

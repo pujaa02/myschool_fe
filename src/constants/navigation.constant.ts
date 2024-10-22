@@ -7,11 +7,7 @@ export const PUBLIC_NAVIGATION: { [key: string]: string } = Object.freeze({
   verifyAccount: '/auth/verify-account',
   resetPassword: '/auth/reset-password',
   notFoundPage: '/404',
-  otp: '/auth/otp',
-  qr: '/auth/qr',
   notAuthorized: '/auth/not-authorized',
-  verifyCode: '/auth/verify-code',
-  privateMember: '/auth/private-member-register',
   futtureInCloud: '/auth',
   somethingWentWrong: '/something-went-wrong',
 });

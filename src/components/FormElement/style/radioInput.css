@@ -1,0 +1,3 @@
+.radioButton {
+  @apply translate-y-0.5 appearance-none w-4 h-4 bg-white checked:bg-white rounded-full cursor-pointer transition-all duration-300 active:scale-90 checked:border-primary checked:border-[5px] checked:border-solid ring-1 ring-borderColor;
+}

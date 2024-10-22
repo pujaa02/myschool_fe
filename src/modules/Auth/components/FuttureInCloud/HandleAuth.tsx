@@ -1,9 +1,9 @@
 // ** constants **
-import { PUBLIC_NAVIGATION } from 'constants/navigation.constant';
+import { PUBLIC_NAVIGATION } from '../../../../constants/navigation.constant';
 
 // ** hooks **
-import { useAxiosPost } from 'hooks/useAxios';
-import { useQueryGetFunction } from 'hooks/useQuery';
+import { useAxiosPost } from '../../../../hooks/useAxios';
+import { useQueryGetFunction } from '../../../../hooks/useQuery';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 

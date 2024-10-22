@@ -1,0 +1,15 @@
+.filter-category-selector .flex.flex-wrap.gap-4.pt-5 {
+  @apply gap-2;
+}
+
+.filter-category-selector .flex.flex-wrap.gap-4.pt-5 .flex {
+  @apply p-[4px_8px] rounded-[4px] gap-[4px];
+}
+
+.filter-category-selector .flex.flex-wrap.gap-4.pt-5 .flex span {
+  @apply text-[12px];
+}
+
+.filter-category-selector .flex.flex-wrap.gap-4.pt-5 .flex button {
+  @apply h-[12px] w-[12px] p-[2px];
+}

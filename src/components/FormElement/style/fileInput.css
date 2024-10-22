@@ -1,0 +1,12 @@
+.file-input-label-style {
+  @apply h-32 w-full bg-offWhite3 hover:bg-white transition-all duration-300 rounded-xl block border border-dashed border-primary/40 cursor-pointer;
+}
+.file-input-button-style {
+  @apply w-6 h-6 cursor-pointer active:scale-90 select-none rounded-full block bg-gray-100 p-1.5 border absolute -top-2 -right-2 z-1;
+}
+.file-input-xls-label-style {
+  @apply h-[266px] text-center w-full bg-offWhite3 hover:bg-white transition-all duration-300 rounded-xl block border border-dashed border-primary/40 cursor-pointer;
+}
+.file-input-link-label-style {
+  @apply h-[50px] w-full bg-offWhite3 hover:bg-white transition-all duration-300 rounded-xl block border border-dashed border-primary/40 cursor-pointer;
+}

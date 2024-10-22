@@ -1,6 +1,6 @@
 // ** Component **
-import Footer from 'components/Layout/components/Footer';
-import Header from 'components/Layout/components/Header';
+import Footer from '../../../components/Layout/components/Footer';
+import Header from '../../../components/Layout/components/Header';
 
 export type Props = {
   children: React.ReactNode;

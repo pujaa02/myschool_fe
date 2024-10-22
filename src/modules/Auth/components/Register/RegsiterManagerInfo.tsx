@@ -2,16 +2,16 @@ import { Form, Formik } from 'formik';
 import { useTranslation } from 'react-i18next';
 
 // ** components **
-import Button from 'components/Button/Button';
-import InputField from 'components/FormElement/InputField';
-import PhoneNumberInput from 'components/FormElement/PhoneNumberInput';
+import Button from '../../../../components/Button/Button';
+import InputField from '../../../../components/FormElement/InputField';
+import PhoneNumberInput from '../../../../components/FormElement/PhoneNumberInput';
 
 // ** types **
-import { RegisterInitialValueType } from 'modules/Auth/pages/Register/types';
+import { RegisterInitialValueType } from '../../../../modules/Auth/pages/Register/types';
 import { RegisterComponentProps } from './types';
 
 // ** validation **
-import { RegisterManagerValidationSchema } from 'modules/Auth/validationSchema';
+import { RegisterManagerValidationSchema } from '../../../../modules/Auth/validationSchema';
 
 const RegisterManagerInfo = ({
   setActive,
@@ -22,7 +22,7 @@ const RegisterManagerInfo = ({
   const { t } = useTranslation();
 
   const OnPrevious = () => {
-    setActive((prev) => {
+    setActive((prev: any) => {
       return {
         ...prev,
         current: currentStep - 1,
@@ -34,14 +34,14 @@ const RegisterManagerInfo = ({
 
   const OnSubmit = (data: RegisterInitialValueType) => {
     if (data) {
-      setActive((prev) => {
+      setActive((prev: any) => {
         return {
           ...prev,
           current: currentStep + 1,
           managerInfoForm: { complete: true },
         };
       });
-      setRegisterInitialValue((prev) => {
+      setRegisterInitialValue((prev: any) => {
         return {
           ...prev,
           ...data,
@@ -62,7 +62,9 @@ const RegisterManagerInfo = ({
           <Form>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <InputField
-                placeholder={t('Auth.RegisterManager.managerFirstNamePlaceHolder')}
+                placeholder={t(
+                  'Auth.RegisterManager.managerFirstNamePlaceHolder'
+                )}
                 type="text"
                 isCompulsory
                 value={values.manager_first_name}
@@ -70,7 +72,9 @@ const RegisterManagerInfo = ({
                 name="manager_first_name"
               />
               <InputField
-                placeholder={t('Auth.RegisterManager.managerLastNamePlaceHolder')}
+                placeholder={t(
+                  'Auth.RegisterManager.managerLastNamePlaceHolder'
+                )}
                 type="text"
                 isCompulsory
                 value={values.manager_last_name}
@@ -78,7 +82,9 @@ const RegisterManagerInfo = ({
                 name="manager_last_name"
               />
               <InputField
-                placeholder={t('Auth.RegisterManager.managerJobTitlePlaceHolder')}
+                placeholder={t(
+                  'Auth.RegisterManager.managerJobTitlePlaceHolder'
+                )}
                 type="text"
                 isCompulsory
                 value={values.manager_job_title}
@@ -104,7 +110,9 @@ const RegisterManagerInfo = ({
               />
 
               <div className=" col-span-2">
-                <p className="text-orange-500 text-m">{t('registerEmail.note')}</p>
+                <p className="text-orange-500 text-m">
+                  {t('registerEmail.note')}
+                </p>
               </div>
               <div className="flex my-4 w-full gap-2 justify-center col-span-2">
                 <Button
