@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Suspense, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useSelector, useDispatch } from 'react-redux';
+// import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 import { getLanguagesHook, getCountriesJsonAPI } from './hooks/useCommonData';
 import { getActiveUserDataApi } from './modules/Auth/services';
-import { useLanguage } from './redux-toolkit/slices/languageSlice';
-import { currentPageCount } from './redux-toolkit/slices/paginationSlice';
-import { ActiveSelector } from './redux-toolkit/slices/sidebarSlice';
+// import { useLanguage } from './redux-toolkit/slices/languageSlice';
+// import { currentPageCount } from './redux-toolkit/slices/paginationSlice';
+// import { ActiveSelector } from './redux-toolkit/slices/sidebarSlice';
 import { getAuthToken } from './redux-toolkit/slices/tokenSlice';
 import { RootStateType } from './redux-toolkit/store';
 import {
@@ -63,17 +63,17 @@ export const applyRequiresAuth = (routes: RouteObjType[]): RouteObjType[] => {
 
 const Routes = () => {
   const authData = useSelector((state: RootStateType) => state.auth);
-  const { i18n } = useTranslation();
+  // const { i18n } = useTranslation();
   const { getLanguages, isLoading: isLanguageLoading } = getLanguagesHook();
   const { getCountriesJson, isLoading: isCountryLoading } =
     getCountriesJsonAPI();
   const { getActiveUser, isLoading: isAcitveUserLoading } =
     getActiveUserDataApi();
-  const storeLang = useSelector(useLanguage);
+  // const storeLang = useSelector(useLanguage);
   const { token } = useSelector(getAuthToken);
-  const activeSideBar = useSelector(ActiveSelector);
+  // const activeSideBar = useSelector(ActiveSelector);
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const { isAuthenticated } = authData;
 
@@ -86,6 +86,11 @@ const Routes = () => {
       await getActiveUser();
     }
   };
+  useEffect(() => {
+    getUserData();
+    getCountriesJson();
+    getLanguages();
+  });
   // ** Not Logged In **
 
   if (

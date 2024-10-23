@@ -1,5 +1,8 @@
 // import type { CountryCode } from 'libphonenumber-js/types';
-import { UserSchemaErrorMessage } from 'constants/formErrorMessage.constant';
+import {
+  LoginSchemaError,
+  UserSchemaErrorMessage,
+} from 'constants/formErrorMessage.constant';
 import * as yup from 'yup';
 import { TLDs } from 'global-tld-list';
 // import { phoneCountryJson } from 'constants/regex.constant';
@@ -119,7 +122,7 @@ export const basicInfoSchema = {
   }),
 };
 
-export const userSchema = yup
+export const registerSchema = yup
   .object({
     first_name: basicInfoSchema.first_name,
     last_name: basicInfoSchema.last_name,
@@ -134,5 +137,33 @@ export const userSchema = yup
     // zip: basicInfoSchema.zip,
     // city: basicInfoSchema.city,
     birth_date: basicInfoSchema.birth_date,
+  })
+  .required();
+
+export const loginSchema = yup
+  .object({
+    email: yup
+      .string()
+      .required(LoginSchemaError.email.required)
+      .email(LoginSchemaError.email.valid)
+      .lowercase(),
+    password: yup.string().required(LoginSchemaError.password),
+  })
+  .required();
+
+export const forgotPasswordSchema = yup
+  .object({
+    email: yup
+      .string()
+      .required(LoginSchemaError.email.required)
+      .email(LoginSchemaError.email.valid)
+      .lowercase(),
+  })
+  .required();
+
+export const resetPasswordSchema = yup
+  .object({
+    password: basicInfoSchema.password,
+    confirmPassword: basicInfoSchema.confirmPassword,
   })
   .required();

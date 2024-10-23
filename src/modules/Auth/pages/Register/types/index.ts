@@ -7,7 +7,7 @@ export type ActiveStateType = {
   registerInfoForm?: FormCompleteType;
 };
 
-export type RegisterInitialValueType = {
+export type RegistervalueType = {
   first_name: string;
   last_name: string;
   // phone?: string;

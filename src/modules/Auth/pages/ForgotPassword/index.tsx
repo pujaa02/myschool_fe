@@ -1,10 +1,7 @@
-import { Form, Formik, FormikValues } from 'formik';
-import { useTranslation } from 'react-i18next';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 // ** components **
 import Button from 'components/Button/Button';
-import InputField from 'components/FormElement/InputField';
 
 // ** constants **
 import { PUBLIC_NAVIGATION } from 'constants/navigation.constant';
@@ -13,14 +10,27 @@ import { PUBLIC_NAVIGATION } from 'constants/navigation.constant';
 import { useAxiosPost } from 'hooks/useAxios';
 
 // ** validation **
-import { ForgotPasswordValidationSchema } from 'modules/Auth/validationSchema';
+import { forgotPasswordSchema } from 'modules/Auth/validationSchema';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { FormProvider, useForm } from 'react-hook-form';
+import { ForgotPasswordFormFields } from './types';
+import FormField from 'components/FormField';
 
 const ForgotPasswordPage = () => {
-  const { t } = useTranslation();
   const navigate = useNavigate();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [forgotPasswordApi, { isLoading }] = useAxiosPost();
 
-  const OnSubmit = async (userData: FormikValues) => {
+  const formMethods = useForm<ForgotPasswordFormFields>({
+    resolver: yupResolver(forgotPasswordSchema),
+  });
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = formMethods;
+
+  const OnSubmit = handleSubmit(async (userData: ForgotPasswordFormFields) => {
     if (userData) {
       const forgotPasswordObject = {
         email: userData.email,
@@ -34,59 +44,32 @@ const ForgotPasswordPage = () => {
         navigate(PUBLIC_NAVIGATION.otp, { state: { email: userData.email } });
       }
     }
-  };
+  });
 
   return (
     <section className="forgot-password-section bg-primary2Light bg-[center_bottom] min-h-[calc(100dvh_-_90px)] bg-authbg bg-no-repeat flex justify-center items-center">
       <div className="bg-white max-w-[85%] sm:max-w-[510px] max-h-[calc(100dvh-180px)] p-10 rounded-3xl overflow-y-auto my-4 ">
         <h1 className="text-blacktheme text-3xl font-semibold mb-2">
-          {t('Auth.ForgotPassword.forgotPasswordTitle')}
+          ForgotPassword
         </h1>
-        <p className="text-base text-grayText mb-10 mt-4">
-          {t('Auth.ForgotPassword.description')}
-        </p>
-        <Formik
-          initialValues={{ email: '' }}
-          validationSchema={ForgotPasswordValidationSchema()}
-          onSubmit={(values) => OnSubmit(values)}
-        >
-          {({ values }) => (
-            <Form>
-              <div className="form-group2 mb-6">
-                <InputField
-                  value={values.email}
-                  label={t('Auth.Login.email')}
-                  placeholder={t('Auth.ForgotPassword.emailPlaceholder')}
-                  type="text"
-                  isCompulsory
-                  name="email"
-                />
-              </div>
-
-              <div className="mb-[72px]">
-                <Button
-                  isLoading={isLoading}
-                  disabled={isLoading}
-                  type="submit"
-                  className={`w-full bg-primary font-medium p-3 text-center text-white rounded-lg hover:bg-secondary transition-all ${
-                    isLoading ? 'disabled:opacity-50 pointer-events-none' : ''
-                  }`}
-                >
-                  {t('Auth.ResetPassword.resetPassword')}
-                </Button>
-              </div>
-              <p className="text-center">
-                {t('Auth.ForgotPassword.rememberPassword')}
-                <Link
-                  to={PUBLIC_NAVIGATION.login}
-                  className="text-secondary hover:text-primary font-medium"
-                >
-                  &nbsp; {t('Auth.ForgotPassword.loginText')}
-                </Link>
-              </p>
-            </Form>
-          )}
-        </Formik>
+        <FormProvider {...formMethods}>
+          <form onSubmit={OnSubmit}>
+            <FormField<ForgotPasswordFormFields>
+              type="text"
+              name="email"
+              label="Email"
+              icon="mailFilled"
+              placeholder="Enter Your Email"
+              register={register}
+              error={errors.email}
+              fieldLimit={60}
+              required
+            />
+            <Button type="submit" className="w-full mt-[30px]">
+              Submit
+            </Button>
+          </form>
+        </FormProvider>
       </div>
     </section>
   );
