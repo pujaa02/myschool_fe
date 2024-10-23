@@ -6,7 +6,7 @@ export const registerInitialValues: RegisterInitialValueType = {
   phone: '',
   mobile: '',
   email: '',
-  role: '',
+  user_role: '',
   city: '',
   state: '',
   country: '',

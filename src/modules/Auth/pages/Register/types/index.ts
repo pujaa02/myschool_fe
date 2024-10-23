@@ -8,15 +8,17 @@ export type ActiveStateType = {
 };
 
 export type RegisterInitialValueType = {
-  first_name?: string;
-  last_name?: string;
-  phone?: string;
-  mobile?: string;
-  email?: string;
-  role?: string;
-  city?: string;
-  state?: string;
-  country?: string;
-  birth_date?: string;
-  timezone?: string;
+  first_name: string;
+  last_name: string;
+  // phone?: string;
+  // mobile?: string;
+  email: string;
+  user_role: string;
+  // city?: string;
+  // state?: string;
+  // country?: string;
+  birth_date: string;
+  // timezone?: string;
+  password: string;
+  confirmPassword: string;
 };

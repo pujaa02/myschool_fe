@@ -1,210 +1,138 @@
-import { useTranslation } from 'react-i18next';
-import { isValidPhoneNumber } from 'react-phone-number-input';
-import * as Yup from 'yup';
+// import type { CountryCode } from 'libphonenumber-js/types';
+import { UserSchemaErrorMessage } from 'constants/formErrorMessage.constant';
+import * as yup from 'yup';
+import { TLDs } from 'global-tld-list';
+// import { phoneCountryJson } from 'constants/regex.constant';
+import 'yup-phone-lite';
 
-// ** constants **
-// import { IMAGE_SUPPORTED_FORMATS } from '../../../constants/filesupport.constant';
+const {
+  first_name,
+  last_name,
+  password,
+  //  phone,
+  email,
+  user_role,
+} = UserSchemaErrorMessage;
 
-export const LoginValidationSchema = () => {
-  const { t } = useTranslation();
-  return Yup.object().shape({
-    email: Yup.string()
-      .matches(
-        /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/,
-        t('UserManagement.validation.invalidEmail')
-      )
-      .max(255, t('Auth.LoginValidation.maximumCharacterValidation'))
-      .required(t('Auth.LoginValidation.emailReq'))
-      .matches(
-        /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i,
-        t('Auth.LoginValidation.invalidEmail')
-      ),
-    password: Yup.string()
-      .required(t('Auth.LoginValidation.passwordRequired'))
-      .min(8, t('Auth.LoginValidation.minLengthPass'))
-      .matches(
-        /(?=.*[a-z])(?=.*[A-Z])\w+/,
-        t('Auth.LoginValidation.upperAndLowerCase')
-      )
-      .matches(/\d/, t('Auth.LoginValidation.numberReq'))
-      .matches(
-        /[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/,
-        t('Auth.LoginValidation.specialChar')
-      ),
-  });
+const globalEmailTestValidate = (v: string | null | undefined) => {
+  const tld = (v || '').split('.').slice(-1)[0];
+  const isValidTLDs = TLDs.indexOf(tld) >= 0;
+
+  if (!isValidTLDs) {
+    return false;
+  }
+
+  return true;
 };
 
-const SDI_REGEX = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]+$/;
+export const basicInfoSchema = {
+  first_name: yup
+    .string()
+    .trim()
+    .required(first_name)
+    .matches(/^[A-Za-z]+$/, 'First name must contain only letters')
+    .nullable(true),
+  last_name: yup
+    .string()
+    .trim()
+    .required(last_name)
+    .matches(/^[A-Za-z]+$/, 'First name must contain only letters')
+    .nullable(),
+  user_role: yup.string().required(user_role).nullable(true),
+  password: yup
+    .string()
+    .required(password.required)
+    .min(12, password.minLengthReq)
+    .matches(/[A-Z]/, password.upperReq)
+    .matches(/[a-z]/, password.lowerReq)
+    .matches(/\d/, password.numberReq)
+    .matches(/[\W_]/, password.specialCharReq),
+  confirmPassword: yup
+    .string()
+    .oneOf([yup.ref('password'), null], password.matchReq)
+    .required(password.confirm_required),
+  // phone: yup
+  //   .string()
+  //   .test('mobile', phone.valid, (value) => {
+  //     if (value !== undefined && value && value.split(' ').length > 1) {
+  //       const countryCode: string | undefined = value
+  //         ?.split(' ')[0]
+  //         .substring(1, value?.split(' ')[0].length)
+  //         .toString();
+  //       let countryShortCode: CountryCode | CountryCode[] = 'IN';
+  //       if (countryCode) countryShortCode = phoneCountryJson[countryCode];
 
-export const RegisterCompanyValidationSchema = () => {
-  const { t } = useTranslation();
-  return Yup.object().shape({
-    company_name: Yup.string()
-      .required(t('RegisterCompanyValidationSchema.companyName'))
-      .max(100, t('RegisterCompanyValidationSchema.compMaxLength')),
+  //       return yup.string().phone(countryShortCode).isValid(value);
+  //     }
+  //     return true;
+  //   })
+  //   .nullable(true)
+  //   .transform((value, originalVal) => {
+  //     if (originalVal && value.split(' ').length === 1) {
+  //       return null;
+  //     }
+  //     return originalVal;
+  //   }),
+  // mobile: yup
+  //   .string()
+  //   .test('mobile', phone.valid, (value) => {
+  //     if (value !== undefined && value && value.split(' ').length > 1) {
+  //       const countryCode: string | undefined = value
+  //         ?.split(' ')[0]
+  //         .substring(1, value?.split(' ')[0].length)
+  //         .toString();
+  //       let countryShortCode: CountryCode | CountryCode[] = 'IN';
+  //       if (countryCode) countryShortCode = phoneCountryJson[countryCode];
 
-    company_registration_number: Yup.string().required(
-      t('RegisterCompanyValidationSchema.companyRegistrationNumber')
-    ),
-    company_accounting_emails: Yup.array().of(
-      Yup.object().shape({
-        email: Yup.string()
-          .email(t('Auth.LoginValidation.invalidEmail'))
-          .matches(
-            /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/,
-            t('UserManagement.validation.invalidEmail')
-          )
-          .required(
-            t(
-              'ClientManagement.clientForm.validation.accounting_email_format_validation'
-            )
-          ),
-        is_primary: Yup.boolean().default(false),
-      })
-    ),
-    company_address_country: Yup.string().required(
-      t('RegisterCompanyValidationSchema.countryRequired')
-    ),
-    address_province: Yup.string().required(
-      t('RegisterCompanyValidationSchema.provinceRequired')
-    ),
-    // company_address_city: Yup.string().required(
-    //   t('RegisterCompanyValidationSchema.cityRequired')
-    // ),
-    company_address_l1: Yup.string().required(
-      t('RegisterCompanyValidationSchema.addressRequired1')
-    ),
-    company_address_zip: Yup.number()
-      .required(t('RegisterCompanyValidationSchema.zipCodeRequired'))
-      .typeError(t('RegisterCompanyValidationSchema.zipCodeValid')),
-    company_vat_number: Yup.string().required(
-      t('RegisterCompanyValidationSchema.vatValidation')
-    ),
-    company_ateco_code: Yup.string()
-      .matches(/^\d+$/, 'Invalid ateco code')
-      .required(t('RegisterCompanyValidationSchema.atecoValidation')),
-    company_is_invoice: Yup.string().required(
-      t('RegisterCompanyValidationSchema.purchaseOrder')
-    ),
-    company_sdi_code: Yup.string()
-      .required(t('RegisterCompanyValidationSchema.sdiValidation'))
-      .matches(
-        SDI_REGEX,
-        t('RegisterCompanyValidationSchema.sdi_format_validation')
-      )
-      .length(7, t('RegisterCompanyValidationSchema.sdi_length_validation')),
-    vat_type: Yup.string().required(
-      t('ClientManagement.clientForm.validation.vat_type_validation')
-    ),
-  });
+  //       return yup.string().phone(countryShortCode).isValid(value);
+  //     }
+  //     return true;
+  //   })
+  //   .nullable(true)
+  //   .transform((value, originalVal) => {
+  //     if (originalVal && value.split(' ').length === 1) {
+  //       return null;
+  //     }
+  //     return originalVal;
+  //   }),
+  email: yup
+    .string()
+    .required(email.required)
+    .lowercase()
+    .email(email.valid)
+    .test('email', email.valid, globalEmailTestValidate)
+    .nullable(true),
+  // country: yup.string().nullable(true),
+  // state: yup.string().nullable(true),
+  // zip: yup.string().nullable(true),
+  // city: yup.string().nullable(true),
+  birth_date: yup.string().nullable(true),
+  stringAndNumber: yup.lazy((value) => {
+    switch (typeof value) {
+      case 'number':
+        return yup.number();
+      case 'string':
+        return yup.string();
+      default:
+        return yup.mixed();
+    }
+  }),
 };
 
-export const RegisterManagerValidationSchema = () => {
-  const { t } = useTranslation();
-  return Yup.object().shape({
-    manager_first_name: Yup.string()
-      .required(t('RegisterCompanyValidationSchema.firstName'))
-      .max(100, t('RegisterCompanyValidationSchema.compMaxLength')),
-    manager_last_name: Yup.string()
-      .required(t('RegisterCompanyValidationSchema.lastName'))
-      .max(100, t('RegisterCompanyValidationSchema.compMaxLength')),
-    manager_contact: Yup.string()
-      .required(t('RegisterCompanyValidationSchema.contactNumber'))
-      .test(
-        'phone-validation',
-        t('RegisterCompanyValidationSchema.mobileNumber'),
-        (value) => {
-          if (value) {
-            if (isValidPhoneNumber(value)) return true;
-          }
-        }
-      ),
-    manager_job_title: Yup.string().required(
-      t('RegisterCompanyValidationSchema.jobTitle')
-    ),
-    manager_email: Yup.string()
-      .email(t('RegisterCompanyValidationSchema.emailValidation'))
-      .matches(
-        /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/,
-        t('UserManagement.validation.invalidEmail')
-      )
-      .required(t('RegisterCompanyValidationSchema.emailRequired')),
-  });
-};
-
-export const RegisterAdditionalValidationSchema = () => {
-  const { t } = useTranslation();
-  return Yup.object().shape({
-    company_logo: Yup.lazy((value) => {
-      return typeof value === 'string'
-        ? Yup.string()
-        : Yup.mixed()
-            .nullable()
-            .test(
-              'size',
-              t('RegAdditionSchema.imageSize'),
-              () => !value || (value && value.size <= 1024 * 1024 * 5)
-            );
-      // .test(
-      //   'format',
-      //   t('RegAdditionSchema.imageFormat'),
-      //   () =>
-      //     !value ||
-      //     (value && IMAGE_SUPPORTED_FORMATS.includes(value.type))
-      // );
-    }),
-    company_description: Yup.string(),
-  });
-};
-
-export const ForgotPasswordValidationSchema = () => {
-  const { t } = useTranslation();
-  return Yup.object().shape({
-    email: Yup.string()
-      .email(t('RegisterCompanyValidationSchema.emailValidation'))
-      .matches(
-        /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/,
-        t('UserManagement.validation.invalidEmail')
-      )
-      .required(t('UserManagement.validation.emailRequired')),
-  });
-};
-
-export const ResetPasswordValidationSchema = () => {
-  const { t } = useTranslation();
-  return Yup.object().shape({
-    password: Yup.string()
-      .trim()
-      .required(t('RegistrationForgotPass.passwordRequired'))
-      .matches(/(?=.*[A-Z])/, t('RegistrationForgotPass.capitalPass'))
-      .matches(/(?=.*[!@#$%^&()*])/, t('RegistrationForgotPass.specialChar'))
-      .matches(/(?=.*[a-z])/, t('RegistrationForgotPass.lowerCase'))
-      .matches(/(\d)/, t('RegistrationForgotPass.numberReq'))
-      .min(8, t('RegistrationForgotPass.noSpace'))
-      .max(15),
-    confirmPassword: Yup.string()
-      .required(t('RegistrationForgotPass.confirmPassword'))
-      .oneOf(
-        [Yup.ref('password') || null],
-        t('UserProfile.ChangePassword.matchConfirmPass')
-      ),
-  });
-};
-
-export const RegisterTrainerValidationSchema = () => {
-  const { t } = useTranslation();
-  return Yup.object().shape({
-    first_name: Yup.string().required(
-      t('UserManagement.validation.firstNameRequired')
-    ),
-    last_name: Yup.string().required(
-      t('UserManagement.validation.lastNameRequired')
-    ),
-    location: Yup.string().required(
-      t('Auth.RegisterTrainer.LocationValidation')
-    ),
-    sub_categories: Yup.array()
-      .required(t('Auth.RegisterTrainer.CourseValidation'))
-      .min(1, t('Auth.RegisterTrainer.CourseValidation')),
-  });
-};
+export const userSchema = yup
+  .object({
+    first_name: basicInfoSchema.first_name,
+    last_name: basicInfoSchema.last_name,
+    password: basicInfoSchema.password,
+    confirmPassword: basicInfoSchema.confirmPassword,
+    // phone: basicInfoSchema.phone,
+    // mobile: basicInfoSchema.mobile,
+    email: basicInfoSchema.email,
+    user_role: basicInfoSchema.user_role,
+    // country: basicInfoSchema.country,
+    // state: basicInfoSchema.state,
+    // zip: basicInfoSchema.zip,
+    // city: basicInfoSchema.city,
+    birth_date: basicInfoSchema.birth_date,
+  })
+  .required();
