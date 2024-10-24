@@ -18,9 +18,9 @@ import {
 } from './constants/navigation.constant';
 import HandleAuth from './modules/Auth/components/FuttureInCloud/HandleAuth';
 import {
-  createBrowserRouter,
+  // createBrowserRouter,
   RouteObject,
-  RouterProvider,
+  // RouterProvider,
 } from 'react-router-dom';
 import { useRolePermission } from './hooks/useRolePermission';
 import Loaders from './components/Loaders';
@@ -191,12 +191,14 @@ const Routes = () => {
     return true;
   });
   // Combine and conditionally include routes based on authentication status
-  const router = createBrowserRouter(finalRoutes);
+  // const router = createBrowserRouter(finalRoutes);
   // if (isLanguageLoading) {
   //   return <Loaders type="SiteLoader" />;
   // }
 
-  return <RouterProvider router={router} />;
+  // return <RouterProvider router={router} />;
+
+  return finalRoutes;
 };
 
 export default Routes;
