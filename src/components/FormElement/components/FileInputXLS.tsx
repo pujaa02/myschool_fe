@@ -1,7 +1,7 @@
 import Button from 'components/Button/Button';
 import Image from 'components/Image';
 import _ from 'lodash';
-import { useTranslation } from 'react-i18next';
+// import { useTranslation } from 'react-i18next';
 import '../style/fileInput.css';
 import { fileInputProps } from '../types';
 import { FileDisplay } from './FileInput';
@@ -31,8 +31,10 @@ const FileInputXLS = ({
       setValue(name, temp);
     }
   };
-  const { t } = useTranslation();
-  const FileName = isMulti ? (value as Array<File>)[0]?.name : (value as File)?.name;
+  // const { t } = useTranslation();
+  const FileName = isMulti
+    ? (value as Array<File>)[0]?.name
+    : (value as File)?.name;
   return (
     <div>
       <label className="file-input-xls-label-style" htmlFor="FileInputId">
@@ -51,13 +53,13 @@ const FileInputXLS = ({
               </div>
             </Button>
             <p className="mt-4 text-base font-semibold leading-5">
-              {t('FileInputXLS.dragText')}
+              {'FileInputXLS.dragText'}
             </p>
             <p className="mt-2 text-xs text-grayText leading-4">
-              {SubTitle ?? t('FileInputXLS.maxFileSize')}
+              {SubTitle ?? 'FileInputXLS.maxFileSize'}
             </p>
             <Button variants="primary" className="mt-4">
-              {Title ?? t('FileInputXLS.browseText')}
+              {Title ?? 'FileInputXLS.browseText'}
             </Button>
           </div>
         )}
@@ -85,7 +87,7 @@ const FileInputXLS = ({
                   removeFile();
                 }}
               >
-                {t('FileInputXLS.removeFile')}
+                {'FileInputXLS.removeFile'}
               </Button>
             </div>
           </div>

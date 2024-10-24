@@ -1,27 +1,27 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 import Button from 'components/Button/Button';
 import LinkIcon2 from 'components/Icon/assets/LinkIcon2';
-import { useTranslation } from 'react-i18next';
-import LinkFileDisplay from '../LinkFileDisplay';
+// import { useTranslation } from 'react-i18next';
+// import LinkFileDisplay from '../LinkFileDisplay';
 
 // ** style **
 import '../style/fileInput.css';
 
 // ** type **
-import _ from 'lodash';
+// import _ from 'lodash';
 import { fileInputProps } from '../types';
 
 const LinkFileInput = ({
   isMulti = false,
   value,
-  setValue,
-  limit,
-  name,
+  // setValue,
+  // limit,
+  // name,
   Ref,
-  isSendMail,
-  isBlack = false,
+  // isSendMail,
+  // isBlack = false,
 }: fileInputProps) => {
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
 
   return (
     <div>
@@ -36,11 +36,11 @@ const LinkFileInput = ({
               <LinkIcon2 className="w-full h-full" />
             </Button>
             <span className="block text-sm leading-5 text-grayText">
-              {t('FileInputLink.selectText')}
+              {'FileInputLink.selectText'}
             </span>
           </div>
         )}
-        {(value as File | string) && !isMulti && (
+        {/* {(value as File | string) && !isMulti && (
           <LinkFileDisplay
             name={name}
             Ref={Ref}
@@ -52,9 +52,9 @@ const LinkFileInput = ({
             isSendMail={isSendMail}
             isBlack={isBlack}
           />
-        )}
+        )} */}
       </label>
-      <div className="flex flex-col gap-3 rounded-xl mt-4">
+      {/* <div className="flex flex-col gap-3 rounded-xl mt-4">
         {isMulti &&
           !_.isEmpty(value) &&
           [...Array(isMulti ? limit : 1)].map(
@@ -77,7 +77,7 @@ const LinkFileInput = ({
                 />
               )
           )}
-      </div>
+      </div> */}
     </div>
   );
 };

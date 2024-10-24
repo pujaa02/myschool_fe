@@ -4,13 +4,13 @@ import { Controller } from 'react-hook-form';
 import ReactSelect, { InputActionMeta } from 'react-select';
 
 // ** components **
-import Icon from 'components/Icon';
 
 // ** types **
 import { FormFieldProps, Option } from '../types/formField.types';
 
 // ** others **
 import { isMultiValue } from '../helper';
+import Icon from 'components/Icon/index2';
 
 export const CustomAsyncSelect = <TFormValues extends Record<string, unknown>>(
   props: FormFieldProps<TFormValues>

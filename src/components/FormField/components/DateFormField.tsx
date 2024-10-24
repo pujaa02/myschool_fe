@@ -9,7 +9,6 @@ import MaskedInput from 'react-text-mask';
 // ** redux **
 
 // ** components **
-import Icon from 'components/Icon';
 
 // ** types **
 import { FormFieldProps } from '../types/formField.types';
@@ -17,6 +16,7 @@ import { FormFieldProps } from '../types/formField.types';
 // ** others **
 import { reactDatePickerSelectedDate } from '../helper';
 import { getCurrentUserDateFormat } from 'redux-toolkit/slices/authSlice';
+import Icon from 'components/Icon/index2';
 
 export const DateFormField = <TFormValues extends Record<string, unknown>>(
   props: FormFieldProps<TFormValues>

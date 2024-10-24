@@ -1,9 +1,9 @@
-import Icon from 'components/Icon';
 import { Controller } from 'react-hook-form';
 import { isMultiValue } from '../helper';
 import { FormFieldProps } from '../types/formField.types';
 import ReactSelect from 'react-select';
 import { useState } from 'react';
+import Icon from 'components/Icon/index2';
 
 type OptionType = {
   value: string;

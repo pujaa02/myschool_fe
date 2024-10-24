@@ -3,13 +3,13 @@ import { Controller } from 'react-hook-form';
 import ReactDatePicker from 'react-datepicker';
 
 // ** components **
-import Icon from 'components/Icon';
 
 // ** types **
 import { FormFieldProps } from '../types/formField.types';
 
 // ** others **
 import { reactDatePickerSelectedDate } from '../helper';
+import Icon from 'components/Icon/index2';
 
 export const TimeFormField = <TFormValues extends Record<string, unknown>>(
   props: FormFieldProps<TFormValues>

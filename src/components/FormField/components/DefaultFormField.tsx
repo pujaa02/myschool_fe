@@ -1,4 +1,4 @@
-import Icon from 'components/Icon';
+import Icon from 'components/Icon/index2';
 import { FormFieldProps } from '../types/formField.types';
 
 const DefaultFormField = <TFormValues extends Record<string, unknown>>(

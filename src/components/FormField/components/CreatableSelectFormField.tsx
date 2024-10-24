@@ -1,9 +1,9 @@
-import Icon from 'components/Icon';
 import { Controller } from 'react-hook-form';
 import { isMultiValue } from '../helper';
 import { FormFieldProps } from '../types/formField.types';
 import CreatableSelect from 'react-select/creatable';
 import { useState } from 'react';
+import Icon from 'components/Icon/index2';
 
 const CustomCreatableSelect = <TFormValues extends Record<string, unknown>>(
   fieldProps: FormFieldProps<TFormValues>

@@ -31,6 +31,7 @@ const PhoneNumberWithCountryCode = <
                 event: React.ChangeEvent<HTMLInputElement>,
                 formattedValue: string
               ) => {
+                console.log('🚀 ~ valueNo:', valueNo, data);
                 if (formattedValue === '+') {
                   onChange('');
                 } else {

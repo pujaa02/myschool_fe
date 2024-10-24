@@ -14,7 +14,7 @@ import ErrorMessage from './ErrorMessage';
 import { fileInputEnum, IInputFileField } from './types';
 
 // ** const **
-import { useTranslation } from 'react-i18next';
+// import { useTranslation } from 'react-i18next';
 import { customRandomNumberGenerator } from 'utils';
 import FileUploadVariants from './FileUploadVariants';
 
@@ -43,9 +43,11 @@ const DropZone = ({
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   const dispatch = useDispatch();
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
 
-  const handleFileChange = (event: ChangeEvent<HTMLInputElement> | DragEvent) => {
+  const handleFileChange = (
+    event: ChangeEvent<HTMLInputElement> | DragEvent
+  ) => {
     const droppedFiles =
       'dataTransfer' in event
         ? event.dataTransfer?.files
@@ -61,9 +63,7 @@ const DropZone = ({
             dispatch(
               setToast({
                 variant: 'Error',
-                message: `${t('ToastMessage.notUploadMoreFileText')} ${limit} ${t(
-                  'ToastMessage.items'
-                )}`,
+                message: `${'ToastMessage.notUploadMoreFileText'} ${limit} ${'ToastMessage.items'}`,
                 type: 'error',
                 id: random,
               })
@@ -74,9 +74,7 @@ const DropZone = ({
           dispatch(
             setToast({
               variant: 'Error',
-              message: `${t('ToastMessage.notUploadMoreFileText')} ${limit} ${t(
-                'ToastMessage.items'
-              )}`,
+              message: `${'ToastMessage.notUploadMoreFileText'} ${limit} ${'ToastMessage.items'}`,
               type: 'error',
               id: random,
             })

@@ -4,7 +4,7 @@ import { REACT_APP_API_BASE_URL } from 'config';
 
 import _ from 'lodash';
 import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+// import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { setToast } from 'redux-toolkit/slices/toastSlice';
 import { customRandomNumberGenerator } from 'utils';
@@ -35,7 +35,7 @@ const FileInput = ({
   fileType,
   fileInputIcon,
 }: fileInputProps) => {
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
   return (
     <div>
       <label className="file-input-label-style" htmlFor="FileInputId">
@@ -59,9 +59,9 @@ const FileInput = ({
               </span>
             ) : (
               <span className="mt-2.5 block text-sm leading-5 text-grayText">
-                {t('FileInputText.dragText')} &nbsp;
+                {'FileInputText.dragText'} &nbsp;
                 <span className="text-ic_1 underline">
-                  {t('FileInputText.browseText')}
+                  {'FileInputText.browseText'}
                 </span>
               </span>
             )}
@@ -119,7 +119,7 @@ export const FileDisplay = ({
   const [type, setType] = useState<EnumFileType>(EnumFileType.Document);
   const [source, setSource] = useState<string>();
   const dispatch = useDispatch();
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
   const checkExtension = () => {
     const isStringValue = typeof value === 'string';
     if (isStringValue) {
@@ -174,7 +174,7 @@ export const FileDisplay = ({
       dispatch(
         setToast({
           variant: 'Error',
-          message: `${t('ToastMessage.validFileTypeText')} ${fileType}`,
+          message: `${'ToastMessage.validFileTypeText'} ${fileType}`,
           type: 'error',
           id: fileTypeRandom,
         })
@@ -185,9 +185,7 @@ export const FileDisplay = ({
       const sizeRandom = customRandomNumberGenerator();
       dispatch(
         setToast({
-          message: `${checkFileType} ${t(
-            'ToastMessage.validFileSizeText'
-          )} ${fileSize} MB`,
+          message: `${checkFileType} ${'ToastMessage.validFileSizeText'} ${fileSize} MB`,
           type: 'error',
           id: sizeRandom,
           variant: 'Error',

@@ -31,8 +31,8 @@ import {
 import { Mask } from 'react-text-mask';
 
 // ** others **
-import type { IconTypes } from 'components/Icon';
 import ReactQuill from 'react-quill';
+import { IconTypes } from 'components/Icon/index2';
 
 export type InputProps = DetailedHTMLProps<
   InputHTMLAttributes<HTMLInputElement>,
