@@ -1,5 +1,5 @@
 // ** external packages **
-import { format } from 'date-fns-tz';
+// import { format } from 'date-fns-tz';
 import ReactDatePicker from 'react-datepicker';
 import { Controller } from 'react-hook-form';
 // ** components **
@@ -61,7 +61,7 @@ export const DateAndTimeFormField = <
                 onChange(
                   e
                     ? new Date(
-                        format(new Date(e), 'MM-dd-yyyy hh:mm aa')
+                        (new Date(e), 'MM-dd-yyyy hh:mm aa')
                       ).toISOString()
                     : e
                 )

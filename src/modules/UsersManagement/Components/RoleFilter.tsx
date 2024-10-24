@@ -3,7 +3,7 @@ import Switch from 'components/FormElement/Switch';
 import Image from 'components/Image';
 import { RoleFilterProps } from 'modules/UsersManagement/types';
 import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
+// import { useTranslation } from 'react-i18next';
 import { customRandomNumberGenerator } from 'utils';
 
 const RoleFilterComponent = ({
@@ -11,13 +11,15 @@ const RoleFilterComponent = ({
   setRoleFilter,
   setActiveRoles,
 }: RoleFilterProps) => {
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
   const [isActive, setIsActive] = useState(false);
 
   const handleRoleChange = (e: React.SyntheticEvent) => {
     const field = e.currentTarget.id;
     const updatedRoleFilter = roleFilter.map((item) => {
-      return item.key === field ? { ...item, isChecked: !item.isChecked } : item;
+      return item.key === field
+        ? { ...item, isChecked: !item.isChecked }
+        : item;
     });
     setRoleFilter(updatedRoleFilter);
     const newActiveData = updatedRoleFilter
@@ -28,7 +30,7 @@ const RoleFilterComponent = ({
   };
   return (
     <div className="flex gap-2 justify-between items-center">
-      {t('UserManagement.addEditUser.role')}
+      {'UserManagement.addEditUser.role'}
       <Button
         className="relative group"
         onClickHandler={() => setIsActive(!isActive)}
@@ -42,7 +44,9 @@ const RoleFilterComponent = ({
                 <div
                   key={customRandomNumberGenerator()}
                   className={`flex px-4 py-2 gap-4 items-center  whitespace-nowrap ${
-                    item.key === 'selectAll' ? 'border-b border-b-borderColor' : ''
+                    item.key === 'selectAll'
+                      ? 'border-b border-b-borderColor'
+                      : ''
                   }`}
                 >
                   <Switch

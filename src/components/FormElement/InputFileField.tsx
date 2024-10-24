@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 import _ from 'lodash';
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+// import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 
 // ** redux **
@@ -54,7 +54,7 @@ const InputFileField = ({
   setValue,
   isControls = true,
 }: IChatFileField) => {
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
 
   const dispatch = useDispatch();
 
@@ -77,9 +77,7 @@ const InputFileField = ({
           dispatch(
             setToast({
               variant: 'Error',
-              message: `${t('ToastMessage.notUploadMoreFileText')} ${limit} ${t(
-                'ToastMessage.items'
-              )}`,
+              message: `${'ToastMessage.notUploadMoreFileText'} ${limit} ${'ToastMessage.items'}`,
               type: 'error',
               id: random,
             })
@@ -93,9 +91,7 @@ const InputFileField = ({
         dispatch(
           setToast({
             variant: 'Error',
-            message: `${t('ToastMessage.notUploadMoreFileText')} ${limit} ${t(
-              'ToastMessage.items'
-            )}`,
+            message: `${'ToastMessage.notUploadMoreFileText'} ${limit} ${'ToastMessage.items'}`,
             type: 'error',
             id: random,
           })
@@ -207,7 +203,7 @@ export const FileDisplay = ({
   fileType,
   isControls,
 }: IChatFileDisplay) => {
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
 
   const dispatch = useDispatch();
 
@@ -226,7 +222,8 @@ export const FileDisplay = ({
       const format = value.substring(value.lastIndexOf('.')).toLowerCase();
       let tempFileType: EnumFileType;
       if (imageExtension.includes(format)) tempFileType = EnumFileType.Image;
-      else if (videoExtension.includes(format)) tempFileType = EnumFileType.Video;
+      else if (videoExtension.includes(format))
+        tempFileType = EnumFileType.Video;
       else tempFileType = EnumFileType.Document;
 
       setType(tempFileType);
@@ -250,7 +247,11 @@ export const FileDisplay = ({
       else sizeValue = chatDocsSize;
 
       const sizeToUse = size ?? sizeValue;
-      checkAndRemove(value, fileTypeMap[format] || EnumFileType.Document, sizeToUse);
+      checkAndRemove(
+        value,
+        fileTypeMap[format] || EnumFileType.Document,
+        sizeToUse
+      );
     }
   };
 
@@ -263,7 +264,7 @@ export const FileDisplay = ({
       dispatch(
         setToast({
           variant: 'Error',
-          message: `${t('ToastMessage.validFileTypeText')} ${fileType}`,
+          message: `${'ToastMessage.validFileTypeText'} ${fileType}`,
           type: 'error',
           id: customRandomNumberGenerator(),
         })
@@ -274,9 +275,7 @@ export const FileDisplay = ({
       dispatch(
         setToast({
           variant: 'Error',
-          message: `${checkFileType} ${t(
-            'ToastMessage.validFileSizeText'
-          )} ${fileSize} MB`,
+          message: `${checkFileType} ${'ToastMessage.validFileSizeText'} ${fileSize} MB`,
           type: 'error',
           id: customRandomNumberGenerator(),
         })
@@ -337,7 +336,7 @@ export const FileDisplay = ({
               <Button className="inline-block truncate h-fit">
                 {typeof value !== 'string'
                   ? value.name
-                  : value.split('/')[value.split('/').length - 1] ?? 'file'}
+                  : (value.split('/')[value.split('/').length - 1] ?? 'file')}
               </Button>
             </div>
           )

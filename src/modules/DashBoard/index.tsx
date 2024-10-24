@@ -3,7 +3,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 import { getHours } from 'date-fns';
-import { utcToZonedTime } from 'date-fns-tz';
+// import { utcToZonedTime } from 'date-fns-tz';
 
 // ** components **
 import { getCurrentUser, getUserRole } from 'redux-toolkit/slices/authSlice';
@@ -31,11 +31,11 @@ const Dashboard = () => {
   const userRole = useSelector(getUserRole);
 
   const getGreetingsMessage = () => {
-    const now = new Date();
-    const { timeZone } = Intl.DateTimeFormat().resolvedOptions();
-    const zonedTime = utcToZonedTime(now, timeZone);
+    // const now = new Date();
+    // const { timeZone } = Intl.DateTimeFormat().resolvedOptions();
+    // const zonedTime = utcToZonedTime(now, timeZone);
 
-    const currentHour = getHours(zonedTime);
+    const currentHour = getHours(new Date());
 
     let greetingMessage = '';
 
