@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-shadow */
 import _ from 'lodash';
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';

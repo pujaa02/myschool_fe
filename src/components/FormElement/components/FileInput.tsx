@@ -1,13 +1,7 @@
 import Button from 'components/Button/Button';
 import Image from 'components/Image';
 import { REACT_APP_API_BASE_URL } from 'config';
-import {
-  imageExtension,
-  imageSize,
-  otherSize,
-  videoExtension,
-  videoSize,
-} from 'constants/filesupport.constant';
+
 import _ from 'lodash';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -17,6 +11,13 @@ import { customRandomNumberGenerator } from 'utils';
 import { EnumFileType } from '../enum';
 import '../style/fileInput.css';
 import { IFileFileDisplay, fileInputProps } from '../types';
+import {
+  imageExtension,
+  videoExtension,
+  imageSize,
+  videoSize,
+  otherSize,
+} from 'constants/filesupport.constant';
 
 const checkValidImageSize = (value: File | Blob, size: number) => {
   return value.size <= size * 1000000;
@@ -125,7 +126,8 @@ export const FileDisplay = ({
       const format = value.substring(value.lastIndexOf('.')).toLowerCase();
       let tempFileType: EnumFileType;
       if (imageExtension.includes(format)) tempFileType = EnumFileType.Image;
-      else if (videoExtension.includes(format)) tempFileType = EnumFileType.Video;
+      else if (videoExtension.includes(format))
+        tempFileType = EnumFileType.Video;
       else tempFileType = EnumFileType.Document;
 
       setType(tempFileType);
@@ -148,7 +150,11 @@ export const FileDisplay = ({
       else if (format === 'video') sizeValue = videoSize;
       else sizeValue = otherSize;
       const sizeToUse = size ?? sizeValue;
-      checkAndRemove(value, fileTypeMap[format] || EnumFileType.Document, sizeToUse);
+      checkAndRemove(
+        value,
+        fileTypeMap[format] || EnumFileType.Document,
+        sizeToUse
+      );
     }
   };
 
@@ -229,7 +235,6 @@ export const FileDisplay = ({
       case EnumFileType.Video:
         return (
           <div className="h-full w-fit">
-            {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
             <video
               key={source}
               controls
@@ -276,7 +281,7 @@ export const FileDisplay = ({
               <div className="text-sm font-semibold text-dark/50 max-w-[100px] truncate">
                 {typeof value !== 'string'
                   ? value.name
-                  : value.split('/')[value.split('/').length - 1] ?? 'file'}
+                  : (value.split('/')[value.split('/').length - 1] ?? 'file')}
               </div>
             </div>
           )

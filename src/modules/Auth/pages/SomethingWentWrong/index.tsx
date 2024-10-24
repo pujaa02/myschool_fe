@@ -1,6 +1,6 @@
 // ** hooks **
 import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+// import { useTranslation } from 'react-i18next';
 
 // ** components **
 import axios from 'axios';
@@ -8,7 +8,7 @@ import Image from 'components/Image';
 import { REACT_APP_API_BASE_URL } from 'config';
 
 const SomethingWentWrong = () => {
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
   const [apiCall, setApiCall] = useState(true);
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const SomethingWentWrong = () => {
     <div className="h-[100dvh] bg-siteBG2 w-full">
       <div className="flex items-center justify-center h-full">
         <div className="">
-          <p className="hidden">{t('ErrorBoundary.pageNotFound')}</p>
+          <p className="hidden">{'ErrorBoundary.pageNotFound'}</p>
           <Image
             imgClassName="block w-[700px] max-w-full mx-auto"
             src="/images/police-stop-palm.svg"

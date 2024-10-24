@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+// import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
 import { getHours } from 'date-fns';
@@ -12,19 +12,20 @@ import { getCurrentUser, getUserRole } from 'redux-toolkit/slices/authSlice';
 import PageHeader from 'components/PageHeader/PageHeader';
 import { ROLES } from 'constants/roleAndPermission.constant';
 import 'modules/DashBoard/components/style/dashboard.css';
-import PrivateIndividualDashboard from './components/PrivateIndividualDashboard';
 
 // ** react lazy components **
 const AdminDashboard = React.lazy(() => import('./components/AdminDashboard'));
-const TrainerDashboard = React.lazy(() => import('./components/TrainerDashboard'));
-const CompanyManagerDashboard = React.lazy(
-  () => import('modules/DashBoard/components/CompanyManagerDashboard')
+const TeacherDashboard = React.lazy(
+  () => import('./components/TeacherDashboard')
+);
+const StudentDashboard = React.lazy(
+  () => import('modules/DashBoard/components/StudentDashboard')
 );
 
 const Dashboard = () => {
   // const Clock = useModal();
 
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
   // const [time, setTime] = useState('');
   const user = useSelector(getCurrentUser);
   const userRole = useSelector(getUserRole);
@@ -39,11 +40,11 @@ const Dashboard = () => {
     let greetingMessage = '';
 
     if (currentHour >= 5 && currentHour < 12) {
-      greetingMessage = t('Dashboard.goodMorningTitle');
+      greetingMessage = 'Dashboard.goodMorningTitle';
     } else if (currentHour >= 12 && currentHour < 18) {
-      greetingMessage = t('Dashboard.goodAfterNoonTitle');
+      greetingMessage = 'Dashboard.goodAfterNoonTitle';
     } else {
-      greetingMessage = t('Dashboard.goodEveningTitle');
+      greetingMessage = 'Dashboard.goodEveningTitle';
     }
 
     return greetingMessage;
@@ -53,14 +54,10 @@ const Dashboard = () => {
     switch (variant) {
       case ROLES.Admin:
         return <AdminDashboard />;
-      case ROLES.Trainer:
-        return <TrainerDashboard />;
-      case ROLES.CompanyManager:
-        return <CompanyManagerDashboard />;
-      case ROLES.PrivateIndividual:
-        return <PrivateIndividualDashboard />;
-      case ROLES.TrainingSpecialist:
-        return <AdminDashboard />;
+      case ROLES.Teacher:
+        return <TeacherDashboard />;
+      case ROLES.Student:
+        return <StudentDashboard />;
       default:
         return <AdminDashboard />;
     }
@@ -69,7 +66,9 @@ const Dashboard = () => {
     <>
       {user?.role_name !== 'CompanyManager' &&
         user?.role_name !== 'PrivateIndividual' && (
-          <PageHeader text={`${getGreetingsMessage()} ${user?.first_name ?? '-'}`} />
+          <PageHeader
+            text={`${getGreetingsMessage()} ${user?.first_name ?? '-'}`}
+          />
         )}
 
       {userRole && renderDashboard(userRole)}

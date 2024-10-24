@@ -34,3 +34,7 @@ export const PermissionEnum = {
   Create: 'Create',
   View: 'View',
 };
+export const DropdownLoaderTypes = {
+  Skeleton: 'Skeleton',
+  Default: 'Default',
+};

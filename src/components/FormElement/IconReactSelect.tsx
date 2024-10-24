@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-shadow */
 import Select, { StylesConfig } from 'react-select';
 
 import { IconTypes } from 'components/Icon/types';

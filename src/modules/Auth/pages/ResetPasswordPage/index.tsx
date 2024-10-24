@@ -26,8 +26,7 @@ const ResetPasswordPage = () => {
     formState: { errors },
     handleSubmit,
   } = formMethods;
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [resetPasswordApi, { isLoading }] = useAxiosPost();
+  const [resetPasswordApi] = useAxiosPost();
 
   const OnSubmit = handleSubmit(async (data: ResetPasswordFormFields) => {
     if (data) {

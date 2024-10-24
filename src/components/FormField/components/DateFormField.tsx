@@ -7,7 +7,6 @@ import { useSelector } from 'react-redux';
 import MaskedInput from 'react-text-mask';
 
 // ** redux **
-import { getCurrentUserDateFormat } from 'redux/slices/authSlice';
 
 // ** components **
 import Icon from 'components/Icon';
@@ -17,6 +16,7 @@ import { FormFieldProps } from '../types/formField.types';
 
 // ** others **
 import { reactDatePickerSelectedDate } from '../helper';
+import { getCurrentUserDateFormat } from 'redux-toolkit/slices/authSlice';
 
 export const DateFormField = <TFormValues extends Record<string, unknown>>(
   props: FormFieldProps<TFormValues>
@@ -100,7 +100,13 @@ export const DateFormField = <TFormValues extends Record<string, unknown>>(
             />
           )}
         />
-        {icon && <Icon className={iconClass} iconType={icon} />}
+        {icon && (
+          <Icon
+            className={iconClass}
+            iconType={icon}
+            name={'dashboardStrokeSD'}
+          />
+        )}
       </div>
       {error && <p className="ip__Error">{error.message}</p>}
     </div>

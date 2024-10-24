@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-shadow */
 import Button from 'components/Button/Button';
 import { useState } from 'react';
 import Select, { StylesConfig, components } from 'react-select';

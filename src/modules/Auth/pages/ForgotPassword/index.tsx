@@ -18,8 +18,7 @@ import FormField from 'components/FormField';
 
 const ForgotPasswordPage = () => {
   const navigate = useNavigate();
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [forgotPasswordApi, { isLoading }] = useAxiosPost();
+  const [forgotPasswordApi] = useAxiosPost();
 
   const formMethods = useForm<ForgotPasswordFormFields>({
     resolver: yupResolver(forgotPasswordSchema),

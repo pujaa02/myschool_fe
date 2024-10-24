@@ -210,7 +210,13 @@ export const CustomAsyncSelect = <TFormValues extends Record<string, unknown>>(
             );
           }}
         />
-        {icon && <Icon className={iconClass} iconType={icon} />}
+        {icon && (
+          <Icon
+            className={iconClass}
+            iconType={icon}
+            name={'dashboardStrokeSD'}
+          />
+        )}
       </div>
       {error && <p className="ip__Error">{error.message}</p>}
     </>

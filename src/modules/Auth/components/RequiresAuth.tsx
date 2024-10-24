@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 // import { useNavigate } from 'react-router-dom';
 
 // ** Components **
-import Layout from '../../../components/Layout';
+// import Layout from '../../../components/Layout';
 import Loaders from '../../../components/Loaders';
 // import { PRIVATE_NAVIGATION } from '../../../constants/navigation.constant';
 
@@ -45,13 +45,13 @@ const RequiresAuth = (props: Props) => {
 
   return (
     <ErrorBoundaryDependency FallbackComponent={ErrorBoundary}>
-      <Layout>
-        <Suspense fallback={<Loaders type="SiteLoader" />}>
-          <Toast />
-          {/* <SocketComponent /> */}
-          {children}
-        </Suspense>
-      </Layout>
+      {/* <Layout> */}
+      <Suspense fallback={<Loaders type="SiteLoader" />}>
+        <Toast />
+        {/* <SocketComponent /> */}
+        {children}
+      </Suspense>
+      {/* </Layout> */}
     </ErrorBoundaryDependency>
   );
 };

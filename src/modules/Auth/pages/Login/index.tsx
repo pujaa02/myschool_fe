@@ -11,8 +11,7 @@ import Button from 'components/Button/Button';
 
 const Login = () => {
   const navigate = useNavigate();
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [loginUserApi, { isLoading }] = useAxiosPost();
+  const [loginUserApi] = useAxiosPost();
 
   const formMethods = useForm<LoginFormFields>({
     resolver: yupResolver(loginSchema),

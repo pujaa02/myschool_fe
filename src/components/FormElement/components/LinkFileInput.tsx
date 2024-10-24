@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-shadow */
 import Button from 'components/Button/Button';
 import LinkIcon2 from 'components/Icon/assets/LinkIcon2';
 import { useTranslation } from 'react-i18next';

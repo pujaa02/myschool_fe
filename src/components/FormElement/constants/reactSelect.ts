@@ -1,7 +1,7 @@
 import { StylesConfig } from 'react-select';
 
 export const SelectStyle: StylesConfig = {
-  control: (state) => ({
+  control: (state: any) => ({
     padding: '0.282rem',
     display: 'flex',
     outline: 'none',
@@ -104,7 +104,8 @@ export const SelectStyle: StylesConfig = {
     padding: '2px 12px',
     cursor: 'pointer',
     transition: 'all 0.5s',
-    backgroundColor: state.isFocused || state.isSelected ? '#0b4565' : '#ffffff',
+    backgroundColor:
+      state.isFocused || state.isSelected ? '#0b4565' : '#ffffff',
     color: state.isFocused || state.isSelected ? '#ffffff' : '#0b4565',
     '&:hover': {
       backgroundColor: '#0b4565',

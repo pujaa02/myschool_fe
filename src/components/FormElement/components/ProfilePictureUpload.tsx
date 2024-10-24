@@ -1,5 +1,4 @@
 import Button from 'components/Button/Button';
-import FancyBox from 'components/FancyBox';
 import Image from 'components/Image';
 import { REACT_APP_API_BASE_URL } from 'config';
 import { IMAGE_SUPPORTED_FORMATS } from 'constants/filesupport.constant';
@@ -62,32 +61,35 @@ const ProfilePictureUpload = ({
         </label>
       )}
       <div className="w-24 h-24 rounded-full relative  p-1 bg-search-grey flex  ">
-        <label htmlFor={`${!value ? 'ProfileIMG' : ''}`} className="block w-full">
-          <FancyBox>
-            <Link
-              className={`flex items-center justify-center relative w-full h-full ${
-                value ? '' : 'pointer-events-none'
-              }`}
-              to={source}
-              target="_blank"
-              data-fancybox
-            >
-              {loading && (
-                <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-gray-50 border border-solid border-grayText/20 rounded-full">
-                  <Image loaderType="Spin" />
-                </div>
-              )}
-              <span className="block w-full h-full">
-                <Image
-                  src={source}
-                  imgClassName=" object-cover rounded-full m-auto h-full w-full"
-                  width={100}
-                  height={100}
-                  alt=""
-                />
-              </span>
-            </Link>
-          </FancyBox>
+        <label
+          htmlFor={`${!value ? 'ProfileIMG' : ''}`}
+          className="block w-full"
+        >
+          {/* <FancyBox> */}
+          <Link
+            className={`flex items-center justify-center relative w-full h-full ${
+              value ? '' : 'pointer-events-none'
+            }`}
+            to={source}
+            target="_blank"
+            data-fancybox
+          >
+            {loading && (
+              <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-gray-50 border border-solid border-grayText/20 rounded-full">
+                <Image loaderType="Spin" />
+              </div>
+            )}
+            <span className="block w-full h-full">
+              <Image
+                src={source}
+                imgClassName=" object-cover rounded-full m-auto h-full w-full"
+                width={100}
+                height={100}
+                alt=""
+              />
+            </span>
+          </Link>
+          {/* </FancyBox> */}
           <input
             type="file"
             name=""

@@ -26,7 +26,7 @@ const Register = () => {
   // const states = useSelector(getStateJson);
   // const cities = useSelector(getCitiesJson);
   const navigate = useNavigate();
-  const [registerDetail, { isLoading }] = useAxiosPost();
+  const [registerDetail] = useAxiosPost();
 
   const formMethods = useForm<RegistervalueType>({
     resolver: yupResolver(registerSchema),

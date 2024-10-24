@@ -9,10 +9,7 @@ import { getActiveUserDataApi } from './modules/Auth/services';
 // import { ActiveSelector } from './redux-toolkit/slices/sidebarSlice';
 import { getAuthToken } from './redux-toolkit/slices/tokenSlice';
 import { RootStateType } from './redux-toolkit/store';
-import {
-  PRIVATE_NAVIGATION,
-  PUBLIC_NAVIGATION,
-} from './constants/navigation.constant';
+import { PUBLIC_NAVIGATION } from './constants/navigation.constant';
 import HandleAuth from './modules/Auth/components/FuttureInCloud/HandleAuth';
 import {
   createBrowserRouter,
@@ -21,7 +18,7 @@ import {
 } from 'react-router-dom';
 import { useRolePermission } from './hooks/useRolePermission';
 import Loaders from './components/Loaders';
-import RequiresAuth from './modules/Auth/components/RequiresAuth';
+// import RequiresAuth from './modules/Auth/components/RequiresAuth';
 import React from 'react';
 import AuthenticationRoutes from './modules/Auth/routes';
 import PageLoader from './components/Loaders/PageLoader';
@@ -42,7 +39,7 @@ const RequiresUnAuth = React.lazy(
 const NotFound = React.lazy(() => import('./modules/Auth/pages/NotFound'));
 
 // ** Dashboard Routes
-const Dashboard = React.lazy(() => import('./modules/DashBoard'));
+// const Dashboard = React.lazy(() => import('./modules/DashBoard'));
 
 // ** Types **
 export type RouteObjType = {
@@ -54,12 +51,12 @@ export type RouteObjType = {
   permission?: string;
 };
 
-export const applyRequiresAuth = (routes: RouteObjType[]): RouteObjType[] => {
-  return routes.map((route) => ({
-    ...route,
-    element: <RequiresAuth>{route.element}</RequiresAuth>,
-  }));
-};
+// export const applyRequiresAuth = (routes: RouteObjType[]): RouteObjType[] => {
+//   return routes.map((route) => ({
+//     ...route,
+//     element: <RequiresAuth>{route.element}</RequiresAuth>,
+//   }));
+// };
 
 const Routes = () => {
   const authData = useSelector((state: RootStateType) => state.auth);
@@ -128,20 +125,20 @@ const Routes = () => {
       ),
     },
   ];
-  const routesForAuthenticatedOnly: RouteObjType[] = applyRequiresAuth([
-    {
-      path: PRIVATE_NAVIGATION.notFoundPage,
-      element: <NotFound />,
-    },
-    {
-      path: PRIVATE_NAVIGATION.dashboard.view.path,
-      element: <Dashboard />,
-    },
-  ]);
+  // const routesForAuthenticatedOnly: RouteObjType[] = applyRequiresAuth([
+  //   {
+  //     path: PRIVATE_NAVIGATION.notFoundPage,
+  //     element: <NotFound />,
+  //   },
+  //   {
+  //     path: PRIVATE_NAVIGATION.dashboard.view.path,
+  //     element: <Dashboard />,
+  //   },
+  // ]);
   let finalRoutes = [
     ...routesForPublic,
     ...notFound,
-    ...routesForAuthenticatedOnly,
+    // ...routesForAuthenticatedOnly,
     ...routesForNotAuthenticatedOnly,
   ];
   finalRoutes = finalRoutes.filter((route) => {

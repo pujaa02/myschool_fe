@@ -1,6 +1,3 @@
-import { ColorVariant } from 'components/DashboardCard';
-import { IconTypes } from 'components/Icon/types';
-
 export interface CourseDetails {
   image: string;
   title: string;
@@ -15,35 +12,11 @@ export interface CourseDetails {
   status: string;
 }
 
-export interface TilesProps {
-  title: string;
-  counts: string;
-  colorVariant: ColorVariant;
-  iconName: IconTypes;
-}
-
-export interface Courses {
-  courseName?: string;
-  numberOfLessons?: string;
-  level?: string;
-  iconName?: IconTypes;
-  colorCombo?: string;
-  type?: string;
-}
-export interface DashboardCourse {
-  id: number;
-  title: string;
-  course_category: string;
-  total_lessons: number;
-  image: string;
-}
-
 export interface IDashboard {
   training_specialist: number;
   trainer: number;
   courses: number;
   users: number;
-  popular_courses: DashboardCourse[];
   total_participants_top_five: number;
 }
 
