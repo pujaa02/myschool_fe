@@ -252,14 +252,14 @@ export const convertLocationIdToName = (
 //   return inputString.charAt(0).toUpperCase() + inputString.slice(1);
 // };
 
-// export const convertRoleToUrl = (inputString: string) => {
-//   return inputString
-//     .replace(/([A-Z])/g, ' $1')
-//     .toLowerCase()
-//     .trim()
-//     .split(' ')
-//     .join('-');
-// };
+export const convertRoleToUrl = (inputString: string) => {
+  return inputString
+    .replace(/([A-Z])/g, ' $1')
+    .toLowerCase()
+    .trim()
+    .split(' ')
+    .join('-');
+};
 
 // export const convertRoleUrlToString = (inputString: string) => {
 //   return inputString.replace('-', ' ');
