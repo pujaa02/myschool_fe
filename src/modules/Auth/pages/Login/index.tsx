@@ -90,7 +90,7 @@ const Login = () => {
             <p onClick={() => navigate(`${PUBLIC_NAVIGATION.register}`)}>
               Don&apos;t have an account?{' '}
               {/* <Link to="/auth/register" className="text-blue-500 underline"> */}
-              Register
+              <span className="text-red-600">Register</span>
               {/* </Link> */}
             </p>
           </div>

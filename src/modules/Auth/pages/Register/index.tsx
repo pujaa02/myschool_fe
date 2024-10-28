@@ -237,7 +237,7 @@ const Register = () => {
               <p onClick={() => navigate(`${PUBLIC_NAVIGATION.login}`)}>
                 Already Have an Account?{' '}
                 {/* <Link to="/auth/login" className="text-blue-500 underline"> */}
-                Login
+                <span className="text-red-600"> Login</span>
                 {/* </Link> */}
               </p>
             </div>
