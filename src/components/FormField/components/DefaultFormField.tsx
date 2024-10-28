@@ -1,4 +1,4 @@
-import Icon from 'components/Icon/index2';
+// import Icon from 'components/Icon/index2';
 import { FormFieldProps } from '../types/formField.types';
 
 const DefaultFormField = <TFormValues extends Record<string, unknown>>(
@@ -16,9 +16,7 @@ const DefaultFormField = <TFormValues extends Record<string, unknown>>(
     type,
     className,
     fieldLimit,
-    iconClass,
     disabled = false,
-    labelClass = '',
     ...rest
   } = fieldProps;
 
@@ -27,7 +25,7 @@ const DefaultFormField = <TFormValues extends Record<string, unknown>>(
 
   return (
     <>
-      <label htmlFor={id} className={`if__label ${labelClass}`}>
+      <label htmlFor={id} className="">
         {label}
         {required ? <span className="required__sign">*</span> : ''}
       </label>
@@ -43,7 +41,6 @@ const DefaultFormField = <TFormValues extends Record<string, unknown>>(
           {...rest}
           maxLength={fieldLimit || 100}
         />
-        {icon && <Icon className={iconClass} iconType={icon} />}
       </div>
       {error && <p className="ip__Error">{error.message}</p>}
     </>

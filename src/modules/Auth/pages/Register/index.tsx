@@ -236,7 +236,7 @@ const Register = () => {
             <div className="flex justify-center mt-4">
               <p>
                 Already Have an Account?{' '}
-                <Link to="/login" className="text-blue-500 underline">
+                <Link to="/auth/login" className="text-blue-500 underline">
                   Login
                 </Link>
               </p>

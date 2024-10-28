@@ -3,11 +3,9 @@ import { PUBLIC_NAVIGATION } from 'constants/navigation.constant';
 import { useAxiosPost } from 'hooks/useAxios';
 import { loginSchema } from 'modules/Auth/validationSchema';
 import { useEffect } from 'react';
-import { FormProvider, useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { Link, useNavigate } from 'react-router-dom';
 import { LoginFormFields } from './types';
-import FormField from 'components/FormField';
-import Button from 'components/Button/Button';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -38,54 +36,67 @@ const Login = () => {
   }, []);
 
   return (
-    <section className="login-section bg-primary2Light bg-[center_bottom] min-h-[calc(100dvh_-_90px)] bg-authbg bg-no-repeat flex justify-center items-center">
-      <div className="bg-white max-w-[85%] sm:max-w-[510px] max-h-[calc(100dvh-180px)] p-10 rounded-3xl overflow-y-auto my-4 auth-scroll">
-        <h1 className="text-dark text-3xl font-semibold mb-2">Login</h1>
-        <FormProvider {...formMethods}>
-          <form onSubmit={OnSubmit}>
-            <FormField<LoginFormFields>
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <div className="container mx-auto p-6 max-w-md bg-white border-4 border-blue-600 rounded-lg">
+        <form className="space-y-4" onSubmit={OnSubmit}>
+          <h2 className="text-2xl font-bold text-center text-red-600">Login</h2>
+          <div className="mb-4">
+            <label htmlFor="email" className="block mb-2 font-bold">
+              Email:
+            </label>
+            <input
               type="text"
-              name="email"
-              label="Email"
-              icon="mailFilled"
-              placeholder="Enter Your Email"
-              register={register}
-              error={errors.email}
-              fieldLimit={60}
-              required
+              id="email"
+              {...register('email', {
+                required: 'Email is Required!!',
+              })}
+              className="w-full p-2 border border-gray-300 rounded-md"
             />
-            <FormField<LoginFormFields>
+            {errors.email && (
+              <p className="mt-1 text-red-600">{errors.email.message}</p>
+            )}
+          </div>
+          <div className="mb-4">
+            <label htmlFor="password" className="block mb-2 font-bold">
+              Password:
+            </label>
+            <input
               type="password"
-              name="password"
-              label="Password"
-              placeholder="Enter Your Password"
-              icon="securityFilled"
-              register={register}
-              error={errors.password}
-              required
+              id="password"
+              {...register('password', {
+                required: 'Password is Required!!',
+              })}
+              className="w-full p-2 border border-gray-300 rounded-md"
             />
-            <div className="rememberForgot flex flex-wrap items-center justify-between">
-              <FormField<LoginFormFields>
-                wrapperClass="form__Groupip__Checkbox"
-                type="checkbox"
-                name="remember"
-                label="Remember me"
-                register={register}
-              />
-              {/* <Link
-            to={PUBLIC_NAVIGATION.forgotPassword}
-            className="font-biotif__Medium text-ip__Orange text-[14px] hover:underline"
-          >
-            Forgot Password
-          </Link> */}
-            </div>
-            <Button type="submit" className="w-full mt-[30px]">
+            {errors.password && (
+              <p className="mt-1 text-red-600">{errors.password.message}</p>
+            )}
+          </div>
+          <div className="flex items-center justify-center mt-4 space-x-4">
+            <p
+              onClick={() => navigate('/auth/forgot-password')}
+              className="w-40 p-2 text-center text-white bg-blue-500 rounded-md cursor-pointer hover:bg-blue-600"
+            >
+              Forget Password
+            </p>
+            <button
+              type="submit"
+              className="w-20 p-2 text-center text-white bg-blue-500 rounded-md cursor-pointer hover:bg-blue-600"
+            >
               Login
-            </Button>
-          </form>
-        </FormProvider>
+            </button>
+          </div>
+          <div className="mt-4 text-center">
+            <p>
+              Don&apos;t have an account?{' '}
+              <Link to="/auth/register" className="text-blue-500 underline">
+                Register
+              </Link>
+            </p>
+          </div>
+        </form>
       </div>
-    </section>
+    </div>
   );
 };
 export default Login;
