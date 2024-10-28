@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // import { useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 // ** constant **
 import { PUBLIC_NAVIGATION } from '../../../../constants/navigation.constant';
@@ -234,11 +234,11 @@ const Register = () => {
               Register
             </button>
             <div className="flex justify-center mt-4">
-              <p>
+              <p onClick={() => navigate(`${PUBLIC_NAVIGATION.login}`)}>
                 Already Have an Account?{' '}
-                <Link to="/auth/login" className="text-blue-500 underline">
-                  Login
-                </Link>
+                {/* <Link to="/auth/login" className="text-blue-500 underline"> */}
+                Login
+                {/* </Link> */}
               </p>
             </div>
           </form>

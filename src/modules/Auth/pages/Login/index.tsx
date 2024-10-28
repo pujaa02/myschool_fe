@@ -4,7 +4,7 @@ import { useAxiosPost } from 'hooks/useAxios';
 import { loginSchema } from 'modules/Auth/validationSchema';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { LoginFormFields } from './types';
 
 const Login = () => {
@@ -74,7 +74,7 @@ const Login = () => {
           </div>
           <div className="flex items-center justify-center mt-4 space-x-4">
             <p
-              onClick={() => navigate('/auth/forgot-password')}
+              onClick={() => navigate(`${PUBLIC_NAVIGATION.forgotPassword}`)}
               className="w-40 p-2 text-center text-white bg-blue-500 rounded-md cursor-pointer hover:bg-blue-600"
             >
               Forget Password
@@ -87,11 +87,11 @@ const Login = () => {
             </button>
           </div>
           <div className="mt-4 text-center">
-            <p>
+            <p onClick={() => navigate(`${PUBLIC_NAVIGATION.register}`)}>
               Don&apos;t have an account?{' '}
-              <Link to="/auth/register" className="text-blue-500 underline">
-                Register
-              </Link>
+              {/* <Link to="/auth/register" className="text-blue-500 underline"> */}
+              Register
+              {/* </Link> */}
             </p>
           </div>
         </form>
