@@ -3,7 +3,6 @@ import { isMultiValue } from '../helper';
 import { FormFieldProps } from '../types/formField.types';
 import ReactSelect from 'react-select';
 import { useState } from 'react';
-import Icon from 'components/Icon/index2';
 
 type OptionType = {
   value: string;
@@ -25,7 +24,6 @@ const CustomSelect = <TFormValues extends Record<string, unknown>>(
     menuPosition = 'fixed',
     disabled = false,
     required,
-    iconClass,
     control,
     placeholder,
     isMulti,
@@ -113,15 +111,8 @@ const CustomSelect = <TFormValues extends Record<string, unknown>>(
             );
           }}
         />
-        {icon && (
-          <Icon
-            className={iconClass}
-            iconType={icon}
-            name={'dashboardStrokeSD'}
-          />
-        )}
       </div>
-      {error && <p className="ip__Error">{error.message}</p>}
+      {error && <p className="text-red-600">{error.message}</p>}
     </div>
   );
 };

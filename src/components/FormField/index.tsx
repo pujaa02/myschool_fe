@@ -65,49 +65,14 @@ const FormField = <TFormValues extends Record<string, unknown>>(
         );
       case 'creatableSelect':
         return <CustomCreatableSelect {...updatedFormField} />;
-      // case 'creatableAsyncSelect':
-      //   return (
-      //     <CreatableAsyncSelect
-      //       {...updatedFormField}
-      //       getOptions={getOptions}
-      //       getOnChange={getOnChange}
-      //       isLoading={isLoading}
-      //     />
-      //   );
-
-      // case 'creatableAsyncSelectForEmail':
-      //   return (
-      //     <CreatableAsyncSelectForEmail
-      //       {...updatedFormField}
-      //       getOptions={getOptions}
-      //       getOnChange={getOnChange}
-      //       isLoading={isLoading}
-      //     />
-      //   );
-
-      // case 'CreatableAsyncSelectFormFieldForSearch':
-      //   return (
-      //     <CreatableAsyncSelectFormFieldForSearch
-      //       {...updatedFormField}
-      //       getOnChange={getOnChange}
-      //       getOptions={getOptions}
-      //       isLoading={isLoading}
-      //     />
-      //   );
       case 'textarea':
         return <TextAreaFormField {...updatedFormField} />;
       case 'color':
         return <ColorPickerFormField {...updatedFormField} />;
-      // case 'richTextEditor':
-      //   return <RichTextEditorFormField {...updatedFormField} />;
-      // case 'password':
-      //   return <PassportFormField {...updatedFormField} />;
       case 'radio':
         return <RadioFormField {...updatedFormField} />;
       case 'checkbox':
         return <CheckBoxFormField {...updatedFormField} />;
-      // case 'mask_input':
-      //   return <MaskInputFormField {...updatedFormField} />;
       case 'currency_format':
         return <CurrencyFormatFormField {...updatedFormField} />;
       case 'activity_topic':

@@ -11,10 +11,7 @@ const DefaultFormField = <TFormValues extends Record<string, unknown>>(
     register,
     label,
     required,
-    iconPosition,
-    icon,
     type,
-    className,
     fieldLimit,
     disabled = false,
     ...rest
@@ -25,24 +22,21 @@ const DefaultFormField = <TFormValues extends Record<string, unknown>>(
 
   return (
     <>
-      <label htmlFor={id} className="">
+      <label htmlFor={id} className="block mb-1 font-medium">
         {label}
-        {required ? <span className="required__sign">*</span> : ''}
+        {required ? <span className="ml-1 text-red-600">*</span> : ''}
       </label>
-      <div
-        className={`${icon ? 'ipel__wrapper ip__form__hasIcon' : ''}
-       ${iconPosition === 'right' ? 'ip__form__hasIcon__right' : ''} `}
-      >
+      <div className="">
         <input
           disabled={disabled}
           type={type}
-          className={`ip__input ${className}`}
+          className="w-full p-2 border border-gray-300 rounded-md"
           {...(register && register(name))}
           {...rest}
           maxLength={fieldLimit || 100}
         />
       </div>
-      {error && <p className="ip__Error">{error.message}</p>}
+      {error && <p className="text-red-600">{error.message}</p>}
     </>
   );
 };

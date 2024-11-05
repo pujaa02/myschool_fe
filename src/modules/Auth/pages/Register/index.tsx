@@ -53,7 +53,9 @@ const Register = () => {
   return (
     <>
       <div className="w-11/12 max-w-2xl p-6 mx-auto border-4 border-blue-600 rounded-lg bg-white mt-20">
-        <h2 className="text-center text-red-600 mb-6">Registration Page</h2>
+        <h2 className="text-2xl font-bold text-center text-red-600 mb-4">
+          Registration Page
+        </h2>
         <FormProvider {...formMethods}>
           <form onSubmit={OnSubmit} className="space-y-4">
             <div className="mx-[-10px] flex flex-wrap">
