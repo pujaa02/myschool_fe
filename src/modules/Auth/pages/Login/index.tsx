@@ -1,8 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import {
-  PRIVATE_NAVIGATION,
-  PUBLIC_NAVIGATION,
-} from 'constants/navigation.constant';
+import { PUBLIC_NAVIGATION } from 'constants/navigation.constant';
 import { useAxiosPost } from 'hooks/useAxios';
 import { loginSchema } from 'modules/Auth/validationSchema';
 import { useEffect } from 'react';
