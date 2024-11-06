@@ -1,15 +1,20 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { PUBLIC_NAVIGATION } from 'constants/navigation.constant';
+import {
+  PRIVATE_NAVIGATION,
+  PUBLIC_NAVIGATION,
+} from 'constants/navigation.constant';
 import { useAxiosPost } from 'hooks/useAxios';
 import { loginSchema } from 'modules/Auth/validationSchema';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { LoginFormFields } from './types';
+import { getActiveUserDataApi } from 'modules/Auth/services';
 
 const Login = () => {
   const navigate = useNavigate();
   const [loginUserApi] = useAxiosPost();
+  const { getActiveUser } = getActiveUserDataApi();
 
   const formMethods = useForm<LoginFormFields>({
     resolver: yupResolver(loginSchema),
@@ -27,7 +32,10 @@ const Login = () => {
         password: userData.password,
         remember: userData.remember,
       };
-      await loginUserApi('/auth/login', loginData);
+      const { data, error } = await loginUserApi('/auth/login', loginData);
+      if (data && !error) {
+        await getActiveUser();
+      }
     }
   });
 
