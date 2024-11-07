@@ -12,6 +12,7 @@ import { reducer as rolePermissionReducer } from './slices/rolePermissionSlice';
 import { reducer as SideBarReducer } from './slices/sidebarSlice';
 import { reducer as toastReducer } from './slices/toastSlice';
 import { reducer as tokenReducer } from './slices/tokenSlice';
+import { reducer as commonReducer } from './slices/commonSlice';
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -24,6 +25,7 @@ const rootReducer = combineReducers({
   countryJson: countryJsonReducer,
   isRead: isReadReducer,
   filterOptions: filterOptionsReducer,
+  common: commonReducer,
 });
 
 export default rootReducer;

@@ -14,6 +14,7 @@ import RequiresUnAuth from 'modules/Auth/components/RequiresUnAuth';
 import RequiresAuth from 'modules/Auth/components/RequiresAuth';
 import PageLoader from 'components/Loaders/PageLoader';
 import NotFound from 'modules/Auth/pages/NotFound';
+import DashBoardLayout from 'modules/DashBoard/components/DashBoardLayout';
 export interface RouteAttribute {
   path: string;
   component: JSX.Element;
