@@ -9,7 +9,7 @@ import { FormFieldProps } from '../types/formField.types';
 
 // ** others **
 import { reactDatePickerSelectedDate } from '../helper';
-import Icon from 'components/Icon/index2';
+import Icon from 'components/Icon';
 
 export const DateAndTimeFormField = <
   TFormValues extends Record<string, unknown>,

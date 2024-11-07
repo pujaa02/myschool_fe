@@ -9,7 +9,7 @@ import { Controller } from 'react-hook-form';
 
 //  ** types **
 import { FormFieldProps } from '../types/formField.types';
-import Icon from 'components/Icon/index2';
+import Icon from 'components/Icon';
 
 const CurrencyFormatFormField = <TFormValues extends Record<string, unknown>>(
   fieldProps: FormFieldProps<TFormValues>

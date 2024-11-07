@@ -81,7 +81,7 @@ const RouteComponent = () => {
               element={
                 <RequiresAuth module={route.module} type={route.type}>
                   <DashBoardLayout
-                    headerTitle={route.name || 'Welcome EsparkBiz!'}
+                    headerTitle={route.name || 'Welcome to MySchool!'}
                   >
                     <Suspense fallback={<PageLoader />}>
                       {route.component}

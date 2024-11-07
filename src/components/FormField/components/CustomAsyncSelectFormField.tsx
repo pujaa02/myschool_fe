@@ -10,7 +10,7 @@ import { FormFieldProps, Option } from '../types/formField.types';
 
 // ** others **
 import { isMultiValue } from '../helper';
-import Icon from 'components/Icon/index2';
+import Icon from 'components/Icon';
 
 export const CustomAsyncSelect = <TFormValues extends Record<string, unknown>>(
   props: FormFieldProps<TFormValues>

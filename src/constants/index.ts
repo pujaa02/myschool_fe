@@ -12,3 +12,5 @@ export enum USER_STATUS {
   INACTIVE = 'INACTIVE',
   ARCHIVED = 'ARCHIVED',
 }
+
+export const IS_CACHING_ACTIVE = true;

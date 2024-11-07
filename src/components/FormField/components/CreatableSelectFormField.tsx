@@ -3,7 +3,7 @@ import { isMultiValue } from '../helper';
 import { FormFieldProps } from '../types/formField.types';
 import CreatableSelect from 'react-select/creatable';
 import { useState } from 'react';
-import Icon from 'components/Icon/index2';
+import Icon from 'components/Icon';
 
 const CustomCreatableSelect = <TFormValues extends Record<string, unknown>>(
   fieldProps: FormFieldProps<TFormValues>

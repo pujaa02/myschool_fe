@@ -3,17 +3,17 @@ import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 // ** Components **
-import QuickAddDropDown from 'pages/Dashboard/components/QuickAddDropDown';
 import NotificationToggle from './QuickHeaderToggle/NotificationToggle';
 import ProfileToggle from './QuickHeaderToggle/ProfileToggle';
 import SmackDab from 'assets/images/Smackdab.svg';
 
 // ** Redux **
-import { getCurrentUser } from 'redux/slices/authSlice';
+import { getCurrentUser } from 'redux-toolkit/slices/authSlice';
 
 // ** hook **
 import useAuth from 'hooks/useAuth';
 import { isAuthenticate } from 'helper/auth.helper';
+import QuickAddDropDown from './QuickAddDropdown';
 // import { useUserNotificationSubscribeHook } from 'notification';
 
 // ** Constant **
@@ -22,22 +22,14 @@ import { isAuthenticate } from 'helper/auth.helper';
 // ** Types **
 // import { permissionOperatorEnum } from 'pages/auth/types/authGuard.types';
 // import { ToggleStateType } from '../types/toggleTypes/index.types';
-// import ZoomPhoneCall from './ZoomPhoneCall';
 
 interface Props {
   headerTitle: string;
 }
 
-// const initialToggleValue: ToggleStateType = {
-//   dialer: { callScreen: false, dialPed: false },
-// };
-
 export const Header = ({ headerTitle }: Props) => {
   // ** Ref **
   // const containerRef = useRef(null);
-
-  // ** State **
-  // const [headerToggle, setHeaderToggle] = useState(initialToggleValue);
 
   // ** Custom Hooks **
   const { hasAuthorized } = useAuth();
@@ -77,12 +69,6 @@ export const Header = ({ headerTitle }: Props) => {
               : headerTitle}
           </h1>
           <div className="rightWrapper inline-flex flex-wrap items-center">
-            {/* <ZoomPhoneCall
-              containerRef={containerRef}
-              initialToggleValue={initialToggleValue}
-              headerToggle={headerToggle}
-              setHeaderToggle={setHeaderToggle}
-            /> */}
             <NotificationToggle />
             {userQuickAddPermission && !isAuthenticate(loggedInUser) && (
               <QuickAddDropDown />

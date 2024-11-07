@@ -18,24 +18,19 @@ import {
 } from 'redux-toolkit/slices/commonSlice';
 
 // ** components **
-import Icon from 'components/Icon';
 import IconAnimation from 'components/IconAnimation';
-import SidebarMenuItem from 'pages/Dashboard/components/SidebarMenuItem';
+import Icon from 'components/Icon';
 
 // ** hooks **
 import useAuth from 'hooks/useAuth';
 
-// ** services **
-import { useLazyGetProductVersionQuery } from 'redux/api/commonApi';
-
-// ** Type **
-// import { IconTypeJson } from 'indexDB/indexdb.type';
-
 // ** others **
-import { IS_CACHING_ACTIVE } from 'constant';
 // import { BasicPermissionTypes } from 'constant/permissions.constant';
-import { SIDE_BAR } from 'constant/sideBar.constant';
 import { isAuthenticate } from 'helper/auth.helper';
+import { useLazyGetProductVersionQuery } from 'redux-toolkit/api/commonApi';
+import { SIDE_BAR } from 'constants/sideBar.constant';
+import { IS_CACHING_ACTIVE } from 'constants/index';
+import SidebarMenuItem from './SidebarMenuItem';
 
 interface Props {
   sidebarRef: Ref<HTMLDivElement>;
