@@ -3,6 +3,7 @@ import SiteLoader from 'components/Loaders/SiteLoader';
 import { REACT_APP_API_BASE_URL } from 'config';
 import useAuthGuard from 'hooks/useAuthGuard';
 import { createContext, useEffect, useState } from 'react';
+import RouteComponent from 'router/RouteComponent';
 // import { useSelector } from 'react-redux';
 // import { getAuth } from 'redux-toolkit/slices/authSlice';
 import openSocket, { Socket } from 'socket.io-client';

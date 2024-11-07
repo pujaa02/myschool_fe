@@ -11,7 +11,7 @@ import { getActiveUserDataApi } from './modules/Auth/services';
 import { currentPageCount } from './redux-toolkit/slices/paginationSlice';
 import { ActiveSelector } from './redux-toolkit/slices/sidebarSlice';
 import { getAuthToken } from './redux-toolkit/slices/tokenSlice';
-import { RootStateType } from './redux-toolkit/store';
+import { RootState } from './redux-toolkit/store';
 import {
   PRIVATE_NAVIGATION,
   PUBLIC_NAVIGATION,
@@ -84,7 +84,7 @@ const RolesDynamicRoutes = () => {
 };
 
 const Routes = () => {
-  const authData = useSelector((state: RootStateType) => state.auth);
+  const authData = useSelector((state: RootState) => state.auth);
   // const { i18n } = useTranslation();
   // const { getLanguages, isLoading: isLanguageLoading } = getLanguagesHook();
   const { getCountriesJson, isLoading: isCountryLoading } =
