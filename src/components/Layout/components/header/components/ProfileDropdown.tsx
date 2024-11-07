@@ -87,7 +87,9 @@ export const ProfileDropdown = () => {
                       : '/images/no-image.png'
                   }
                   imgClassName="w-full h-full object-cover"
-                  alt={user ? `${user.full_name}'s Profile` : 'User Profile Image'}
+                  alt={
+                    user ? `${user.full_name}'s Profile` : 'User Profile Image'
+                  }
                 />
               </span>
               <span className="block max-w-[calc(100%_-_40px)] ps-2 w-full">
@@ -105,7 +107,7 @@ export const ProfileDropdown = () => {
                 <Button
                   className="profile-item text-left"
                   onClickHandler={() => {
-                    navigate(PRIVATE_NAVIGATION.dashboard.view.path);
+                    navigate(PRIVATE_NAVIGATION.dashboard.view);
                     profileDropdown.closeDropDown();
                   }}
                 >
@@ -128,7 +130,8 @@ export const ProfileDropdown = () => {
                     navigate(
                       user?.role_name === ROLES.CompanyManager
                         ? PRIVATE_NAVIGATION.companyManager.courses.list.path
-                        : PRIVATE_NAVIGATION.privateIndividual.courses.list.path,
+                        : PRIVATE_NAVIGATION.privateIndividual.courses.list
+                            .path,
                       {
                         state: {
                           comingFromManagerForm: true,
@@ -180,7 +183,8 @@ export const ProfileDropdown = () => {
                     navigate(
                       user?.role_name === ROLES.CompanyManager
                         ? PRIVATE_NAVIGATION.companyManager.myCourses.list.path
-                        : PRIVATE_NAVIGATION.privateIndividual.myCourses.list.path
+                        : PRIVATE_NAVIGATION.privateIndividual.myCourses.list
+                            .path
                     );
                     profileDropdown.closeDropDown();
                   }}
@@ -201,13 +205,17 @@ export const ProfileDropdown = () => {
                     navigate(
                       user?.role_name === ROLES.CompanyManager
                         ? PRIVATE_NAVIGATION.companyManager.calendar.view.path
-                        : PRIVATE_NAVIGATION.privateIndividual.calendar.view.path
+                        : PRIVATE_NAVIGATION.privateIndividual.calendar.view
+                            .path
                     );
                     profileDropdown.closeDropDown();
                   }}
                 >
                   <span className="flex w-5 h-5">
-                    <Image iconName="calendarIcon2" iconClassName="w-full h-full" />
+                    <Image
+                      iconName="calendarIcon2"
+                      iconClassName="w-full h-full"
+                    />
                   </span>
                   <span className="block max-w-[calc(100%_-_28px)] ps-2 w-full">
                     {t('Header.profileDropdown.calendarLabel')}
@@ -221,7 +229,8 @@ export const ProfileDropdown = () => {
                   onClickHandler={() => {
                     if (ActiveCompany?.company?.id) {
                       navigate(
-                        PRIVATE_NAVIGATION.companyManager.requestCourse.list.path
+                        PRIVATE_NAVIGATION.companyManager.requestCourse.list
+                          .path
                       );
                       profileDropdown.closeDropDown();
                     } else {
@@ -243,7 +252,10 @@ export const ProfileDropdown = () => {
                 onClickHandler={handleViewProfile}
               >
                 <span className="flex w-5 h-5">
-                  <Image iconName="profileIcon" iconClassName="w-full h-full " />
+                  <Image
+                    iconName="profileIcon"
+                    iconClassName="w-full h-full "
+                  />
                 </span>
                 <span className="block max-w-[calc(100%_-_28px)] ps-2 w-full">
                   {t('Header.profileDropdown.viewProfileLabel')}
@@ -270,7 +282,10 @@ export const ProfileDropdown = () => {
                     onClickHandler={handleChangePassword}
                   >
                     <span className="flex w-5 h-5">
-                      <Image iconName="lockIcon" iconClassName="w-full h-full " />
+                      <Image
+                        iconName="lockIcon"
+                        iconClassName="w-full h-full "
+                      />
                     </span>
                     <span className="block max-w-[calc(100%_-_28px)] ps-2 w-full">
                       {t('Header.profileDropdown.changePasswordLabel')}
@@ -280,7 +295,10 @@ export const ProfileDropdown = () => {
               <Button onClickHandler={logout} className="profile-logout">
                 <div className="max-w-[calc(100%_-_28px)] text-left w-full flex justify-start">
                   <span className="flex w-5 h-5 me-2">
-                    <Image iconName="logoutIcon" iconClassName="w-full h-full " />
+                    <Image
+                      iconName="logoutIcon"
+                      iconClassName="w-full h-full "
+                    />
                   </span>
                   {t('Header.profileDropdown.logoutLabel')}
                 </div>
@@ -289,7 +307,9 @@ export const ProfileDropdown = () => {
           </div>
         )}
       </div>
-      {changePasswordModal?.isOpen && <ChangePassword modal={changePasswordModal} />}
+      {changePasswordModal?.isOpen && (
+        <ChangePassword modal={changePasswordModal} />
+      )}
       {AccessModal.isOpen &&
         ROLES.CompanyManager === user?.role_name &&
         _.isEmpty(ActiveCompany.company) && (

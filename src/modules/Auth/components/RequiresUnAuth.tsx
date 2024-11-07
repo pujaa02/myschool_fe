@@ -1,77 +1,51 @@
-// ** Packages **
-import React, { Suspense, useEffect } from 'react';
+// ** Import Packages **
 import { useSelector } from 'react-redux';
-import { Navigate, Outlet } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 
 // ** Redux **
-import { getAuth } from '../../../redux-toolkit/slices/authSlice';
-import { getAuthToken } from '../../../redux-toolkit/slices/tokenSlice';
+import {
+  getAuth,
+  getCurrentUser,
+} from '../../../redux-toolkit/slices/authSlice';
+import {
+  PRIVATE_NAVIGATION,
+  PUBLIC_NAVIGATION,
+} from '../../../constants/navigation.constant';
 
-// ** components **
-import PageLoader from '../../../components/Loaders/PageLoader';
+interface Props {
+  children: JSX.Element;
+}
 
-// ** constant **
-import { PUBLIC_NAVIGATION } from '../../../constants/navigation.constant';
+const RequiresUnAuth = ({ children }: Props) => {
+  const location = useLocation();
+  // ** Hooks **
+  const {
+    isAuthenticated,
+    // twoFactorEnable,
+    // twoFactorVerified,
+  } = useSelector(getAuth);
+  const user = useSelector(getCurrentUser);
+  const isUserVerified: boolean = !!user && user.verified;
 
-// ** services **
-import { getActiveUserDataApi } from '../services';
-
-// ** layout */
-import AuthLayout from './AuthLayout';
-
-import ErrorBoundary from '../../../modules/Auth/pages/ErrorBoundary';
-import { ErrorBoundary as ErrorBoundaryDependency } from 'react-error-boundary';
-// ** lazy **
-const Toast = React.lazy(() => import('../../../components/Toast'));
-const SocketComponent = React.lazy(
-  () => import('../../../components/socket/SocketComponent')
-);
-
-const RequiresUnAuth = () => {
-  const { isAuthenticated } = useSelector(getAuth);
-  const { token } = useSelector(getAuthToken);
-  const pathKeys = Object.keys(PUBLIC_NAVIGATION);
-  const { getActiveUser } = getActiveUserDataApi();
-
-  const getUserData = async () => {
-    if (
-      token &&
-      !isAuthenticated &&
-      !window.location.href.includes(PUBLIC_NAVIGATION.somethingWentWrong)
-    ) {
-      await getActiveUser();
-    }
-  };
-
-  useEffect(() => {
-    getUserData();
-  }, []);
-
-  if (
-    token &&
-    isAuthenticated &&
-    pathKeys.findIndex(
-      (dat: string) => PUBLIC_NAVIGATION[dat] === window.location.pathname
-    ) !== -1
-  ) {
-    return <Navigate to="/" />;
+  if (isAuthenticated && isUserVerified) {
+    return <Navigate to={PRIVATE_NAVIGATION.dashboard.view} />;
   }
 
-  return (
-    <ErrorBoundaryDependency FallbackComponent={ErrorBoundary}>
-      <AuthLayout
-        isSomethingWentWrong={
-          !window.location.href.includes(PUBLIC_NAVIGATION.somethingWentWrong)
-        }
-      >
-        <Suspense fallback={<PageLoader />}>
-          <Toast />
-          <SocketComponent />
-          <Outlet />
-        </Suspense>
-      </AuthLayout>
-    </ErrorBoundaryDependency>
-  );
+  if (
+    isAuthenticated &&
+    // twoFactorEnable &&
+    // !twoFactorVerified &&
+    location.pathname !== PUBLIC_NAVIGATION.towFactorAuth
+  ) {
+    return (
+      <Navigate
+        to={PUBLIC_NAVIGATION.towFactorAuth}
+        state={{ from: location }}
+      />
+    );
+  }
+
+  return children;
 };
 
 export default RequiresUnAuth;

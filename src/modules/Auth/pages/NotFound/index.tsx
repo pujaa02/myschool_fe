@@ -30,7 +30,7 @@ const NotFound = () => {
               variants="primary"
               className="w-fit mt-7 mx-auto"
               onClickHandler={() => {
-                navigate(PRIVATE_NAVIGATION.dashboard.view.path);
+                navigate(PRIVATE_NAVIGATION.dashboard.view);
               }}
             >
               {'pageNotFound.navigate'}

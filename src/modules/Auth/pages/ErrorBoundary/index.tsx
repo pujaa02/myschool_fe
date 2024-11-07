@@ -12,7 +12,7 @@ const ErrorBoundary = ({ error }: FallbackProps) => {
     event.preventDefault(); // Prevent default unload behavior
     event.returnValue = ''; // Chrome specific to show a message
 
-    window.location.href = PRIVATE_NAVIGATION.dashboard.view.path;
+    window.location.href = PRIVATE_NAVIGATION.dashboard.view;
   };
 
   return (

@@ -1,59 +1,63 @@
-// ** Packages **
-import { isEmpty } from 'lodash';
-import React, { Suspense, useEffect } from 'react';
+// ** Import Packages **
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 
-// ** Components **
-import Layout from '../../../components/Layout';
-import Loaders from '../../../components/Loaders';
-import { PRIVATE_NAVIGATION } from '../../../constants/navigation.constant';
+// ** Redux **
+import { RootState } from 'redux-toolkit/store';
 
-// ** constants **
-import { ROLES } from '../../../constants/roleAndPermission.constant';
+// ** Hook **
 
-// ** redux **
-import { getCurrentUser } from '../../../redux-toolkit/slices/authSlice';
+// ** Type **
 
-import ErrorBoundary from '../../../modules/Auth/pages/ErrorBoundary';
-import { ErrorBoundary as ErrorBoundaryDependency } from 'react-error-boundary';
+// ** Constant **
+import { PUBLIC_NAVIGATION } from '../../../constants/navigation.constant';
+import { RequiresAuthProps } from '../types/requireAuth.types';
+import useAuth from 'hooks/useAuth';
+// import TowFactorVerify from '../TowFactorVerify';
 
-// ** lazy **
-const Toast = React.lazy(() => import('../../../components/Toast'));
-const SocketComponent = React.lazy(
-  () => import('../../../components/socket/SocketComponent')
-);
+const RequiresAuth = ({ children, module, type }: RequiresAuthProps) => {
+  // ** Hooks **
+  const location = useLocation();
+  const authData = useSelector((state: RootState) => state.auth);
 
-type Props = {
-  children: JSX.Element;
-};
+  // ** Custom Hooks **
+  const { hasAuthorized } = useAuth();
+  const userHasPermission = hasAuthorized(); // [{ module, type }]
 
-const RequiresAuth = (props: Props) => {
-  const { children } = props;
-  const user = useSelector(getCurrentUser);
-  const navigate = useNavigate();
+  const {
+    organizationUUID,
+    isAuthenticated,
+    user,
+    twoFactorEnable,
+    twoFactorVerified,
+  } = authData;
+  const isVerified = user && !!user?.verified;
 
-  useEffect(() => {
-    if (user && user?.role_name === ROLES.Teacher && checkProfileSetup()) {
-      navigate(PRIVATE_NAVIGATION.teacher.view.path);
-    }
-  }, [user]);
+  if (
+    isAuthenticated &&
+    twoFactorEnable &&
+    !twoFactorVerified &&
+    location.pathname !== PUBLIC_NAVIGATION.towFactorAuth
+  ) {
+    return (
+      <>
+        {children}
+        {/* <TowFactorVerify isContinueLoggedIn /> */}
+      </>
+    );
+  }
 
-  const checkProfileSetup = () => {
-    return isEmpty(user?.trainer?.location);
-  };
+  // ** Not Logged In **
+  if (!isAuthenticated || !organizationUUID || (isVerified && !isVerified)) {
+    return <Navigate to={PUBLIC_NAVIGATION.login} state={{ from: location }} />;
+  }
 
-  return (
-    <ErrorBoundaryDependency FallbackComponent={ErrorBoundary}>
-      <Layout>
-        <Suspense fallback={<Loaders type="SiteLoader" />}>
-          <Toast />
-          <SocketComponent />
-          {children}
-        </Suspense>
-      </Layout>
-    </ErrorBoundaryDependency>
-  );
+  // ** Not Authorized **
+  if (module && type && !userHasPermission) {
+    return <Navigate to={PUBLIC_NAVIGATION.notAuthorized} />;
+  }
+
+  return children;
 };
 
 export default RequiresAuth;

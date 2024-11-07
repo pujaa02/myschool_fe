@@ -3,10 +3,17 @@ import {
   ModuleNames,
 } from 'constants/permisssion.constant';
 import { Route, Routes } from 'react-router-dom';
-import { generalRoutes, publicRoutes } from './routes/crm.routes';
+import {
+  generalRoutes,
+  privateRoutes,
+  publicRoutes,
+} from './routes/crm.routes';
 import SiteLoader from 'components/Loaders/SiteLoader';
 import { Suspense } from 'react';
 import RequiresUnAuth from 'modules/Auth/components/RequiresUnAuth';
+import RequiresAuth from 'modules/Auth/components/RequiresAuth';
+import PageLoader from 'components/Loaders/PageLoader';
+import NotFound from 'modules/Auth/pages/NotFound';
 export interface RouteAttribute {
   path: string;
   component: JSX.Element;

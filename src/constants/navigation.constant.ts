@@ -3,24 +3,19 @@
 import { FeaturesEnum, PermissionEnum } from './common.constant';
 
 export const PUBLIC_NAVIGATION: { [key: string]: string } = Object.freeze({
-  login: '/auth/login',
-  register: '/auth/register',
-  forgotPassword: '/auth/forgot-password',
-  verifyAccount: '/auth/verify-account',
-  resetPassword: '/auth/reset-password',
+  login: '/login',
+  register: '/register',
+  forgotPassword: '/forgot-password',
+  verifyAccount: '/verify-account',
+  resetPassword: '/reset-password',
   notFoundPage: '/404',
-  notAuthorized: '/auth/not-authorized',
-  futtureInCloud: '/auth',
+  notAuthorized: '/not-authorized',
   somethingWentWrong: '/something-went-wrong',
 });
 
 export const PRIVATE_NAVIGATION = Object.freeze({
   notFoundPage: '/404',
-  dashboard: {
-    view: {
-      path: '/',
-    },
-  },
+  dashboard: { view: '/' },
   teacher: {
     view: {
       path: '/',

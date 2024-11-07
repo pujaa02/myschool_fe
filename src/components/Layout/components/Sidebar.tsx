@@ -224,7 +224,7 @@ const Sidebar = () => {
       icon: 'navHomeIcon',
       uniqueId: 'SideNavigation.dashboardTitle',
       label: t('SideNavigation.dashboardTitle'),
-      path: PRIVATE_NAVIGATION.dashboard.view.path,
+      path: PRIVATE_NAVIGATION.dashboard.view,
       hasAccess: useRolePermission(FeaturesEnum.Dashboard, PermissionEnum.View),
     },
     {

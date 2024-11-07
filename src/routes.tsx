@@ -160,7 +160,7 @@ const Routes = () => {
       element: <NotFound />,
     },
     {
-      path: PRIVATE_NAVIGATION.dashboard.view.path,
+      path: PRIVATE_NAVIGATION.dashboard.view,
       element: <Dashboard />,
     },
     {
