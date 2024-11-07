@@ -26,14 +26,9 @@ const Sidebar = () => {
   const location = useLocation().pathname;
   const roles = useSelector(getRoles);
 
-  const { TrainingSpecialist, Trainer, SalesRep, Accounting } = ROLES;
+  const { Admin, Teacher, Student } = ROLES;
 
-  const rolesToDisplay: string[] = [
-    TrainingSpecialist,
-    Trainer,
-    SalesRep,
-    Accounting,
-  ];
+  const rolesToDisplay: string[] = [Admin, Teacher, Student];
 
   const allRoles = roles.filter((role) =>
     rolesToDisplay.find((displayRole) => displayRole === role.name)
@@ -180,7 +175,10 @@ const Sidebar = () => {
       uniqueId: 'SideNavigation.paymentTerm',
       label: t('SideNavigation.paymentTerms'),
       path: PRIVATE_NAVIGATION.paymentTerms.view.path,
-      hasAccess: useRolePermission(FeaturesEnum.PaymentTerms, PermissionEnum.View),
+      hasAccess: useRolePermission(
+        FeaturesEnum.PaymentTerms,
+        PermissionEnum.View
+      ),
     },
     {
       id: 2,
@@ -258,7 +256,9 @@ const Sidebar = () => {
       hasAccess: ROLES.Trainer === User?.role_name,
       // path: PRIVATE_NAVIGATION.trainerCourses.view.path,
       path: null,
-      isOpen: trainerCourseSubMenu?.some((item) => item.uniqueId === activeData),
+      isOpen: trainerCourseSubMenu?.some(
+        (item) => item.uniqueId === activeData
+      ),
       subRoute: trainerCourseSubMenu,
     },
     {
@@ -272,7 +272,8 @@ const Sidebar = () => {
       uniqueId: 'SideNavigation.client.companyTitle',
       label: t('SideNavigation.client.companyTitle'),
       hasAccess:
-        ROLES.Accounting === User?.role_name || ROLES.SalesRep === User?.role_name,
+        ROLES.Accounting === User?.role_name ||
+        ROLES.SalesRep === User?.role_name,
       path: PRIVATE_NAVIGATION.accountingCompany.list.path,
     },
     {
@@ -289,7 +290,9 @@ const Sidebar = () => {
       icon: 'navCoursesManagementIcon',
       uniqueId: 'SideNavigation.coursesManagement',
       label: t('SideNavigation.coursesManagement'),
-      isOpen: courseManagementSubMenu?.some((item) => item.uniqueId === activeData),
+      isOpen: courseManagementSubMenu?.some(
+        (item) => item.uniqueId === activeData
+      ),
       path: null,
       subRoute: courseManagementSubMenu,
       hasAccess: useRolePermission(
@@ -327,7 +330,10 @@ const Sidebar = () => {
       label: t('SideNavigation.coursesTitle'),
 
       path: PRIVATE_NAVIGATION.salesRepCourses.view.path,
-      hasAccess: useRolePermission(FeaturesEnum.SalesRepCourse, PermissionEnum.View),
+      hasAccess: useRolePermission(
+        FeaturesEnum.SalesRepCourse,
+        PermissionEnum.View
+      ),
     },
     // {
     //   icon: 'navProjectPipelineIcon',
@@ -355,14 +361,20 @@ const Sidebar = () => {
       uniqueId: 'SideNavigation.courseManagement',
       label: t('SideNavigation.coursePipeline'),
       path: PRIVATE_NAVIGATION.coursePipeline.view.path,
-      hasAccess: useRolePermission(FeaturesEnum.CoursePipeline, PermissionEnum.View),
+      hasAccess: useRolePermission(
+        FeaturesEnum.CoursePipeline,
+        PermissionEnum.View
+      ),
     },
     {
       icon: 'calendarIcon2',
       uniqueId: 'Calendar',
       label: t('SideNavigation.calendarTitle'),
       path: PRIVATE_NAVIGATION.calendar.view.path,
-      hasAccess: useRolePermission(FeaturesEnum.CalendarEvent, PermissionEnum.View),
+      hasAccess: useRolePermission(
+        FeaturesEnum.CalendarEvent,
+        PermissionEnum.View
+      ),
     },
     {
       icon: 'hashIcon',
@@ -407,7 +419,10 @@ const Sidebar = () => {
       uniqueId: 'SideNavigation.courseRequest',
       label: t('SideNavigation.CourseRequest'),
       path: PRIVATE_NAVIGATION.courseRequest.view.path,
-      hasAccess: useRolePermission(FeaturesEnum.CourseRequest, PermissionEnum.View),
+      hasAccess: useRolePermission(
+        FeaturesEnum.CourseRequest,
+        PermissionEnum.View
+      ),
     },
     {
       icon: 'navSystemLogsIcon',
@@ -429,7 +444,10 @@ const Sidebar = () => {
       uniqueId: 'SideNavigation.TrainerInvoice',
       label: t('SideNavigation.TrainerInvoice'),
       path: PRIVATE_NAVIGATION.trainerInvoice.list.path,
-      hasAccess: useRolePermission(FeaturesEnum.TrainerInvoice, PermissionEnum.View),
+      hasAccess: useRolePermission(
+        FeaturesEnum.TrainerInvoice,
+        PermissionEnum.View
+      ),
     },
     {
       icon: 'chartIcon',
