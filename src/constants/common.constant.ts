@@ -57,3 +57,12 @@ export const DropdownLoaderTypes = {
   Skeleton: 'Skeleton',
   Default: 'Default',
 };
+
+export const socketName = {
+  SEND_MESSAGE: 'send-message',
+  NEW_MESSAGE: 'new-message',
+  NEW_ROOM: 'new-room',
+  JOIN_ROOM: 'join-room',
+  USER_ACTIVE: 'user-active',
+  UNREAD_MESSAGE: 'unread-message-count',
+};

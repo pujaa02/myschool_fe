@@ -17,15 +17,15 @@ import { PUBLIC_NAVIGATION } from '../../../constants/navigation.constant';
 import { getActiveUserDataApi } from '../services';
 
 // ** layout */
-// import AuthLayout from './AuthLayout';
+import AuthLayout from './AuthLayout';
 
 import ErrorBoundary from '../../../modules/Auth/pages/ErrorBoundary';
 import { ErrorBoundary as ErrorBoundaryDependency } from 'react-error-boundary';
 // ** lazy **
 const Toast = React.lazy(() => import('../../../components/Toast'));
-// const SocketComponent = React.lazy(
-//   () => import('components/Socket/SocketComponent')
-// );
+const SocketComponent = React.lazy(
+  () => import('../../../components/socket/SocketComponent')
+);
 
 const RequiresUnAuth = () => {
   const { isAuthenticated } = useSelector(getAuth);
@@ -59,17 +59,17 @@ const RequiresUnAuth = () => {
 
   return (
     <ErrorBoundaryDependency FallbackComponent={ErrorBoundary}>
-      {/* <AuthLayout
+      <AuthLayout
         isSomethingWentWrong={
           !window.location.href.includes(PUBLIC_NAVIGATION.somethingWentWrong)
         }
-      > */}
-      <Suspense fallback={<PageLoader />}>
-        <Toast />
-        {/* <SocketComponent /> */}
-        <Outlet />
-      </Suspense>
-      {/* </AuthLayout> */}
+      >
+        <Suspense fallback={<PageLoader />}>
+          <Toast />
+          <SocketComponent />
+          <Outlet />
+        </Suspense>
+      </AuthLayout>
     </ErrorBoundaryDependency>
   );
 };

@@ -21,6 +21,11 @@ export const PRIVATE_NAVIGATION = Object.freeze({
       path: '/',
     },
   },
+  teacher: {
+    view: {
+      path: '/',
+    },
+  },
   usersManagement: {
     view: {
       navigationView: {
