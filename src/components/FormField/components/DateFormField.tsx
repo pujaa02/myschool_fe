@@ -7,15 +7,17 @@ import { useSelector } from 'react-redux';
 import MaskedInput from 'react-text-mask';
 
 // ** redux **
+import { getCurrentUserDateFormat } from 'redux-toolkit/slices/authSlice';
 
 // ** components **
+import Icon from 'components/Icon';
 
 // ** types **
 import { FormFieldProps } from '../types/formField.types';
 
 // ** others **
 import { reactDatePickerSelectedDate } from '../helper';
-import { getCurrentUserDateFormat } from 'redux-toolkit/slices/authSlice';
+
 export const DateFormField = <TFormValues extends Record<string, unknown>>(
   props: FormFieldProps<TFormValues>
 ) => {
@@ -23,6 +25,7 @@ export const DateFormField = <TFormValues extends Record<string, unknown>>(
     id,
     name,
     label,
+    icon,
     error,
     selected,
     isClearable,
@@ -34,6 +37,7 @@ export const DateFormField = <TFormValues extends Record<string, unknown>>(
     maxDate,
     showMonthDropdown,
     showYearDropdown,
+    iconClass,
     labelClass = '',
     dateFormat,
     getOnChangeDateValue,
@@ -56,7 +60,10 @@ export const DateFormField = <TFormValues extends Record<string, unknown>>(
         {label}
         {required ? <span className="required__sign">*</span> : ''}
       </label>
-      <div ref={dateRef} className="">
+      <div
+        ref={dateRef}
+        className={`ip__react__datepicker ${icon ? 'ipel__wrapper' : ''}`}
+      >
         <Controller
           name={name}
           control={otherFieldProps.control}
@@ -90,12 +97,12 @@ export const DateFormField = <TFormValues extends Record<string, unknown>>(
               scrollableYearDropdown
               scrollableMonthYearDropdown
               dropdownMode="select"
-              className="w-full p-2 border border-gray-300 rounded-md"
             />
           )}
         />
+        {icon && <Icon className={iconClass} iconType={icon} />}
       </div>
-      {error && <p className="text-red-600">{error.message}</p>}
+      {error && <p className="ip__Error">{error.message}</p>}
     </div>
   );
 };

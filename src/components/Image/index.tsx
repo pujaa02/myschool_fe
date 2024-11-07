@@ -1,37 +1,48 @@
+// ** import packages **
 import { useEffect, useState } from 'react';
+// ** components **
+import NameBadge from 'components/Badge/NameBadge';
+import Icon from 'components/Icon';
 
-// ** Components **
+// ** others **
+import { srcFilePath } from 'utils/util';
+// import { getPresignedImageUrl } from 'services/wasabi.service';
 
-// ** type **
-import NameBadge from '../../components/Badge/NameBadge';
-import Icon from '../../components/Icon';
-import Loaders from '../../components/Loaders';
-import { IImageProps } from './interface';
+interface Props {
+  imgPath?: string | File | null;
+  imgClassName?: string;
+  noImgIconWrapperClass?: string;
+  serverPath?: boolean;
+  first_name?: string;
+  last_name?: string;
+  disableLoader?: boolean;
+  color?: string;
+  height?: number;
+  width?: number;
+}
 
-const Image = (props: IImageProps) => {
+const Image = (props: Props) => {
   const {
-    src = '',
-    alt,
+    imgPath = '',
     imgClassName = '',
-    NameBadgeParentClass,
+    noImgIconWrapperClass = '',
     serverPath = false,
-    firstName,
-    lastName,
     disableLoader = false,
-    iconClassName,
-    iconName = 'noImgStrokeSD',
-    loaderType = '',
+    first_name,
     height,
     width,
-    loaderClassName,
-    showImageLoader = false,
+    last_name,
+    color,
   } = props;
+
   // ** States **
   const [fetchError, setFetchError] = useState(false);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   const [isMounted, setIsMounted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [imageURL, setImageURL] = useState<string | File>('');
+
   useEffect(() => {
     if (!isMounted) {
       setIsMounted(true);
@@ -39,63 +50,82 @@ const Image = (props: IImageProps) => {
   }, []);
 
   useEffect(() => {
-    setImageURL(src ?? '');
-  }, [src, height, width, serverPath]);
-  const imgComponent = () => {
-    if (imageURL) {
-      if (fetchError) {
-        return (
-          <img
-            className={`block ${imgClassName}`}
-            src="/images/no-image.png"
-            alt={`${alt ?? src}`}
-          />
-        );
-      }
-
-      return (
-        <img
-          className={`${!isImageLoaded ? 'hidden' : 'block'} ${imgClassName}`}
-          src={`${src}`}
-          alt={`${alt || src}`}
-          onLoad={() => setIsImageLoaded(true)}
-          onError={() => {
-            setFetchError(true);
-            setIsImageLoaded(true);
-          }}
-          height={height}
-          width={width}
-        />
-      );
+    if (imgPath && typeof imgPath === 'string' && serverPath) {
+      loadServerImage(imgPath);
+    } else {
+      setImageURL(imgPath || '');
     }
-    // if (!loaderType && iconName === 'noImgStrokeSD' && !firstName && !lastName) {
-    //   return (
-    //     <img
-    //       className={`block ${imgClassName}`}
-    //       src="/images/no-image.png"
-    //       alt={`${alt ?? 'No Image'}`}
-    //     />
-    //   );
-    // }
-    return <Icon className={iconClassName} name={iconName} />;
+  }, [imgPath, height, width, serverPath]);
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const loadServerImage = async (path: string) => {
+    /*  */
+
+    setIsLoading(true);
+    // const result = await getPresignedImageUrl(path, height, width, true);
+    setIsLoading(false);
+
+    // setImageURL(result || '');
+  };
+
+  const imgComponent = () => {
+    return (
+      <>
+        {imageURL ? (
+          <img
+            className={`img__element ${
+              !isImageLoaded ? 'hidden' : 'block'
+            } ${imgClassName}`}
+            src={srcFilePath(imageURL, serverPath)}
+            alt=""
+            onLoad={() => setIsImageLoaded(true)}
+            onError={() => {
+              setFetchError(true);
+              setIsImageLoaded(true);
+            }}
+          />
+        ) : (
+          <>
+            <div className={`no__img__icon ${noImgIconWrapperClass} || ''`}>
+              <Icon
+                iconType="profileFilledBlueIcon"
+                className="w-full h-full grayscale"
+              />
+            </div>
+          </>
+        )}
+      </>
+    );
   };
 
   return (
     <>
-      {!disableLoader && loaderType && (
-        <Loaders className={loaderClassName} type={loaderType || 'Spin'} />
-      )}
-      {(firstName || lastName) && (
-        <NameBadge
-          parentClass={NameBadgeParentClass}
-          FirstName={firstName ?? ''}
-          LastName={lastName ?? ''}
+      {fetchError ? (
+        <Icon
+          className="w-full h-full"
+          iconType="imageIconFilledPrimaryColor"
         />
+      ) : (
+        (isLoading || (!disableLoader && !isImageLoaded && imageURL)) && (
+          <div className="flex items-center justify-center img__loader">
+            <div className="i__ButtonLoader i__ButtonLoader__ForLight !m-0 !top-0" />
+          </div>
+        )
       )}
-      {!disableLoader && !isImageLoaded && imageURL && showImageLoader && (
-        <Loaders className={loaderClassName} type={loaderType || 'Spin'} />
+
+      {isMounted && !fetchError && !isLoading && (
+        <>
+          {!imageURL && (first_name || last_name) ? (
+            <NameBadge
+              first_name={first_name}
+              last_name={last_name}
+              color={color}
+            />
+          ) : (
+            imgComponent()
+          )}
+        </>
       )}
-      {imgComponent()}
     </>
   );
 };

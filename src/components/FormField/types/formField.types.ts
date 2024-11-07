@@ -1,6 +1,5 @@
 // ** external packages **
 import { Placement } from '@popperjs/core';
-// import { RichTextEditorComponent } from '@syncfusion/ej2-react-richtexteditor';
 import type {
   DetailedHTMLProps,
   InputHTMLAttributes,
@@ -23,7 +22,7 @@ import {
   MenuPosition,
   MultiValue,
   MultiValueGenericProps,
-  // OptionProps,
+  OptionProps,
   OptionsOrGroups,
   SingleValue,
   SingleValueProps,
@@ -31,8 +30,7 @@ import {
 import { Mask } from 'react-text-mask';
 
 // ** others **
-import ReactQuill from 'react-quill';
-import { IconTypes } from 'components/Icon';
+import type { IconTypes } from 'components/Icon';
 
 export type InputProps = DetailedHTMLProps<
   InputHTMLAttributes<HTMLInputElement>,
@@ -111,15 +109,13 @@ export type SimpleFormFieldProps<TFormValues extends FieldValues> = {
   defaultOptions?: Option[]; // async select
   isLoading?: boolean; // async select
   serveSideSearch?: boolean; // async select
-  // OptionComponent?: ComponentType<
-  //   OptionProps<Option, boolean, GroupBase<Option>>
-  // >;
-  OptionComponent?: any;
+  OptionComponent?: ComponentType<
+    OptionProps<Option, boolean, GroupBase<Option>>
+  >;
   // async select
   singleValueComponent?: ComponentType<
     SingleValueProps<Option, boolean, GroupBase<Option>>
   >;
-
   MultiValueComponent?: (props: MultiValueGenericProps) => JSX.Element;
   // async select
   noOptionsMessage?: () => ReactNode;
@@ -150,7 +146,6 @@ export type SimpleFormFieldProps<TFormValues extends FieldValues> = {
   setInputValue?: React.Dispatch<React.SetStateAction<boolean>>;
   dropdown_key?: string | number;
   getOnChangeDateValue?: (value: HTMLInputElement | null | undefined) => void;
-  editorRef?: React.RefObject<ReactQuill>;
   limit?: number;
 } & InputProps &
   TextAreaProps &
@@ -161,7 +156,6 @@ export type AsyncFormFieldProps<TFormValues extends FieldValues> = {
   icon?: IconTypes;
   iconClass?: string;
   name: Path<TFormValues>;
-  defaultValue?: string | number | ReadonlyArray<string> | undefined;
   options?: Option[];
   defaultChecked?: boolean;
   className?: string;

@@ -14,3 +14,30 @@ export enum USER_STATUS {
 }
 
 export const IS_CACHING_ACTIVE = true;
+
+export const NAME_BADGE_COLOR_COMBINATIONS = [
+  {
+    bgColor: 'ipBlue__transparentBG',
+    Color: 'ip__Blue',
+  },
+  {
+    bgColor: 'ipOrange__transparentBG',
+    Color: 'ip__Orange',
+  },
+  {
+    bgColor: 'ipGreen__transparentBG',
+    Color: 'ip__Green',
+  },
+  {
+    bgColor: 'ipRed__transparentBG',
+    Color: 'ip__Red',
+  },
+  {
+    bgColor: 'ipYellow__transparentBG',
+    Color: 'ip__Yellow',
+  },
+  {
+    bgColor: 'ipGray__transparentBG',
+    Color: 'dark__TextColor',
+  },
+];

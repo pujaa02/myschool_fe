@@ -1,29 +1,27 @@
-import Icon from 'components/Icon';
+// ** components **
+import PasswordInput from 'components/PasswordInput';
+
+// ** types **
 import { FormFieldProps } from '../types/formField.types';
 
-const DefaultFormField = <TFormValues extends Record<string, unknown>>(
+const PassportFormField = <TFormValues extends Record<string, unknown>>(
   fieldProps: FormFieldProps<TFormValues>
 ) => {
   const {
     id,
-    name,
-    error,
-    register,
     label,
     required,
-    iconPosition,
-    icon,
-    type,
     className,
-    fieldLimit,
-    iconClass,
+    name,
+    error,
+    icon,
+    iconPosition,
     disabled = false,
+    iconClass,
+    register,
     labelClass = '',
     ...rest
   } = fieldProps;
-
-  // remove unwanted props
-  delete rest.wrapperClass;
 
   return (
     <>
@@ -35,19 +33,19 @@ const DefaultFormField = <TFormValues extends Record<string, unknown>>(
         className={`${icon ? 'ipel__wrapper ip__form__hasIcon' : ''}
        ${iconPosition === 'right' ? 'ip__form__hasIcon__right' : ''} `}
       >
-        <input
+        <PasswordInput<TFormValues>
           disabled={disabled}
-          type={type}
+          name={name}
+          icon={icon}
+          iconClass={iconClass}
           className={`ip__input ${className}`}
-          {...(register && register(name))}
+          register={register}
           {...rest}
-          maxLength={fieldLimit || 100}
         />
-        {icon && <Icon className={iconClass} iconType={icon} />}
       </div>
       {error && <p className="ip__Error">{error.message}</p>}
     </>
   );
 };
 
-export default DefaultFormField;
+export default PassportFormField;

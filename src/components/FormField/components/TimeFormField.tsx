@@ -3,13 +3,13 @@ import { Controller } from 'react-hook-form';
 import ReactDatePicker from 'react-datepicker';
 
 // ** components **
+import Icon from 'components/Icon';
 
 // ** types **
 import { FormFieldProps } from '../types/formField.types';
 
 // ** others **
 import { reactDatePickerSelectedDate } from '../helper';
-import Icon from 'components/Icon';
 
 export const TimeFormField = <TFormValues extends Record<string, unknown>>(
   props: FormFieldProps<TFormValues>
@@ -72,13 +72,7 @@ export const TimeFormField = <TFormValues extends Record<string, unknown>>(
             </>
           )}
         />
-        {icon && (
-          <Icon
-            className={iconClass}
-            iconType={icon}
-            name={'dashboardStrokeSD'}
-          />
-        )}
+        {icon && <Icon className={iconClass} iconType={icon} />}
       </div>
       {error && <p className="ip__Error">{error.message}</p>}
     </div>

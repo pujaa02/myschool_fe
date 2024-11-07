@@ -48,13 +48,7 @@ const ActivityTopicField = <TFormValues extends Record<string, unknown>>(
           {...rest}
           maxLength={fieldLimit || 100}
         />
-        {icon && (
-          <Icon
-            className={iconClass}
-            iconType={icon}
-            name={'dashboardStrokeSD'}
-          />
-        )}
+        {icon && <Icon className={iconClass} iconType={icon} />}
       </div>
       {error && <p className="ip__Error">{error.message}</p>}
     </>

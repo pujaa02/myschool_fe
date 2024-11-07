@@ -4,18 +4,10 @@ import React, { useEffect, useState } from 'react';
 
 // ** Component **
 import Icon from 'components/Icon';
+import { useLazyGetAllColumnViewAPIQuery } from 'redux-toolkit/api/columnApi';
+import { IS_CACHING_ACTIVE } from 'constants/index';
+import { FiltersDataInterface, SortDataInterface } from 'components/ColumnManageModal/types/column.types';
 
-// ** API **
-import { useLazyGetAllColumnViewAPIQuery } from 'redux/api/columnApi';
-
-// ** Types **
-import {
-  FiltersDataInterface,
-  SortDataInterface,
-} from 'components/ColumnManageModal/types/column.types';
-
-// ** Constant **
-import { IS_CACHING_ACTIVE } from 'constant';
 
 interface Props {
   modelName: string;

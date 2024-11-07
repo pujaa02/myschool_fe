@@ -4,13 +4,13 @@ import { Controller } from 'react-hook-form';
 import ReactSelect, { InputActionMeta } from 'react-select';
 
 // ** components **
+import Icon from 'components/Icon';
 
 // ** types **
 import { FormFieldProps, Option } from '../types/formField.types';
 
 // ** others **
 import { isMultiValue } from '../helper';
-import Icon from 'components/Icon';
 
 export const CustomAsyncSelect = <TFormValues extends Record<string, unknown>>(
   props: FormFieldProps<TFormValues>
@@ -210,13 +210,7 @@ export const CustomAsyncSelect = <TFormValues extends Record<string, unknown>>(
             );
           }}
         />
-        {icon && (
-          <Icon
-            className={iconClass}
-            iconType={icon}
-            name={'dashboardStrokeSD'}
-          />
-        )}
+        {icon && <Icon className={iconClass} iconType={icon} />}
       </div>
       {error && <p className="ip__Error">{error.message}</p>}
     </>

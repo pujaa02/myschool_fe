@@ -1,9 +1,9 @@
+import Icon from 'components/Icon';
 import { Controller } from 'react-hook-form';
 import { isMultiValue } from '../helper';
 import { FormFieldProps } from '../types/formField.types';
 import CreatableSelect from 'react-select/creatable';
 import { useState } from 'react';
-import Icon from 'components/Icon';
 
 const CustomCreatableSelect = <TFormValues extends Record<string, unknown>>(
   fieldProps: FormFieldProps<TFormValues>
@@ -32,7 +32,7 @@ const CustomCreatableSelect = <TFormValues extends Record<string, unknown>>(
     autoFocus,
   } = fieldProps;
 
-  const [isMenuOpen, setIsMenuOpen] = useState<boolean | undefined>(false);
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean | undefined>(false)
 
   return (
     <>
@@ -42,9 +42,8 @@ const CustomCreatableSelect = <TFormValues extends Record<string, unknown>>(
           {required ? <span className="required__sign">*</span> : ''}
         </label>
         <div
-          className={`ip__Select ${
-            icon ? 'ipel__wrapper ip__form__hasIcon' : ''
-          }`}
+          className={`ip__Select ${icon ? 'ipel__wrapper ip__form__hasIcon' : ''
+            }`}
         >
           <Controller
             name={name}
@@ -70,7 +69,7 @@ const CustomCreatableSelect = <TFormValues extends Record<string, unknown>>(
                     onFocus={() => setIsMenuOpen(true)}
                     onBlur={() => setIsMenuOpen(undefined)}
                     onChange={(selectedOption) => {
-                      setIsMenuOpen(undefined);
+                      setIsMenuOpen(undefined)
                       if (isMultiValue(selectedOption)) {
                         const tempSelectedOption = selectedOption.map(
                           (obj) => obj.value
@@ -100,13 +99,7 @@ const CustomCreatableSelect = <TFormValues extends Record<string, unknown>>(
               );
             }}
           />
-          {icon && (
-            <Icon
-              className={iconClass}
-              iconType={icon}
-              name={'dashboardStrokeSD'}
-            />
-          )}
+          {icon && <Icon className={iconClass} iconType={icon} />}
         </div>
         {error && <p className="ip__Error">{error.message}</p>}
       </div>

@@ -18,8 +18,9 @@ const RadioFormField = <TFormValues extends Record<string, unknown>>(
 
   return (
     <>
-      {options?.length ? (
-        <>
+      {
+        options?.length ? <>
+
           {options.map((option) => (
             <div
               className={`ip__Radio ${wrapperClass}`}
@@ -42,28 +43,27 @@ const RadioFormField = <TFormValues extends Record<string, unknown>>(
               </Fragment>
             </div>
           ))}
-        </>
-      ) : (
-        <div
-          className={`ip__Radio ${wrapperClass}`}
-          key={rest.label?.toString()}
-        >
-          <Fragment key={rest.label?.toString()}>
-            <input
-              disabled={disabled}
-              type="radio"
-              value={rest.value}
-              {...(register && register(name))}
-              {...rest}
-            />
+        </> :
+          <div
+            className={`ip__Radio ${wrapperClass}`}
+            key={rest.label?.toString()}
+          >
+            <Fragment key={rest.label?.toString()}>
+              <input
+                disabled={disabled}
+                type="radio"
+                value={rest.value}
+                {...(register && register(name))}
+                {...rest}
+              />
 
-            <label htmlFor={id} className={`rc__Label ${labelClass}`}>
-              <span className="custom__checkRadio__tick hidden" />
-              {rest.label}
-            </label>
-          </Fragment>
-        </div>
-      )}
+              <label htmlFor={id} className={`rc__Label ${labelClass}`}>
+                <span className="custom__checkRadio__tick hidden" />
+                {rest.label}
+              </label>
+            </Fragment>
+          </div>
+      }
       {error && <p className="ip__Error">{error.message}</p>}
     </>
   );

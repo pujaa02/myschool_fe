@@ -1,18 +1,18 @@
 // ** external packages **
-// import { format } from 'date-fns-tz';
+import { format } from 'date-fns-tz';
 import ReactDatePicker from 'react-datepicker';
 import { Controller } from 'react-hook-form';
 // ** components **
+import Icon from 'components/Icon';
 
 // ** types **
 import { FormFieldProps } from '../types/formField.types';
 
 // ** others **
 import { reactDatePickerSelectedDate } from '../helper';
-import Icon from 'components/Icon';
 
 export const DateAndTimeFormField = <
-  TFormValues extends Record<string, unknown>,
+  TFormValues extends Record<string, unknown>
 >(
   props: FormFieldProps<TFormValues>
 ) => {
@@ -61,7 +61,7 @@ export const DateAndTimeFormField = <
                 onChange(
                   e
                     ? new Date(
-                        (new Date(e), 'MM-dd-yyyy hh:mm aa')
+                        format(new Date(e), 'MM-dd-yyyy hh:mm aa')
                       ).toISOString()
                     : e
                 )
@@ -85,13 +85,7 @@ export const DateAndTimeFormField = <
             />
           )}
         />
-        {icon && (
-          <Icon
-            className={iconClass}
-            iconType={icon}
-            name={'dashboardStrokeSD'}
-          />
-        )}
+        {icon && <Icon className={iconClass} iconType={icon} />}
       </div>
       {error && <p className="ip__Error">{error.message}</p>}
     </div>

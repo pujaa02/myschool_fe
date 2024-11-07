@@ -6,10 +6,10 @@ import { useEffect, useRef } from 'react';
 import { Controller } from 'react-hook-form';
 
 // ** components **
+import Icon from 'components/Icon';
 
 //  ** types **
 import { FormFieldProps } from '../types/formField.types';
-import Icon from 'components/Icon';
 
 const CurrencyFormatFormField = <TFormValues extends Record<string, unknown>>(
   fieldProps: FormFieldProps<TFormValues>
@@ -42,7 +42,7 @@ const CurrencyFormatFormField = <TFormValues extends Record<string, unknown>>(
     if (currencyInputRef.current) {
       im.mask(currencyInputRef.current);
     }
-  }, []);
+  }, []); 
 
   return (
     <>
@@ -80,13 +80,7 @@ const CurrencyFormatFormField = <TFormValues extends Record<string, unknown>>(
             );
           }}
         />
-        {icon && (
-          <Icon
-            className={iconClass}
-            iconType={icon}
-            name={'dashboardStrokeSD'}
-          />
-        )}
+        {icon && <Icon className={iconClass} iconType={icon} />}
       </div>
       {error && <p className="ip__Error">{error.message}</p>}
     </>

@@ -8,6 +8,8 @@ import { reducer as rolePermissionReducer } from './slices/rolePermissionSlice';
 import { reducer as SideBarReducer } from './slices/sidebarSlice';
 import { reducer as toastReducer } from './slices/toastSlice';
 import { reducer as commonReducer } from './slices/commonSlice';
+import { columnApi } from './api/columnApi';
+import { activityApi } from './api/activityApi';
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -16,6 +18,8 @@ const rootReducer = combineReducers({
   countryJson: countryJsonReducer,
   common: commonReducer,
   toast: toastReducer,
+  [columnApi.reducerPath]: columnApi.reducer,
+  [activityApi.reducerPath]: activityApi.reducer,
 });
 
 export default rootReducer;

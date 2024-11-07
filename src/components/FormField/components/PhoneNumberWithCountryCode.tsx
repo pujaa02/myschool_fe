@@ -1,15 +1,15 @@
 import { FormFieldProps } from '../types/formField.types';
 import { Controller } from 'react-hook-form';
 import PhoneInput, { CountryData } from 'react-phone-input-2';
-import 'react-phone-input-2/lib/bootstrap.css';
 
 const PhoneNumberWithCountryCode = <
-  TFormValues extends Record<string, unknown>,
+  TFormValues extends Record<string, unknown>
 >(
   fieldProps: FormFieldProps<TFormValues>
 ) => {
   const { name, control, id, label, placeholder, labelClass, required, error } =
     fieldProps;
+
   return (
     <>
       <label htmlFor={id} className={`if__label ${labelClass}`}>
@@ -23,7 +23,7 @@ const PhoneNumberWithCountryCode = <
           const valueData = value ?? null;
           return (
             <PhoneInput
-              country="in"
+              country="us"
               placeholder={placeholder}
               onChange={(
                 valueNo: string,
@@ -31,10 +31,9 @@ const PhoneNumberWithCountryCode = <
                 event: React.ChangeEvent<HTMLInputElement>,
                 formattedValue: string
               ) => {
-                console.log('🚀 ~ valueNo:', valueNo, data);
-                if (formattedValue === '+') {
-                  onChange('');
-                } else {
+                if(formattedValue==="+"){
+                  onChange("");
+                }else{
                   onChange(formattedValue);
                 }
                 if (event.type === 'click') {
@@ -52,4 +51,5 @@ const PhoneNumberWithCountryCode = <
     </>
   );
 };
+
 export default PhoneNumberWithCountryCode;

@@ -15,3 +15,16 @@ export const clearBrowserCookiesAndStorage = () => {
       .replace(/=.*/, `=;expires=${new Date(0).toUTCString()};path=/`);
   });
 };
+
+export const srcFilePath = (file: string | File, serverPath = false) => {
+  if (typeof file === 'string') {
+    if (serverPath) {
+      return `${file}`;
+    }
+  } else if (file) {
+    return URL.createObjectURL(file);
+  } else {
+    //
+  }
+  return file;
+};
