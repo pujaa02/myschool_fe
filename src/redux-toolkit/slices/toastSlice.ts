@@ -2,44 +2,32 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { PURGE } from 'redux-persist';
 // ======================================================
-import { RootState } from '../store';
+import { RootState } from 'redux-toolkit/store';
 
-export type ToastSliceType = {
+export interface ToastInterface {
   message: string | null;
   type: string | null;
   id: number;
-  variant: string;
-};
-export type ToastCommonSliceType = {
-  toasts: ToastSliceType[];
-};
+}
 
-const initialState: ToastCommonSliceType = {
-  toasts: [],
-};
+const initialState: ToastInterface[] = [];
 
 const toastSlice = createSlice({
-  name: 'commonToast',
+  name: 'toast',
   initialState,
   reducers: {
-    setToast(
-      state: ToastCommonSliceType,
-      action: PayloadAction<ToastSliceType>
-    ) {
-      state.toasts.push({
+    setToast(state: ToastInterface[], action: PayloadAction<ToastInterface>) {
+      state.push({
         message: action.payload.message,
         type: action.payload.type,
         id: action.payload.id,
-        variant: action.payload.variant,
       });
     },
     removeToast(
-      state: ToastCommonSliceType,
+      state: ToastInterface[],
       action: PayloadAction<{ id: number }>
     ) {
-      state.toasts = state.toasts.filter(
-        (toast) => toast.id !== action.payload.id
-      );
+      return state.filter((toast) => toast.id !== action.payload.id);
     },
   },
   extraReducers(builder) {
@@ -50,6 +38,6 @@ const toastSlice = createSlice({
 });
 export const { reducer } = toastSlice;
 export const { setToast, removeToast } = toastSlice.actions;
-export const getToast = (state: RootState) => state.commonToast.toasts;
+export const getToast = (state: RootState) => state.toast;
 
 export default toastSlice;

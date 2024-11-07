@@ -16,7 +16,6 @@ import { reducer as commonReducer } from './slices/commonSlice';
 
 const rootReducer = combineReducers({
   auth: authReducer,
-  commonToast: toastReducer,
   language: languageReducer,
   sidebar: SideBarReducer,
   token: tokenReducer,
@@ -26,6 +25,7 @@ const rootReducer = combineReducers({
   isRead: isReadReducer,
   filterOptions: filterOptionsReducer,
   common: commonReducer,
+  toast: toastReducer,
 });
 
 export default rootReducer;
