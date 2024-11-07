@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootStateType } from '../store';
+import { RootState } from '../store';
 
 type SideBarType = {
   isOpen: boolean;
@@ -31,8 +31,8 @@ const slice = createSlice({
 });
 
 export const { reducer } = slice;
-export const SidebarSelector = (state: RootStateType) => state.sidebar.isOpen;
-export const ActiveSelector = (state: RootStateType) => state.sidebar.isActive;
+export const SidebarSelector = (state: RootState) => state.sidebar.isOpen;
+export const ActiveSelector = (state: RootState) => state.sidebar.isActive;
 export const { hideSidebar, showSidebar, activeSidebar, clearActiveSidebar } =
   slice.actions;
 

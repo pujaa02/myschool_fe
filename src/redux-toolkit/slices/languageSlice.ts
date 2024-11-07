@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootStateType } from '../store';
+import { RootState } from '../store';
 
 export type LanguageType = {
   language: string;
@@ -30,8 +30,12 @@ const slice = createSlice({
   name: 'language',
   initialState,
   reducers: {
-    setLanguage(state: LanguageType, action: PayloadAction<{ language: string }>) {
-      if (action.payload.language !== '') state.language = action.payload.language;
+    setLanguage(
+      state: LanguageType,
+      action: PayloadAction<{ language: string }>
+    ) {
+      if (action.payload.language !== '')
+        state.language = action.payload.language;
     },
     setAllLanguage(
       state: LanguageType,
@@ -49,10 +53,11 @@ const slice = createSlice({
 });
 
 export const { reducer } = slice;
-export const useLanguage = (state: RootStateType) => state.language;
-export const useDefaultLanguage = (state: RootStateType) =>
+export const useLanguage = (state: RootState) => state.language;
+export const useDefaultLanguage = (state: RootState) =>
   state.language.defaultLanguage;
 
-export const { setLanguage, setAllLanguage, setDefaultLanguage } = slice.actions;
+export const { setLanguage, setAllLanguage, setDefaultLanguage } =
+  slice.actions;
 
 export default slice;

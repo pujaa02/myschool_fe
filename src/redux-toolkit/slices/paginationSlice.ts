@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { RootStateType } from '../store';
+import { RootState } from '../store';
 
 type paginationType = {
   currentPage: number;
@@ -32,11 +32,11 @@ export const slice = createSlice({
 
 export const { reducer } = slice;
 
-export const currentPageSelector = (state: RootStateType) => {
+export const currentPageSelector = (state: RootState) => {
   return state.currentPage;
 };
 
-export const currentNotificationPageSelector = (state: RootStateType) => {
+export const currentNotificationPageSelector = (state: RootState) => {
   return state.currentPage.currentNotificationPage;
 };
 

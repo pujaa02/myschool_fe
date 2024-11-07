@@ -1,6 +1,6 @@
 // =================== import packages ==================
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootStateType } from '../store';
+import { RootState } from '../store';
 
 export type RoleType = {
   id: number;
@@ -68,11 +68,11 @@ export const { reducer } = rolePermissionSlice;
 
 export const { setRoles, setPermission, setRolePermission, setAccess } =
   rolePermissionSlice.actions;
-export const getRoles = (state: RootStateType) => state.rolePermission.roles;
-export const getPermission = (state: RootStateType) =>
+export const getRoles = (state: RootState) => state.rolePermission.roles;
+export const getPermission = (state: RootState) =>
   state.rolePermission.permission;
-export const getRolesPermission = (state: RootStateType) =>
+export const getRolesPermission = (state: RootState) =>
   state.rolePermission.rolePermissions;
-export const getAccess = (state: RootStateType) => state.rolePermission.access;
+export const getAccess = (state: RootState) => state.rolePermission.access;
 
 export default rolePermissionSlice;

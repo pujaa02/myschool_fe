@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootStateType } from '../store';
+import { RootState } from '../store';
 
 type NotificationReadType = {
   isRead: boolean;
@@ -23,7 +23,7 @@ const slice = createSlice({
 });
 
 export const { reducer } = slice;
-export const useIsRead = (state: RootStateType) => state.isRead;
+export const useIsRead = (state: RootState) => state.isRead;
 
 export const { setIsRead } = slice.actions;
 

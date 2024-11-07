@@ -2,7 +2,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { PURGE } from 'redux-persist';
 // ======================================================
-import { RootStateType } from '../store';
+import { RootState } from '../store';
 
 export type ToastSliceType = {
   message: string | null;
@@ -50,6 +50,6 @@ const toastSlice = createSlice({
 });
 export const { reducer } = toastSlice;
 export const { setToast, removeToast } = toastSlice.actions;
-export const getToast = (state: RootStateType) => state.commonToast.toasts;
+export const getToast = (state: RootState) => state.commonToast.toasts;
 
 export default toastSlice;

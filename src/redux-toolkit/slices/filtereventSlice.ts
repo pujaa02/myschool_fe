@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootStateType } from '../store';
+import { RootState } from '../store';
 
 interface FilterInfo {
   id: string;
@@ -33,7 +33,7 @@ const filterOptionsSlice = createSlice({
 });
 
 export const { reducer } = filterOptionsSlice;
-export const useFilterOptions = (state: RootStateType) => state.filterOptions;
+export const useFilterOptions = (state: RootState) => state.filterOptions;
 
 export const { setFilterOptions } = filterOptionsSlice.actions;
 

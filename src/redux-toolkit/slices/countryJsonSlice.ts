@@ -1,6 +1,6 @@
 // ** Redux **
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootStateType } from '../store';
+import { RootState } from '../store';
 
 // ** Types **
 export type CountryJsonSliceType = {
@@ -44,15 +44,15 @@ export const { reducer } = slice;
 
 export const { setCountries, setState, setCities } = slice.actions;
 
-export const getCountriesJson = (state: RootStateType) => ({
+export const getCountriesJson = (state: RootState) => ({
   countries: state.countryJson.country,
 });
 
-export const getCitiesJson = (state: RootStateType) => ({
+export const getCitiesJson = (state: RootState) => ({
   cities: state.countryJson.city,
 });
 
-export const getStateJson = (state: RootStateType) => ({
+export const getStateJson = (state: RootState) => ({
   states: state.countryJson.state,
 });
 
