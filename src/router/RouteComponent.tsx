@@ -8,13 +8,13 @@ import {
   privateRoutes,
   publicRoutes,
 } from './routes/crm.routes';
-import SiteLoader from 'components/Loaders/SiteLoader';
 import { Suspense } from 'react';
 import RequiresUnAuth from 'modules/Auth/components/RequiresUnAuth';
 import RequiresAuth from 'modules/Auth/components/RequiresAuth';
-import PageLoader from 'components/Loaders/PageLoader';
 import NotFound from 'modules/Auth/pages/NotFound';
 import DashBoardLayout from 'modules/DashBoard/components/DashBoardLayout';
+import PageLoader from 'components/loader/PageLoader';
+import SiteLoader from 'components/loader/SiteLoader';
 export interface RouteAttribute {
   path: string;
   component: JSX.Element;

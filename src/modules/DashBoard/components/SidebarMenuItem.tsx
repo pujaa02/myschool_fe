@@ -12,17 +12,15 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 // ** Hook **
-import useWindowDimensions from 'hooks/useWindowDimensions';
 
 // ** Icon **
 import Icon, { IconTypes } from 'components/Icon';
 
 // ** Constant **
-import { PRIVATE_NAVIGATION } from 'constant/navigation.constant';
 import {
   getSidebarIsCollapse,
   setSidebarIsCollapse,
-} from 'redux/slices/commonSlice';
+} from 'redux-toolkit/slices/commonSlice';
 // import { IconTypeJson } from 'indexDB/indexdb.type';
 import IconAnimation from 'components/IconAnimation';
 

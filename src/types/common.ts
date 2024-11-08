@@ -1,5 +1,5 @@
+import { IconTypes } from 'components/Icon';
 import { FormikValues } from 'formik';
-import { IconTypes } from '../components/Icon/types';
 
 export interface QueryOptions {
   page?: number;

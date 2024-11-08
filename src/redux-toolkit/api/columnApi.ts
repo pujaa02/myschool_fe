@@ -54,7 +54,7 @@ export const columnApi = createApi({
           extraOptions: { ...rest },
         };
       },
-      async onQueryStarted(arg, api) {
+      async onQueryStarted(_arg, api) {
         try {
           const { queryFulfilled } = api;
           const updatedInfo = await queryFulfilled;
@@ -130,7 +130,7 @@ export const columnApi = createApi({
           extraOptions: { ...rest },
         };
       },
-      async onQueryStarted(arg, api) {
+      async onQueryStarted(_arg, api) {
         try {
           const { queryFulfilled } = api;
           const updatedInfo = await queryFulfilled;
@@ -163,7 +163,7 @@ export const columnApi = createApi({
           extraOptions: { ...rest },
         };
       },
-      async onQueryStarted(arg, api) {
+      async onQueryStarted(_arg, api) {
         try {
           const { queryFulfilled } = api;
           const updatedInfo = await queryFulfilled;
