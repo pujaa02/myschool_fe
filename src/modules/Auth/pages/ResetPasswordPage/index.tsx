@@ -1,8 +1,7 @@
 // ** libraries **
-import { useLocation } from 'react-router-dom';
+// import { useLocation } from 'react-router-dom';
 
 // ** components **
-import Button from 'components/Button/Button';
 
 // ** constants **
 
@@ -14,9 +13,10 @@ import FormField from 'components/FormField';
 import { ResetPasswordFormFields } from './types';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { resetPasswordSchema } from 'modules/Auth/validationSchema';
+import Button from 'components/Button';
 
 const ResetPasswordPage = () => {
-  const { state } = useLocation();
+  // const { state } = useLocation();
 
   const formMethods = useForm<ResetPasswordFormFields>({
     resolver: yupResolver(resetPasswordSchema),
@@ -35,7 +35,7 @@ const ResetPasswordPage = () => {
       };
       const config = {
         headers: {
-          Authorization: `jwt ${state.access_token}`,
+          // Authorization: `jwt ${state.access_token}`,
         },
       };
       await resetPasswordApi('/auth/set-password', resetPassword, config);

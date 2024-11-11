@@ -8,8 +8,9 @@ import storage from 'redux-persist/lib/storage';
 import persistStore from 'redux-persist/es/persistStore';
 import rootReducer from './rootReducer';
 import baseQueryApi from './api/baseQueryApi';
+import { userApi } from './api/userApi';
 
-const middleWares: Middleware[] = [baseQueryApi.middleware];
+const middleWares: Middleware[] = [baseQueryApi.middleware, userApi.middleware,];
 
 const persistConfig = {
   key: 'MYSCHOOL',

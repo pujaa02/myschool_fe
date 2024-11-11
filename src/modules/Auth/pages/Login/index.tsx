@@ -6,12 +6,12 @@ import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { LoginFormFields } from './types';
-import { getActiveUserDataApi } from 'modules/Auth/services';
+// import { getActiveUserDataApi } from 'modules/Auth/services';
 
 const Login = () => {
   const navigate = useNavigate();
   const [loginUserApi] = useAxiosPost();
-  const { getActiveUser } = getActiveUserDataApi();
+  // const { getActiveUser } = getActiveUserDataApi();
 
   const formMethods = useForm<LoginFormFields>({
     resolver: yupResolver(loginSchema),
@@ -31,7 +31,7 @@ const Login = () => {
       };
       const { data, error } = await loginUserApi('/auth/login', loginData);
       if (data && !error) {
-        await getActiveUser();
+        // await getActiveUser();
       }
     }
   });

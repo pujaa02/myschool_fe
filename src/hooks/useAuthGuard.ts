@@ -1,20 +1,14 @@
 // ** external packages **
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useLazyGetLoggedUserQuery } from 'redux-toolkit/api/userApi';
+import { getAuth, setAuthenticated, setAuthInitialized, setCredentials } from 'redux-toolkit/slices/authSlice';
 
 // ** redux **
-import {
-  getAuth,
-  setAuthenticated,
-  setAuthInitialized,
-  setCredentials,
-  // setPermissions,
-} from 'redux/slices/authSlice';
+
 
 // ** services **
-import { setNotificationInterval } from 'redux/slices/notificationSlice';
-import { NOTIFICATION_INTERVAL_TIME } from 'constant';
-import { useLazyGetLoggedUserQuery } from 'redux/api/userApi';
+
 
 const useAuthGuard = () => {
   let abortFlag = false;
@@ -45,10 +39,9 @@ const useAuthGuard = () => {
             !two_factor_enabled ||
             (two_factor_enabled && two_factor_verified)
           ) {
-            dispatch(setOrganizationUUID(organizationUUID));
             dispatch(setCredentials({ user }));
             // dispatch(setPermissions(permissions));
-            dispatch(setNotificationInterval(NOTIFICATION_INTERVAL_TIME));
+            // dispatch(setNotificationInterval(NOTIFICATION_INTERVAL_TIME));
           }
         }
 

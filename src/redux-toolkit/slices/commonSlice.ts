@@ -8,6 +8,7 @@ import { RootState } from 'redux-toolkit/store';
 import { PURGE } from 'redux-persist';
 import { ModuleNames } from 'constants/permisssion.constant';
 import { ColumnViewInterface } from 'components/ColumnViewListDropDown';
+import { Option } from 'components/FormField/types/formField.types';
 
 export type moduleType = {
   leadId: string;
@@ -20,6 +21,7 @@ export type moduleType = {
 export interface CommonInterface {
   renderModule?: {
     is_visibility: boolean;
+    email_details: boolean;
   };
   module: {
     [key: string]: {
@@ -46,6 +48,7 @@ export interface CommonInterface {
   isViewDiscardPromptEnabled: boolean;
   isViewUpdateStatus: boolean;
   openDiscardConformationModal: boolean;
+  mailProviderOption: Option[];
 
   // csrf: {
   //   token?: string;
@@ -57,6 +60,7 @@ export interface CommonInterface {
 const initialState: CommonInterface = {
   renderModule: {
     is_visibility: false,
+    email_details: false,
   },
   module: {},
   sidebarIsCollapse: true,
@@ -68,6 +72,7 @@ const initialState: CommonInterface = {
   isViewDiscardPromptEnabled: false,
   isViewUpdateStatus: false,
   openDiscardConformationModal: false,
+  mailProviderOption: [],
 };
 
 const slice = createSlice({
@@ -144,6 +149,15 @@ const slice = createSlice({
       const { status } = action.payload;
       state.openDiscardConformationModal = status;
     },
+    setLoadEmailThreads(
+      state: CommonInterface,
+      action: PayloadAction<{ email_details: boolean }>
+    ) {
+      const { email_details } = action.payload;
+      if (state?.renderModule) {
+        state.renderModule.email_details = email_details;
+      }
+    },
   },
   extraReducers(builder) {
     builder.addCase(PURGE, () => {
@@ -179,5 +193,7 @@ export const getIsViewUpdateStatus = (state: RootState) =>
   state.common.isViewUpdateStatus;
 export const getOpenDiscardConformationModal = (state: RootState) =>
   state.common.openDiscardConformationModal;
+export const getMailProviderOption = (state: RootState) =>
+  state.common?.mailProviderOption;
 
 export default slice;

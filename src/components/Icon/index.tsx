@@ -1,7 +1,7 @@
 // =================== import packages ==================
 import { SVGAttributes } from 'react';
 // ======================================================
-import { ReactComponent as BackBtnFilled } from 'assets/images/icons/filled-icons/backBtnFilledIcon.svg';
+import { ReactComponent as BackBtnFilled } from '../../assets/images/icons/filled-icons/backBtnFilledIcon.svg';
 import { ReactComponent as CalendarFilled } from 'assets/images/icons/filled-icons/calendarFilledIcon.svg';
 import { ReactComponent as CommentFilled } from 'assets/images/icons/filled-icons/commentFilledIcon.svg';
 import { ReactComponent as DashboardFilled } from 'assets/images/icons/filled-icons/dashboardFilledIcon.svg';

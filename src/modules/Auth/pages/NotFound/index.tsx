@@ -1,39 +1,39 @@
-// ** hooks **
-// import { useTranslation } from 'react-i18next';
+// ** external packages **
 import { useNavigate } from 'react-router-dom';
 
 // ** components **
-import Button from 'components/Button/Button';
-import Image from 'components/Image';
-
-// ** constant **
+import Button from 'components/Button';
 import { PRIVATE_NAVIGATION } from 'constants/navigation.constant';
 
-const NotFound = () => {
-  // const { t } = useTranslation();
-  const navigate = useNavigate();
+// ** Constant **
 
+const NotFound = () => {
+  // ** Hook **
+  const navigate = useNavigate();
   return (
-    <div className="h-[100dvh] bg-siteBG2 w-full">
-      <div className="flex items-center justify-center h-full">
-        <div className="">
-          <p className="hidden">{'ErrorBoundary.pageNotFound'}</p>
-          <Image
-            imgClassName="max-w-full max-h-[32dvh] mx-auto"
-            src="/images/404.svg"
-          />
-          <div className="max-w-[350px] mx-auto text-center mt-7 flex flex-col">
-            <p className="text-sm leading-5 font-medium text-grayText ">
-              {'pageNotFound.message'}
-            </p>
+    <div className="error404__page min-h-screen flex items-center justify-center px-[15px] py-[50px]">
+      <div className="inner__wrapper w-full">
+        <img
+          className="block w-[700px] max-w-full mx-auto"
+          src="/images/error404.png"
+          alt=""
+        />
+        <div className="error404__contant w-[500px] max-w-full mx-auto mt-[20px]">
+          <h1 className="title font-biotif__Bold text-ip__black__text__color text-[34px] text-center sm:text-[24px]">
+            Page Not Found!
+          </h1>
+          <p className="text font-biotif__Medium text-light__TextColor text-[18px] text-center sm:text-[16px]">
+            We are sorry, the page you requested could not be found. Please go
+            back to the homepage!
+          </p>
+          <div className="flex justify-center mt-[20px]">
             <Button
-              variants="primary"
-              className="w-fit mt-7 mx-auto"
-              onClickHandler={() => {
+              className="primary__Btn"
+              onClick={() => {
                 navigate(PRIVATE_NAVIGATION.dashboard.view);
               }}
             >
-              {'pageNotFound.navigate'}
+              Go To Dashboard
             </Button>
           </div>
         </div>

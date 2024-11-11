@@ -1,51 +1,23 @@
 // ** Import Packages **
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-
-// ** Components **
-import Button from 'components/Button';
-import ClickableEmail from 'components/ClickableComponents/ClickableEmail';
-import Icon from 'components/Icon';
-import Image from 'components/Image';
-
-// ** Redux **
-import { getCurrentUser, setOrganizationUUID } from 'redux/slices/authSlice';
-
-// ** Constants **
-import { PRIVATE_NAVIGATION } from 'constant/navigation.constant';
-
-// ** Types **
+import Image from 'components/Image'
 import useAuth from 'hooks/useAuth';
 import { useToggleDropdown } from 'hooks/useToggleDropdown';
-import { useSwitchOrganizationApi } from './services/organization.services';
-import {
-  getIsViewUpdateStatus,
-  getViewDiscardPromptStatus,
-  setOpenDiscardConformationModal,
-} from 'redux/slices/commonSlice';
-import { USER_STATUS } from 'constant';
+import { getCurrentUser } from 'redux-toolkit/slices/authSlice';
+import { getIsViewUpdateStatus, getViewDiscardPromptStatus, setOpenDiscardConformationModal } from 'redux-toolkit/slices/commonSlice';
+import { USER_STATUS } from 'constants/index';
+import ClickableEmail from 'components/ClickableComponents/ClickableEmail';
+
 
 const ProfileToggle = () => {
   const { logout } = useAuth();
   const user = useSelector(getCurrentUser);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const viewDiscardPromptStatus = useSelector(getViewDiscardPromptStatus);
   const isViewUpdateStatus = useSelector(getIsViewUpdateStatus);
   const { dropdownRef, isDropdownOpen, toggleDropdown } = useToggleDropdown();
 
   // ** custom hooks **
-  const { getSwitchOrganizationAPI } = useSwitchOrganizationApi();
-
-  const switchOrganization = async (oId: string) => {
-    const { data, error } = await getSwitchOrganizationAPI();
-
-    if (data && !error) {
-      dispatch(setOrganizationUUID(oId));
-      window.location.reload();
-      window.location.href = PRIVATE_NAVIGATION.dashboard.view;
-    }
-  };
 
   const onToggle = () => {
     if (isViewUpdateStatus && viewDiscardPromptStatus) {
@@ -96,7 +68,8 @@ const ProfileToggle = () => {
                 {user?.email ? <ClickableEmail mail={user?.email} /> : null}
 
                 <div>
-                  <Button
+                  Profile
+                  {/* <Button
                     className="primary__Btn profile__btn mt-[10px] py-[6px] px-[13px] text-[14px] font-biotif__Regular"
                     onClick={() => {
                       const navigationLink =
@@ -107,7 +80,7 @@ const ProfileToggle = () => {
                   >
                     <Icon iconType="profileFilledBlueIcon" />
                     Profile
-                  </Button>
+                  </Button> */}
                 </div>
               </div>
             </div>
@@ -147,15 +120,7 @@ const ProfileToggle = () => {
                                 : ''
                             }`}
                           >
-                            <div
-                              onClick={() =>
-                                !isOrgDisable &&
-                                switchOrganization(obj.organization.uuid)
-                              }
-                              className="inline-block cursor-pointer"
-                            >
-                              {obj.organization.name}
-                            </div>
+                          
                           </div>
                         </div>
                       );
@@ -164,15 +129,6 @@ const ProfileToggle = () => {
               )}
 
             <div className="footer__btn flex items-center justify-end py-[16px] px-[20px]">
-              <button
-                className="text-[14px] font-biotif__Regular text-black__TextColor500 duration-500 hover:text-primaryColor mr-[25px]"
-                onClick={() => {
-                  const navigationLink = PRIVATE_NAVIGATION.settings.view;
-                  navigate(navigationLink);
-                }}
-              >
-                Setting
-              </button>
               <button
                 className="text-[14px] font-biotif__Regular text-black__TextColor500 duration-500 hover:text-primaryColor"
                 onClick={() => {

@@ -12,7 +12,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 // ** Hook **
-
+import useWindowDimensions from 'hooks/useWindowDimensions';
 // ** Icon **
 import Icon, { IconTypes } from 'components/Icon';
 
@@ -23,6 +23,7 @@ import {
 } from 'redux-toolkit/slices/commonSlice';
 // import { IconTypeJson } from 'indexDB/indexdb.type';
 import IconAnimation from 'components/IconAnimation';
+import { PRIVATE_NAVIGATION } from 'constants/navigation.constant';
 
 interface Props {
   id: string;

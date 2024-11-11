@@ -26,10 +26,17 @@ export type StatusFields = {
 
 export enum TokenProvider {
   ZOOM = 'zoom',
-  GOOGLE_AUTH = 'google_auth',
+  FACEBOOK = 'facebook',
+  LINKEDIN = 'linkedin',
+  TWITTER = 'twitter',
   GOOGLE_CALENDAR = 'google_calendar',
-  MICROSOFT_CALENDAR = 'microsoft_calendar',
-  icalendar = 'icalendar',
+  MICROSOFT = 'microsoft',
+  GOOGLE_MAIL = 'gmail',
+  OFFICE_365_CALENDAR = 'outlook_calendar',
+  OTHER = 'other',
+  SMTP = 'smtp',
+  All = 'all',
+  OUTLOOK = 'outlook',
 }
 
 export interface ModalProps {

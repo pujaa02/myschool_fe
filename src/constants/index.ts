@@ -41,3 +41,10 @@ export const NAME_BADGE_COLOR_COMBINATIONS = [
     Color: 'dark__TextColor',
   },
 ];
+
+export const SCREEN_VIEW = Object.freeze({
+  MOBILE: 576,
+  TABLET: 768,
+  SMALL_SCREEN: 1200,
+  LARGE_SCREEN: 1441,
+});
