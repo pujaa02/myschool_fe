@@ -59,6 +59,7 @@ const Image = (props: Props) => {
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const loadServerImage = async (path: string) => {
+    console.log("🚀 ~ loadServerImage ~ path:", path)
     /*  */
 
     setIsLoading(true);

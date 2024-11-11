@@ -80,7 +80,9 @@
 //   type: 'asc',
 // };
 
-// const ColumnManageModal = (props: Props) => {
+export const ColumnManageModal = (
+    // props: Props
+) => {
 //   const { modelName, collectionName, closeModal, editColumnViewID } = props;
 
 //   // ** Hooks ** //
@@ -1002,4 +1004,8 @@
 //       )}
 //     </div>
 //   );
-// };
+return(
+    <>
+    <div>ColumnManageModal</div></>
+)
+};

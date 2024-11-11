@@ -1,6 +1,6 @@
 // ** Import Packages **
 import Tippy from '@tippyjs/react';
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 
 // ** Component **
 import Icon from 'components/Icon';

@@ -26,8 +26,8 @@ const PhoneNumberWithCountryCode = <
               country="us"
               placeholder={placeholder}
               onChange={(
-                valueNo: string,
-                data: CountryData,
+                _valueNo: string,
+                _data: CountryData,
                 event: React.ChangeEvent<HTMLInputElement>,
                 formattedValue: string
               ) => {

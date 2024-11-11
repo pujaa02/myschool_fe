@@ -1,5 +1,5 @@
 // =================== import packages ==================
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { Path, UseFormRegister, FieldValues } from 'react-hook-form';
 // ======================================================
 import Icon from 'components/Icon';
