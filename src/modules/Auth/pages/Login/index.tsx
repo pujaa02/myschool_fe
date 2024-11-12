@@ -5,7 +5,7 @@ import { loginSchema } from 'modules/Auth/validationSchema';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { LoginFormFields } from './types';
+import { LoginFormFields } from './types/index.types';
 // import { getActiveUserDataApi } from 'modules/Auth/services';
 
 const Login = () => {
