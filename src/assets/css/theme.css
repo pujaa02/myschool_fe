@@ -15535,6 +15535,19 @@ body .react-datepicker-wrapper .react-datepicker__close-icon:hover:after{
 .rbc-time-gutter{
   padding-bottom: 100px !important;
 }
+/* .rbc-day-slot {
+  border: none !important;
+}
+.rbc-date-cell {
+  border: none !important;
+}
+.rbc-row-content {
+  border: none !important;
+}
+
+.rbc-time-content{
+  border: none !important
+} */
 
 .rdrDateRangeWrapper{
   width:calc(100% - 226px);

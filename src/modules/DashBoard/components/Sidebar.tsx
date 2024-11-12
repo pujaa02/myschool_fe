@@ -3,8 +3,6 @@ import Tippy from '@tippyjs/react';
 import { Ref, useEffect, useState } from 'react';
 
 // ** Images **
-import SiteLogo from 'assets/images/siteLogo.svg';
-import SmackDab from 'assets/images/Smackdab.svg';
 
 // ** redux **
 import { useDispatch, useSelector } from 'react-redux';
@@ -164,17 +162,17 @@ const Sidebar = (props: Props) => {
                 <div className="logo__Box w-[76px] h-[76px] flex items-center justify-center bg-white rounded-full xl:w-[52px] xl:h-[52px] md:w-[52px] md:h-[52px] md:hidden">
                   <img
                     className="w-[30px] xl:w-[24px] md:w-[22px]"
-                    src={SiteLogo}
+                    // src={SiteLogo}
                     alt=""
                   />
                 </div>
                 <p className="logo__Text text-[#343434]/70 text-[26px] xl:text-[22px] font-biotif__SemiBold uppercase ml-[15px] md:block">
-                  <img src={SmackDab} alt="" />
+                  {/* <img src={SmackDab} alt="" /> */}
                 </p>
               </>
             ) : (
               <p className="logo__Text text-[#343434]/70 text-[26px] xl:text-[22px] font-biotif__SemiBold uppercase ml-[15px] md:block">
-                <img src={SmackDab} alt="" />
+                {/* <img src={SmackDab} alt="" /> */}
               </p>
             )}
           </div>

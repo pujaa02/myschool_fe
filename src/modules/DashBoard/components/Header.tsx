@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux';
 // ** Components **
 import NotificationToggle from './QuickHeaderToggle/NotificationToggle';
 import ProfileToggle from './QuickHeaderToggle/ProfileToggle';
-import SmackDab from 'assets/images/Smackdab.svg';
 
 // ** Redux **
 import { getCurrentUser } from 'redux-toolkit/slices/authSlice';
@@ -83,7 +82,7 @@ export const Header = ({ headerTitle }: Props) => {
           <div className="cn__inner relative z-[3] inline-flex flex-wrap justify-center w-[500px] max-w-full px-[15px]">
             <img
               className="block w-[300px] max-w-full mx-auto"
-              src={SmackDab}
+              // src={SmackDab}
               alt=""
             />
             <h3 className="text-[18px] font-biotif__SemiBold text-[#353535] mt-[20px] text-center">
