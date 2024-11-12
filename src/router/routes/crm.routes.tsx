@@ -5,7 +5,7 @@ import {
 } from 'constants/navigation.constant';
 import { RouteAttribute } from 'router/RouteComponent';
 
-const Login = React.lazy(() => import('../../modules/Auth/pages/Login'));
+const Login = React.lazy(() => import('../../modules/Auth/pages/Login/index'));
 
 const NotAuthorized = React.lazy(
   () => import('../../modules/Auth/pages/NotAuthorized')

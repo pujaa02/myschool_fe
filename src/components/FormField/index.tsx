@@ -5,7 +5,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import CustomCreatableSelect from './components/CreatableSelectFormField';
 import { CustomAsyncSelect } from './components/CustomAsyncSelectFormField';
 import CustomSelect from './components/CustomSelectFormField';
-import DateAndTimeFormField from './components/DateAndTimeFormField';
+// import DateAndTimeFormField from './components/DateAndTimeFormField';
 import DateFormField from './components/DateFormField';
 import TimeFormField from './components/TimeFormField';
 import TextAreaFormField from './components/TextAreaFormField';
@@ -46,8 +46,8 @@ const FormField = <TFormValues extends Record<string, unknown>>(
     switch (field) {
       case 'date':
         return <DateFormField {...updatedFormField} />;
-      case 'dateAndTime':
-        return <DateAndTimeFormField {...updatedFormField} />;
+      // case 'dateAndTime':
+      //   return <DateAndTimeFormField {...updatedFormField} />;
       case 'time':
         return <TimeFormField {...updatedFormField} />;
       case 'select':

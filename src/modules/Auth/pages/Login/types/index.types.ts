@@ -7,3 +7,7 @@ export type LoginFormFields = {
 export interface LoginFormProps {
   login: (_data: LoginFormFields) => void;
 }
+
+export enum loginMethod {
+  LOGIN = 'login',
+}

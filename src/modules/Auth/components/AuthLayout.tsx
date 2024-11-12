@@ -1,9 +1,9 @@
 // ** Icons **
-import SignUpBG from 'assets/images/signupBg.png';
-import Smackdab from 'assets/images/Smackdab.png';
+// import SignUpBG from 'assets/images/signupBg.png';
+// import Smackdab from 'assets/images/Smackdab.png';
 
 // ** Type **
- interface AuthLayoutProps {
+interface AuthLayoutProps {
   children: React.ReactNode;
 }
 
@@ -12,7 +12,7 @@ const AuthLayout = ({ children }: AuthLayoutProps) => {
     <div className="singupScreen relative min-h-screen px-[15px] py-[60px] sm:py-[35px]">
       <img
         className="singupBG fixed top-0 left-0 w-full h-screen z-[-1]"
-        src={SignUpBG}
+        // src={SignUpBG}
         alt=""
       />
       <div className="logoWrapper">
@@ -22,8 +22,8 @@ const AuthLayout = ({ children }: AuthLayoutProps) => {
             Smackdab
           </p>
         </div> */}
-        <div className='w-[265px] max-w-full mx-auto mb-[30px]'>
-          <img src={Smackdab} alt='Smackdab' />
+        <div className="w-[265px] max-w-full mx-auto mb-[30px]">
+          {/* <img src={Smackdab} alt='Smackdab' /> */}
         </div>
       </div>
       {children}

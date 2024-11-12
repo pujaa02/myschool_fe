@@ -1,3 +1,5 @@
+import { Base64 } from 'js-base64';
+
 export const clearBrowserCookiesAndStorage = () => {
   const rememberMeData = localStorage.getItem('remember-me');
   const clientIp = localStorage.getItem('clientIp');
@@ -27,4 +29,12 @@ export const srcFilePath = (file: string | File, serverPath = false) => {
     //
   }
   return file;
+};
+
+export const convertBtoA = (value: any) => {
+  try {
+    return Base64.encode(value, true);
+  } catch (error) {
+    return value;
+  }
 };

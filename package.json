@@ -26,6 +26,7 @@
     "formik": "^2.4.6",
     "global-tld-list": "^0.0.1090",
     "inputmask": "^5.0.7",
+    "js-base64": "^3.7.5",
     "libphonenumber-js": "^1.10.49",
     "lodash": "^4.17.21",
     "react": "^18.3.1",
