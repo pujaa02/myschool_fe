@@ -2,13 +2,16 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLazyGetLoggedUserQuery } from 'redux-toolkit/api/userApi';
-import { getAuth, setAuthenticated, setAuthInitialized, setCredentials } from 'redux-toolkit/slices/authSlice';
+import {
+  getAuth,
+  setAuthenticated,
+  setAuthInitialized,
+  setCredentials,
+} from 'redux-toolkit/slices/authSlice';
 
 // ** redux **
 
-
 // ** services **
-
 
 const useAuthGuard = () => {
   let abortFlag = false;
@@ -32,7 +35,6 @@ const useAuthGuard = () => {
       const organizationUUID = localStorage.getItem('organization_uuid');
       if (organizationUUID) {
         const { data, error } = await getLoggedInUserAPI({});
-
         if (!error && data && !abortFlag) {
           const { user, two_factor_enabled, two_factor_verified } = data; // permissions,
           if (

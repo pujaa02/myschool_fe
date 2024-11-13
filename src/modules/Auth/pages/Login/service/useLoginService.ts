@@ -38,29 +38,10 @@ export const useLoginService = () => {
     delete formData.remember;
 
     const { data, error } = await loginAPI(formData);
-    // const {
-    //   is_owner,
-    //   two_factor_enabled,
-    //   valid_pass,
-    //   verified,
-    //   organizations,
-    //   userRole,
-    // } = data;
 
     if (!error && data) {
       setUserRememberToLocal(loginData);
-      isVerified(data);
-      //   if (
-      //     (valid_pass && verified && !two_factor_enabled && organizations) ||
-      //     (accounts && accounts.length === 0) ||
-      //     (userRole[0] === userRole.ADMIN && is_owner) ||
-      //     userRole[0] === userRole.MANAGER
-      //   ) {
-      //     loginVerifyHandler(data);
-      //   } else {
-      // navigate(PUBLIC_NAVIGATION.twoFactorAccount, { state: loginData });
-      //   }
-      // navigate(PRIVATE_NAVIGATION.dashboard.view);
+      isVerified(data.data);
     }
   };
 
@@ -83,6 +64,11 @@ export const useLoginService = () => {
   const isVerified = async (resData: any) => {
     if (resData?.user?.verified) {
       dispatch(setToken({ token: resData?.access_token }));
+      // const config = {
+      //   headers: {
+      //     Authorization: `jwt ${resData?.access_token}`,
+      //   },
+      // };
       const { data, error } = await getLoggedInUserAPI({});
       if (!error && data) {
         const { user } = data;

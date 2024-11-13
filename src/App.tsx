@@ -14,7 +14,10 @@ import 'tippy.js/dist/tippy.css';
 export const context = createContext<Socket | null | undefined>(null);
 
 const App = () => {
-  const { isLoading, isAuthInitialized } = useAuthGuard();
+  const {
+    isLoading,
+    // , isAuthInitialized
+  } = useAuthGuard();
   //   const { user } = useSelector(getAuth);
 
   const [socket, setSocket] = useState<Socket>();
@@ -42,7 +45,8 @@ const App = () => {
     });
   };
   // isCSRFTokenFetching
-  return isLoading || !isAuthInitialized ? (
+  return isLoading ? (
+    // || !isAuthInitialized
     <SiteLoader />
   ) : (
     <>
