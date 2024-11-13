@@ -66,12 +66,7 @@ export const useLoginService = () => {
 
   // *** logged user verify to data ***
   const isVerified = async (resData: any) => {
-    console.log('🚀 ~ isVerified ~ resData:', resData);
     if (resData?.user?.verified) {
-      console.log(
-        '🚀 ~ isVerified ~ resData?.user?.verified:',
-        resData?.user?.verified
-      );
       dispatch(setToken({ token: resData?.access_token }));
       const config = {
         headers: {

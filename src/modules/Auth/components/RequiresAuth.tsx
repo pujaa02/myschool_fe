@@ -19,36 +19,33 @@ const RequiresAuth = ({ children, module, type }: RequiresAuthProps) => {
   // ** Hooks **
   const location = useLocation();
   const authData = useSelector((state: RootState) => state.auth);
+  console.log("🚀 ~ RequiresAuth ~ authData:", authData)
 
   // ** Custom Hooks **
   const { hasAuthorized } = useAuth();
+  console.log("🚀 ~ RequiresAuth ~ hasAuthorized:", hasAuthorized)
   const userHasPermission = hasAuthorized(); // [{ module, type }]
+  console.log("🚀 ~ RequiresAuth ~ userHasPermission:", userHasPermission)
 
   const {
-    organizationUUID,
     isAuthenticated,
     user,
-    twoFactorEnable,
-    twoFactorVerified,
   } = authData;
   const isVerified = user && !!user?.verified;
 
   if (
     isAuthenticated &&
-    twoFactorEnable &&
-    !twoFactorVerified &&
     location.pathname !== PUBLIC_NAVIGATION.towFactorAuth
   ) {
     return (
       <>
         {children}
-        {/* <TowFactorVerify isContinueLoggedIn /> */}
       </>
     );
   }
 
   // ** Not Logged In **
-  if (!isAuthenticated || !organizationUUID || (isVerified && !isVerified)) {
+  if (!isAuthenticated  || (isVerified && !isVerified)) {
     return <Navigate to={PUBLIC_NAVIGATION.login} state={{ from: location }} />;
   }
 

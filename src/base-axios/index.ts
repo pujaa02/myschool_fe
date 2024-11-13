@@ -12,7 +12,6 @@ import { REACT_APP_API_URL } from 'config';
 import { apiResponseType } from 'hooks/usePagination';
 
 const token = localStorage.getItem('token');
-
 export const Axios = axios.create({
   baseURL: REACT_APP_API_URL,
   headers: {
