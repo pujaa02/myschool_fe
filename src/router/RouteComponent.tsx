@@ -24,8 +24,6 @@ export interface RouteAttribute {
 }
 
 const RouteComponent = () => {
-  console.log("🚀 ~ RouteComponent ~ privateRoutes:", privateRoutes)
-
   // const location = useLocation();
   // const { getAndSetCSRFtoken } = useGetAndSetCSRFtoken();
   // const csrfExpiryTime = useSelector(getCSRFExpiryTime);

@@ -19,14 +19,9 @@ const RequiresAuth = ({ children, module, type }: RequiresAuthProps) => {
   // ** Hooks **
   const location = useLocation();
   const authData = useSelector((state: RootState) => state.auth);
-  console.log("🚀 ~ RequiresAuth ~ authData:", authData)
-
   // ** Custom Hooks **
   const { hasAuthorized } = useAuth();
-  console.log("🚀 ~ RequiresAuth ~ hasAuthorized:", hasAuthorized)
   const userHasPermission = hasAuthorized(); // [{ module, type }]
-  console.log("🚀 ~ RequiresAuth ~ userHasPermission:", userHasPermission)
-
   const {
     isAuthenticated,
     user,
