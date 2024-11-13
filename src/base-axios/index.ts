@@ -11,21 +11,16 @@ import {
 import { REACT_APP_API_URL } from 'config';
 import { apiResponseType } from 'hooks/usePagination';
 
-export const Axios = axios.create({ baseURL: REACT_APP_API_URL });
+export const Axios = axios.create({
+  baseURL: REACT_APP_API_URL,
+});
 
 export const setupAxios = (store: Store) => {
   // logic of set token in header
   Axios.interceptors.request.use((request: AxiosRequestConfig) => {
-    const authToken = localStorage.getItem('access_token');
-    const clientIp = localStorage.getItem('clientIp');
-    const csrfToken =store.getState()?.common?.csrf?.token;
-
+    const authToken = store.getState().token?.token || null;
     if (request.headers !== undefined && authToken) {
       request.headers.Authorization = `JWT ${authToken}`;
-    }
-
-    if (request.headers && clientIp) {
-      request.headers['x-client-ip'] = `${clientIp}`;
     }
 
     if (request.headers && process.env.NODE_ENV === 'development') {
@@ -35,9 +30,6 @@ export const setupAxios = (store: Store) => {
     if (request.headers) {
       request.headers['x-client-tz'] =
         Intl.DateTimeFormat().resolvedOptions().timeZone;
-    }
-    if (request.headers && csrfToken) {
-      request.headers['x-csrf-token'] = csrfToken;
     }
 
     request.withCredentials = true;

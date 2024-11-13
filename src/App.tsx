@@ -19,7 +19,6 @@ const App = () => {
     // , isAuthInitialized
   } = useAuthGuard();
   //   const { user } = useSelector(getAuth);
-
   const [socket, setSocket] = useState<Socket>();
 
   useEffect(() => {

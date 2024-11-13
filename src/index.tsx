@@ -8,10 +8,14 @@ import { PersistGate } from 'redux-persist/integration/react';
 import Toast from './components/Toast';
 import store, { persistor } from './redux-toolkit/store';
 import { BrowserRouter } from 'react-router-dom';
+import { setupAxios } from 'base-axios';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
+setupAxios(store);
+
 root.render(
   <React.StrictMode>
     <Provider store={store}>
