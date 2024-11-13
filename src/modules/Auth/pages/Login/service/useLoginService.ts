@@ -53,6 +53,7 @@ export const useLoginService = () => {
 
     if (!error && data) {
       setUserRememberToLocal(loginData);
+      isVerified();
       //   if (
       //     (valid_pass && verified && !two_factor_enabled && organizations) ||
       //     (accounts && accounts.length === 0) ||
@@ -63,7 +64,7 @@ export const useLoginService = () => {
       //   } else {
       // navigate(PUBLIC_NAVIGATION.twoFactorAccount, { state: loginData });
       //   }
-      navigate(PRIVATE_NAVIGATION.dashboard.view);
+      // navigate(PRIVATE_NAVIGATION.dashboard.view);
     }
   };
 
@@ -85,6 +86,7 @@ export const useLoginService = () => {
   // *** logged user verify to data ***
   const isVerified = async () => {
     const { data, error } = await getLoggedInUserAPI({});
+    console.log('🚀 ~ isVerified ~ data:', data);
     if (!error && data) {
       const { two_factor_enabled, two_factor_verified } = data;
 
@@ -111,6 +113,7 @@ export const useLoginService = () => {
     } else {
       dispatch(setCurrentStep({ currentStep: LOGIN_STEP.COMPANY_DETAILS }));
     }
+    navigate(PRIVATE_NAVIGATION.dashboard.view);
   };
 
   return {

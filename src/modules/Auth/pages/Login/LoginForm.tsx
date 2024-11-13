@@ -28,7 +28,7 @@ const LoginForm = (props: LoginFormProps) => {
   return (
     <AuthCard
       title="Login"
-      subTitle="Please enter your email and password in order to continue."
+      subTitle="Please enter your email and password for Login."
     >
       <form onSubmit={onSubmit}>
         <FormField<LoginFormFields>
