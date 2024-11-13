@@ -11,6 +11,7 @@ import { reducer as commonReducer } from './slices/commonSlice';
 import { columnApi } from './api/columnApi';
 import { activityApi } from './api/activityApi';
 import { userApi } from './api/userApi';
+import { reducer as tokenReducer } from './slices/tokenSlice';
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   countryJson: countryJsonReducer,
   common: commonReducer,
   toast: toastReducer,
+  token: tokenReducer,
   [columnApi.reducerPath]: columnApi.reducer,
   [activityApi.reducerPath]: activityApi.reducer,
   [userApi.reducerPath]: userApi.reducer,

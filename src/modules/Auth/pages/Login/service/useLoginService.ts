@@ -5,13 +5,9 @@ import { useNavigate } from 'react-router-dom';
 import { useLazyGetLoggedUserQuery } from 'redux-toolkit/api/userApi';
 import { LoginFormFields, loginMethod } from '../types/index.types';
 import { PRIVATE_NAVIGATION } from 'constants/navigation.constant';
-import {
-  setCurrentStep,
-  setTwoFactor,
-  setUserData,
-} from 'redux-toolkit/slices/authSlice';
-import { LOGIN_STEP } from 'constants/index';
+import { setCurrentStep, setUserData } from 'redux-toolkit/slices/authSlice';
 import { convertBtoA } from 'utils/util';
+import { setToken } from 'redux-toolkit/slices/tokenSlice';
 
 export const useLoginService = () => {
   // ** hooks **
@@ -53,7 +49,7 @@ export const useLoginService = () => {
 
     if (!error && data) {
       setUserRememberToLocal(loginData);
-      isVerified();
+      isVerified(data);
       //   if (
       //     (valid_pass && verified && !two_factor_enabled && organizations) ||
       //     (accounts && accounts.length === 0) ||
@@ -84,34 +80,15 @@ export const useLoginService = () => {
   };
 
   // *** logged user verify to data ***
-  const isVerified = async () => {
-    const { data, error } = await getLoggedInUserAPI({});
-    console.log('🚀 ~ isVerified ~ data:', data);
-    if (!error && data) {
-      const { two_factor_enabled, two_factor_verified } = data;
-
-      if (data.user?.user_organizations?.length === 0) {
-        dispatch(setCurrentStep({ currentStep: LOGIN_STEP.COMPANY_DETAILS }));
-      } else if (data.user && !data.user.verified) {
-        dispatch(setCurrentStep({ currentStep: LOGIN_STEP.VERIFY_EMAIL }));
-      } else if (two_factor_enabled && !two_factor_verified) {
-        dispatch(setTwoFactor({ twoFactorEnable: true }));
-      } else if (
-        !two_factor_enabled ||
-        (two_factor_enabled && two_factor_verified)
-      ) {
-        const { user } = data; // permissions
+  const isVerified = async (resData: any) => {
+    if (resData?.user?.verified) {
+      dispatch(setToken({ token: resData?.access_token }));
+      const { data, error } = await getLoggedInUserAPI({});
+      if (!error && data) {
+        const { user } = data;
         dispatch(setUserData({ user }));
-        // dispatch(setPermissions(permissions));
-        // await userOrDescendantUserOptions(user);
         dispatch(setCurrentStep(undefined));
-      } else {
-        //
       }
-    } else if (data && data?.two_factor_enabled && !data?.two_factor_verified) {
-      dispatch(setTwoFactor({ twoFactorEnable: true }));
-    } else {
-      dispatch(setCurrentStep({ currentStep: LOGIN_STEP.COMPANY_DETAILS }));
     }
     navigate(PRIVATE_NAVIGATION.dashboard.view);
   };
