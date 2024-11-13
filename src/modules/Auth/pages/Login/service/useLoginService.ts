@@ -43,6 +43,7 @@ export const useLoginService = () => {
     const { data, error } = await loginAPI(formData);
 
     if (!error && data) {
+      localStorage.setItem('token', data?.access_token);
       setUserRememberToLocal(loginData);
       isVerified(data);
     }
