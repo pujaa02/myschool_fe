@@ -16,7 +16,7 @@ const Dashboard = () => {
   return (
     <Fragment>
       <p className="text-[15px] font-biotif__Regular text-black__TextColor400 mb-[12px]">
-        Here's what's happening with organization today.
+      "Here’s the latest news on what’s happening with our school today."
       </p>
       {/* <DashboardCountShow
         {...{ setPageInfo, setRecentLogsFlag, recentLogsFlag }}

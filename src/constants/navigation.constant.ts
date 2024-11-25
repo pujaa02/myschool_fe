@@ -21,6 +21,67 @@ export const PRIVATE_NAVIGATION = Object.freeze({
       path: '/',
     },
   },
+  courses: {
+    view: '/courses',
+    detailPage: '/courses/:id',
+    edit: '/courses/edit/:id',
+    add: '/courses',
+  },
+  students: {
+    view: '/students',
+    detailPage: '/students/:id',
+    edit: '/students/edit/:id',
+    add: '/students',
+  },
+  teachers: {
+    view: '/teachers',
+    detailPage: '/teachers/:id',
+    edit: '/teachers/edit/:id',
+    add: '/teachers',
+  },
+  attendance: {
+    view: '/attendance',
+    detailPage: '/attendance/:id',
+    edit: '/attendance/edit/:id',
+    add: '/attendance',
+  },
+  schedules: {
+    view: '/schedules',
+    detailPage: '/schedules/:id',
+    edit: '/schedules/edit/:id',
+    add: '/schedules',
+  },
+  activities: {
+    view: '/activities',
+    detailPage: '/activities/:id',
+    AddActivityMobileView: '/activities/mobile',
+    EditActivityMobileView: '/activities/mobile/:id',
+  },
+  calendar: { view: '/calendar' },
+  exam: {
+    view: '/exam',
+    detailPage: '/exam/:id',
+    edit: '/exam/edit/:id',
+    add: '/exam',
+  },
+  result: {
+    view: '/result',
+    detailPage: '/result/:id',
+    edit: '/result/edit/:id',
+    add: '/result',
+  },
+  committee: {
+    view: '/committee',
+    detailPage: '/committee/:id',
+    edit: '/committee/edit/:id',
+    add: '/committee',
+  },
+  sensation: {
+    view: '/sensation',
+    detailPage: '/sensation/:id',
+    edit: '/sensation/edit/:id',
+    add: '/sensation',
+  },
   usersManagement: {
     view: {
       navigationView: {
