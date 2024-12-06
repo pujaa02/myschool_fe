@@ -1,8 +1,9 @@
 module: {
-  rules: [
-    {
-      test: /\.svg$/,
-      use: ['@svgr/webpack', 'file-loader'],
-    },
-  ],
-}
+    rules: [
+      {
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
+      },
+      // other rules
+    ],
+  },

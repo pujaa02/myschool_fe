@@ -8876,7 +8876,8 @@
 
   /* ================= new purple design start =================== */
   :root {
-    --primaryColorSD: #15a94d;
+    --primaryColorSD: #0693e3;
+    /* 9F84BD */
     --sdWhite__text: #ffffff;
     --sdBlack__text: #000000;
     --sdWhite__border: #ffffff;
