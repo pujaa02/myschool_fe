@@ -82,6 +82,12 @@ export const MODULE_PERMISSION = Object.freeze({
     update: { module: ModuleNames.USER, type: BasicPermissionTypes.UPDATE },
     delete: { module: ModuleNames.USER, type: BasicPermissionTypes.DELETE },
   },
+  COMMITTEE:{
+    read: { module: ModuleNames.COMMITTEE, type: BasicPermissionTypes.READ },
+    create: { module: ModuleNames.COMMITTEE, type: BasicPermissionTypes.CREATE },
+    update: { module: ModuleNames.COMMITTEE, type: BasicPermissionTypes.UPDATE },
+    delete: { module: ModuleNames.COMMITTEE, type: BasicPermissionTypes.DELETE },
+  }
 });
 
 

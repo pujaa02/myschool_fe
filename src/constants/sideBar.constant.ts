@@ -40,7 +40,7 @@ export const SIDE_BAR: readonly SidebarInterface[] = Object.freeze([
     label: 'Students',
     link: PRIVATE_NAVIGATION.students.view,
     children: [],
-    icon: 'dealsFilledBlueIcon',
+    icon: 'studentIcon',
     ...MODULE_PERMISSION.STUDENTS.read,
   },
   {
@@ -48,7 +48,7 @@ export const SIDE_BAR: readonly SidebarInterface[] = Object.freeze([
     label: 'Teachers',
     link: PRIVATE_NAVIGATION.teachers.view,
     children: [],
-    icon: 'phoneFilled',
+    icon: 'teacherIcon',
     ...MODULE_PERMISSION.TEACHERS.read,
   },
   {
@@ -56,7 +56,8 @@ export const SIDE_BAR: readonly SidebarInterface[] = Object.freeze([
     label: 'Attendance',
     link: PRIVATE_NAVIGATION.attendance.view,
     children: [],
-    icon: 'accountFilledBlueIcon',
+    icon: 'teacherIcon',
+    // icon: 'attendanceIcon',
     ...MODULE_PERMISSION.ATTENDANCE.read,
   },
   {
@@ -64,7 +65,8 @@ export const SIDE_BAR: readonly SidebarInterface[] = Object.freeze([
     label: 'Schedules',
     link: PRIVATE_NAVIGATION.schedules.view,
     children: [],
-    icon: 'activitiesFilledBlueIcon',
+    icon: 'teacherIcon',
+    // icon: 'schedulesIcon',
     ...MODULE_PERMISSION.SCHEDULE.read,
   },
   {
@@ -74,7 +76,6 @@ export const SIDE_BAR: readonly SidebarInterface[] = Object.freeze([
     children: [],
     icon: 'activitiesFilledBlueIcon',
     ...MODULE_PERMISSION.ACTIVITY.read,
-    // animationIcon: IconTypeJson.Activity,
   },
   {
     id: 'calendar',
@@ -89,7 +90,8 @@ export const SIDE_BAR: readonly SidebarInterface[] = Object.freeze([
     label: 'Exam',
     link: PRIVATE_NAVIGATION.exam.view,
     children: [],
-    icon: 'emailFilledBlueIcon',
+    icon: 'teacherIcon',
+    // icon: 'examIcon',
     ...MODULE_PERMISSION.EXAM.read,
   },
   {
@@ -97,7 +99,8 @@ export const SIDE_BAR: readonly SidebarInterface[] = Object.freeze([
     label: 'Results',
     link: PRIVATE_NAVIGATION.result.view,
     children: [],
-    icon: 'streamFilledIcon',
+    icon: 'teacherIcon',
+    // icon: 'resultsIcon',
     ...MODULE_PERMISSION.RESULT.read,
   },
   {
@@ -105,13 +108,22 @@ export const SIDE_BAR: readonly SidebarInterface[] = Object.freeze([
     label: 'Committee',
     link: PRIVATE_NAVIGATION.committee.view,
     children: [],
-    icon: 'settingFilled',
+    icon: 'accountFilledBlueIcon',
+    ...MODULE_PERMISSION.COMMITTEE.read,
   },
   {
     id: 'sensation',
     label: 'Sensation',
     link: PRIVATE_NAVIGATION.sensation.view,
     children: [],
-    icon: 'settingFilled',
+    icon: 'teacherIcon',
+    // icon: 'sensationIcon',
+  },
+  {
+    id: 'settings',
+    label: 'Settings',
+    link: PRIVATE_NAVIGATION.settings.view,
+    children: [],
+    icon: 'settingFilledBlueIcon',
   },
 ]);

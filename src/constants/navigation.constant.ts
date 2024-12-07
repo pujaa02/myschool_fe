@@ -96,4 +96,26 @@ export const PRIVATE_NAVIGATION = Object.freeze({
       },
     },
   },
+  settings: {
+    view: '/settings',
+    generalSettings: {
+      personalSettings: { view: '/settings/personal-settings' },
+      notifications: {
+        notification: {
+          view: '/settings/general-settings/notification',
+        },
+        following: {
+          view: '/settings/general-settings/following',
+        },
+        schedule_email_timing: {
+          view: '/settings/general-settings/schedule-email-timing',
+        },
+      },
+    },
+    user: {
+      view: '/settings/user',
+      edit: '/settings/user/edit/:id',
+      detailPage: '/settings/user/:id',
+    },
+  },
 });
